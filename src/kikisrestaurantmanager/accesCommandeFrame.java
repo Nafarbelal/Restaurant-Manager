@@ -40,7 +40,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         initComponents();
         C.CreerCommande();
         System.out.println("Commande crée");
-
         setLocationRelativeTo(mainMenu);
 
     }
@@ -51,7 +50,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         initComponents();
         idCommande = C.CreerCommande();
         System.out.println("Commande crée");
-
         this.getContentPane().setBackground(Color.white);
         TxtCurrentTable.setText("Table " + idTable);
     }
@@ -62,6 +60,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         mainMenu.setEnabled(true);
         mainMenu.setVisible(true);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,7 +111,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         setBackground(new java.awt.Color(153, 153, 0));
 
         TableCommande.setBackground(new java.awt.Color(204, 204, 255));
-        TableCommande.setForeground(new java.awt.Color(204, 204, 255));
         TableCommande.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -124,7 +122,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         jScrollPane2.setViewportView(TableCommande);
 
         Menu.setBackground(new java.awt.Color(212, 208, 200));
-        Menu.setForeground(new java.awt.Color(212, 208, 200));
         Menu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -351,6 +348,16 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
         BtnAnnuler.setBackground(new java.awt.Color(204, 204, 204));
         BtnAnnuler.setText("Annuler");
+        BtnAnnuler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnAnnulerMouseClicked(evt);
+            }
+        });
+        BtnAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAnnulerActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -497,7 +504,10 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabelAddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelAddMousePressed
-
+        int row = TableCommande.getSelectedRow();
+        int id_article = (int)TableCommande.getValueAt(row, 1);
+        //C.AjouterArticle(int id_Article);
+        
     }//GEN-LAST:event_LabelAddMousePressed
 
     public void Refresh_Menu(String cat) {
@@ -506,6 +516,9 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }
 
     private void LabelDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelDeleteMousePressed
+       int row = TableCommande.getSelectedRow();
+        int id_article = (int)TableCommande.getValueAt(row, 1);
+        C.SupprimerArticleCommande(idCommande, id_article);
         // TODO add your handling code here:
     }//GEN-LAST:event_LabelDeleteMousePressed
 
@@ -640,9 +653,14 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelDessertMouseExited
 
     private void BtnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnnulerActionPerformed
-        this.dispose();
-
+        
     }//GEN-LAST:event_BtnAnnulerActionPerformed
+
+    private void BtnAnnulerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnnulerMouseClicked
+        this.dispose();
+        C.AnnulerCommande(idCommande);
+// TODO add your handling code here:
+    }//GEN-LAST:event_BtnAnnulerMouseClicked
 
     /**
      * @param args the command line arguments

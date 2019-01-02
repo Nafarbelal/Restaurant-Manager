@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package MODEL;
+/*
+    Supprimer détail_commande (par code/trigger)
+    Ajouter article ds table commande
 
+*/
 import DAO.DaoBD;
 import java.sql.Connection;
 import java.util.Date;
@@ -23,13 +26,12 @@ import java.util.logging.Logger;
  * @author Nada
  */
 public class Commande {
+
     private Connection Con;
     private Statement St;
     private DaoBD dao;
-    
-    
-    public Commande()
-    {
+
+    public Commande() {
         dao = new DaoBD();
         dao.setPilote("com.mysql.jdbc.Driver");
         dao.setUrl("jdbc:mysql://localhost:3306/projetjava");
@@ -38,73 +40,126 @@ public class Commande {
         dao.SeConnecter();
         Con = dao.getConnexion();
     }
-   
-    public int CreerCommande()
-    {
-         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-         Date date = new Date();
-         System.out.println(dateFormat.format(date));
-        try {  
-            PreparedStatement Pst = Con.prepareStatement("insert into Commande(date) values (?)", Statement.RETURN_GENERATED_KEYS);
-        
-            Pst.setString(1,dateFormat.format(date));
+
+    public int CreerCommande() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+
+        try {
+            PreparedStatement Pst = Con.prepareStatement("insert into Commande(date,montant,paye) values (?,?,?)");
+            Pst.setString(1, dateFormat.format(date));
+            Pst.setFloat(2, 0);
+            Pst.setInt(3, 0);
             Pst.executeUpdate();
-            ResultSet Rs = Pst.getGeneratedKeys();
-            if(Rs.next()){
-                int id = Rs.getInt(1);
-                return id ;
-            }
+            PreparedStatement Pst2 = Con.prepareStatement("select max(IDCOMMANDE) from Commande");
+            int id = Pst2.executeUpdate();
+            return id;
+
         } catch (SQLException ex) {
-             System.err.println("Erreur dans la requete CreerCommande" +ex.getMessage());
+            System.err.println("Erreur dans la requete CreerCommande" + ex.getMessage());
         }
         return -1;
     }
-    public void AjouterArticle()
-    {
-      // PreparedStatement Pst = Con.prepareStatement("insert into Commande() values ()");
-     // Pst.setString(1, x);
-    }
-    public void AnnulerCommande()
-    {
-        try
-        {
-            PreparedStatement Pst = Con.prepareStatement("delete from detail_commande where IDCOMMANDE=?");
-            
+
+    
+    
+    public void InsererDetailCommande(int ID_Article, int ID_commande, int Qu) {
+
+        try {
+
+            PreparedStatement Pst = Con.prepareStatement("insert into detail_commande(IDARTICLE,IDCOMMANDE,QUANTITE) values (?,?,?)");
+            Pst.setInt(1, ID_Article);
+            Pst.setInt(2, ID_commande);
+            Pst.setInt(3, Qu);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete AnnulerCommande" + ex.getMessage());
         }
-        catch(SQLException ex)
-        {
-            System.err.println("Erreur dans la requete Supprimer" +ex.getMessage());
-        }
-    }        
-    public void SupprimerCommande(int ID)
-    {
-        
     }
-    public void SupprimerArticleCommande(int ID_Commande, int ID_Article) 
-    {
-        try
-        {
-            PreparedStatement Pst = Con.prepareStatement("delete from detail_commande where IDCOMMANDE=? AND IDARTICLE=?");
-            Pst.setInt(1,ID_Commande);
+
+    public void UpdateDetailCommande(int ID_Article, int ID_commande, int Qu) {
+        try {
+
+            PreparedStatement Pst = Con.prepareStatement("update detail_commande set QUANTITE=? where IDARTICLE=? and IDCOMMANDE=?");
+            Pst.setInt(1, Qu);
             Pst.setInt(2, ID_Article);
+            Pst.setInt(3, ID_commande);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete UpdateDetailCommande" + ex.getMessage());
         }
-        catch(SQLException ex)
-        {
-            System.err.println("Erreur dans la requete Supprimer" +ex.getMessage());
-        }
-       
     }
-    public ResultSet MenuCategorie(String cat) {
+
+    
+    public void AnnulerCommande(int Id_commande) 
+    {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("delete from commande where IDCOMMANDE="+Id_commande);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
+        }
+    }
+
+    public void AfficherCommande(int numTable, int IDCOM) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select * from Commande where IDCOMMANDE=? AND NumTable=?");
+            Pst.setInt(1, IDCOM);
+            Pst.setInt(2, numTable);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
+        }
+
+    }
+
+    public ResultSet AfficherDetail(int numTable, int IDCOM) {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select IDARTICLE,Designation,Prix from article where categorie='"+cat+"'");
+            Res = St.executeQuery("Select DC.IDARTICLE,Designation,Quantite,Prix as PU, Prix*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
+
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
         }
         return Res;
     }
-     public ResultSet ToutLeMenu() {
+
+    public void SupprimerCommande(int ID_Commande) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("delete from detail_commande where IDCOMMANDE=?");
+            Pst.setInt(1, ID_Commande);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
+        }
+    }
+
+    public void SupprimerArticleCommande(int ID_Commande, int ID_Article) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("delete from detail_commande where IDCOMMANDE=? AND IDARTICLE=?");
+            Pst.setInt(1, ID_Commande);
+            Pst.setInt(2, ID_Article);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
+        }
+
+    }
+
+    public ResultSet MenuCategorie(String cat) {
+        ResultSet Res = null;
+        try {
+            St = Con.createStatement();
+            Res = St.executeQuery("Select IDARTICLE,Designation,Prix from article where categorie='" + cat + "'");
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
+        }
+        return Res;
+    }
+
+    public ResultSet ToutLeMenu() {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
@@ -114,14 +169,13 @@ public class Commande {
         }
         return Res;
     }
-     public int getID(String cat) 
-     {
+
+    public int getID(String cat) {
         ResultSet Res;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select IDARTICLE from Article where categorie='"+cat+"'");
-            if (Res.next()) 
-            {
+            Res = St.executeQuery("Select IDARTICLE from Article where categorie='" + cat + "'");
+            if (Res.next()) {
                 return Res.getInt(1);
             }
         } catch (SQLException ex) {
@@ -129,5 +183,5 @@ public class Commande {
         }
         return 0;
     }
-     
+
 }
