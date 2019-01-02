@@ -34,19 +34,19 @@ public class GestionRestau {
     public Employee getLoginInfos(String login) {
         ResultSet Res;
         //System.out.println("No Errors");
-    
+
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("select * from employees where login = '" + login+"'");
+            Res = St.executeQuery("select * from employees where login = '" + login + "'");
             if (Res.next()) {
                 int id = Res.getInt("IDEMPLOYEE");
                 String lg = Res.getString("LOGIN");
                 String pw = Res.getString("MOTDEPASSE");
-                String nom = Res.getString("NOM");                
+                String nom = Res.getString("NOM");
                 System.out.println(nom);
                 String prenom = Res.getString("PRENOM");
-                
-                Employee emp = new Employee(id, lg , pw , nom , prenom);
+
+                Employee emp = new Employee(id, lg, pw, nom, prenom);
                 return emp;
             }
             return null;
@@ -54,6 +54,17 @@ public class GestionRestau {
             System.out.println("Erreur dans la requete Select: ou ST :;; " + ex.getMessage());
         }
         return null;
+    }
+
+    public ResultSet TousLesCommandesNonPayées() {
+        ResultSet Res = null;
+        try {
+            St = Con.createStatement();
+            Res = St.executeQuery("Select idcommande as Id,date as Date,montant as MontantTotal,numTable as 'Table' from commande ");
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete Select: ou ST : " + ex.getMessage());
+        }
+        return Res;
     }
 
     public void Create(int apogee, int cne, String Nom, String Prenom,
@@ -113,17 +124,6 @@ public class GestionRestau {
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete préparé: " + ex.getMessage());
         }
-    }
-
-    public ResultSet TousLesCommandesNonPayées() {
-        ResultSet Res = null;
-        try {
-            St = Con.createStatement();
-            Res = St.executeQuery("Select idcommande,date,montant from commande ");
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete Select: ou ST : " + ex.getMessage());
-        }
-        return Res;
     }
 
     public ResultSet EleveFiliere(int idFiliere) {
