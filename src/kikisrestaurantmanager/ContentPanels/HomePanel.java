@@ -7,13 +7,18 @@ package kikisrestaurantmanager.ContentPanels;
 
 import MODEL.GestionRestau;
 import MODEL.MonModele;
+import addons.HeaderRenderer;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import kikisrestaurantmanager.MainMenu;
 import kikisrestaurantmanager.accesCommandeFrame;
 
@@ -43,6 +48,19 @@ public class HomePanel extends javax.swing.JPanel {
     public void Refresh() {
         ResultSet arts = Gr.TousLesCommandesNonPayées();
         tableCommandeEnCours.setModel(new MonModele(arts));
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tableCommandeEnCours.getColumnModel().getColumn(0).setMaxWidth(60);
+        tableCommandeEnCours.getColumnModel().getColumn(1).setMinWidth(150);
+
+        for (int i = 0; i < 4; ++i) {
+            tableCommandeEnCours.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        tableCommandeEnCours.getTableHeader().setDefaultRenderer(new HeaderRenderer(tableCommandeEnCours));
+        tableCommandeEnCours.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        tableCommandeEnCours.getTableHeader().setOpaque(false);
+        tableCommandeEnCours.getTableHeader().setBackground(Color.WHITE);
+
     }
 
     /**
