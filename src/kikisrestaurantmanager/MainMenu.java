@@ -21,7 +21,10 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     GestionRestau Gr = new GestionRestau();
-
+    // fsdfsd
+    // test 1
+    // test2
+    
     public MainMenu() {
         //this.setUndecorated(true);
         //this.setResizable(true);
