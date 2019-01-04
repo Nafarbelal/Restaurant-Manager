@@ -22,7 +22,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     GestionRestau Gr = new GestionRestau();
     // fsdfsd
-    // test 1
+    // commit2
     // test2
     
     public MainMenu() {
