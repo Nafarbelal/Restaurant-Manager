@@ -24,7 +24,8 @@ import MODEL.TableModel;
 public class accesCommandeFrame extends javax.swing.JFrame implements ListSelectionListener {
 
     Commande C = new Commande();
-    int idCommande ;
+    int idCommande;
+
     /**
      * Creates new form accesCommande
      */
@@ -39,7 +40,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         mainMenu = mn;
         initComponents();
         C.CreerCommande();
-        System.out.println("Commande crée");
+        System.out.println("Commande créée");
         setLocationRelativeTo(mainMenu);
 
     }
@@ -49,7 +50,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         mainMenu = mn;
         initComponents();
         idCommande = C.CreerCommande();
-        System.out.println("Commande crée");
+        System.out.println("Commande créée");
         this.getContentPane().setBackground(Color.white);
         TxtCurrentTable.setText("Table " + idTable);
     }
@@ -60,7 +61,16 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         mainMenu.setEnabled(true);
         mainMenu.setVisible(true);
     }
-    
+
+    public void RefreshCommande() {
+        ResultSet details = C.AfficherDetail(idCommande);
+        TableCommande.setModel(new TableModel(details));
+    } // to refresh the order table 
+
+    public void Refresh_Menu(String cat) {
+        ResultSet articles = C.MenuCategorie(cat);
+        Menu.setModel(new TableModel(articles));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,6 +116,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         jLabel17 = new javax.swing.JLabel();
         LabelAdd = new javax.swing.JLabel();
         LabelDelete = new javax.swing.JLabel();
+        btnTrash = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 0));
@@ -343,7 +354,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addComponent(PanelPlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         BtnAnnuler.setBackground(new java.awt.Color(204, 204, 204));
@@ -365,10 +376,18 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
         BtnConfirmer.setBackground(new java.awt.Color(204, 204, 204));
         BtnConfirmer.setText("Confirmer");
+        BtnConfirmer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConfirmerActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Menu");
+
+        Compteur.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        Compteur.setValue(1);
 
         panelTotal.setBackground(new java.awt.Color(217, 195, 217));
         panelTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -425,44 +444,50 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             }
         });
 
+        btnTrash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Trash_32px_1.png"))); // NOI18N
+        btnTrash.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnTrashMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(panelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(179, 179, 179)
-                                .addComponent(jLabel17)
-                                .addGap(18, 18, 18)
-                                .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(531, 531, 531)
-                                .addComponent(LabelDelete)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(35, 35, 35))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BtnConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addComponent(jLabel17)
+                        .addGap(18, 18, 18)
+                        .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(29, 29, 29)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(LabelAdd)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BtnAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))))))
+                            .addComponent(panelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(BtnConfirmer, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LabelAdd)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(BtnAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(LabelDelete)
+                                            .addGap(2, 2, 2)
+                                            .addComponent(btnTrash))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,54 +496,78 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(LabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LabelDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LabelAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnTrash))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
+                        .addGap(6, 6, 6)
+                        .addComponent(LabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(12, 12, 12)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnConfirmer)
                     .addComponent(BtnAnnuler))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void LabelAddMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelAddMousePressed
-        int row = TableCommande.getSelectedRow();
-        int id_article = (int)TableCommande.getValueAt(row, 1);
-        //C.AjouterArticle(int id_Article);
-        
+        // Ajout de l'article dans detail_commande 
+        int row = Menu.getSelectedRow();
+        if (row != -1) {
+            int id_article = Integer.parseInt(Menu.getValueAt(row, 0).toString());
+            // found this (below) for spinners ( compteur dial quantité) 
+            try {
+                Compteur.commitEdit();
+            } catch (java.text.ParseException e) {
+                System.err.println("Prob de compteur " + e.getMessage());
+            }
+            int qu = (Integer) Compteur.getValue();
+            if (C.CheckArticle(id_article, idCommande) == 1) {
+                C.UpdateDetailCommande(id_article, idCommande, qu);
+            } else {
+                C.InsererDetailCommande(id_article, idCommande, qu);
+            }
+            // Affichage depuis la base de données dans la table TableCommande
+            RefreshCommande();
+        }
     }//GEN-LAST:event_LabelAddMousePressed
 
-    public void Refresh_Menu(String cat) {
-        ResultSet articles = C.MenuCategorie(cat);
-        Menu.setModel(new TableModel(articles));
-    }
 
     private void LabelDeleteMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelDeleteMousePressed
-       int row = TableCommande.getSelectedRow();
-        int id_article = (int)TableCommande.getValueAt(row, 1);
-        C.SupprimerArticleCommande(idCommande, id_article);
+        int row = TableCommande.getSelectedRow();
+        if (row != -1) {
+            int qu = Integer.parseInt(TableCommande.getValueAt(row, 2).toString());
+            int id_article = Integer.parseInt(TableCommande.getValueAt(row, 0).toString());
+            if(qu==1){
+                C.SupprimerArticleCommande(idCommande, id_article);
+            }
+            else
+                C.UpdateDetailCommande(id_article, idCommande, -1);
+            RefreshCommande();
+            if(qu>1)
+                TableCommande.setRowSelectionInterval(row, row);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_LabelDeleteMousePressed
 
@@ -653,14 +702,33 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelDessertMouseExited
 
     private void BtnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnnulerActionPerformed
-        
+        this.dispose();
+        C.AnnulerCommande(idCommande);
     }//GEN-LAST:event_BtnAnnulerActionPerformed
 
     private void BtnAnnulerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnnulerMouseClicked
-        this.dispose();
-        C.AnnulerCommande(idCommande);
-// TODO add your handling code here:
+
     }//GEN-LAST:event_BtnAnnulerMouseClicked
+
+    private void BtnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmerActionPerformed
+        this.dispose();
+        if (C.CheckCreation(idCommande) == 0) 
+        {
+            C.AnnulerCommande(idCommande);
+        }
+        
+
+    }//GEN-LAST:event_BtnConfirmerActionPerformed
+
+    private void btnTrashMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrashMousePressed
+        int row = TableCommande.getSelectedRow();
+        if (row != -1) 
+        {
+            int id_article = Integer.parseInt(TableCommande.getValueAt(row, 0).toString());
+            C.SupprimerArticleCommande(idCommande, id_article);
+            RefreshCommande();
+        }
+    }//GEN-LAST:event_btnTrashMousePressed
 
     /**
      * @param args the command line arguments
@@ -724,6 +792,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     private javax.swing.JLabel TxtPlat;
     private javax.swing.JLabel TxtSandwich;
     private javax.swing.JLabel TxtShawarma;
+    private javax.swing.JLabel btnTrash;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;

@@ -47,22 +47,53 @@ public class Commande {
         System.out.println(dateFormat.format(date));
 
         try {
-            PreparedStatement Pst = Con.prepareStatement("insert into Commande(date,montant,paye) values (?,?,?)");
+            PreparedStatement Pst = Con.prepareStatement("insert into Commande(date,montant,paye) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             Pst.setString(1, dateFormat.format(date));
             Pst.setFloat(2, 0);
             Pst.setInt(3, 0);
             Pst.executeUpdate();
-            PreparedStatement Pst2 = Con.prepareStatement("select max(IDCOMMANDE) from Commande");
-            int id = Pst2.executeUpdate();
-            return id;
+            ResultSet Rs = Pst.getGeneratedKeys(); 
+            if(Rs.next()){
+            int id = Rs.getInt(1);
+            return id ;}
 
         } catch (SQLException ex) {
-            System.err.println("Erreur dans la requete CreerCommande" + ex.getMessage());
+            System.err.println("Erreur dans la requete CreerCommande " + ex.getMessage());
         }
         return -1;
     }
 
-    
+        public int CheckCreation(int Idcom)
+        {
+            try {
+            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande ="+Idcom);
+            ResultSet res = Pst.executeQuery();
+            if(res.next()){
+                int count= res.getInt(1);
+                return count;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete CheckCreation " + ex.getMessage());
+        }
+            return 0;
+        }
+        
+        public int CheckArticle(int IdArticle,int Idcom)
+        {
+            try {
+            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande ="+Idcom+" and idarticle="+IdArticle);
+            ResultSet res = Pst.executeQuery();
+            if(res.next()){
+                int count= res.getInt(1);
+                System.out.println("Count :"+count);
+                return count;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete CheckArticle " + ex.getMessage());
+        }
+            return 0;
+        }
+
     
     public void InsererDetailCommande(int ID_Article, int ID_commande, int Qu) {
 
@@ -74,19 +105,21 @@ public class Commande {
             Pst.setInt(3, Qu);
             Pst.executeUpdate();
         } catch (SQLException ex) {
-            System.err.println("Erreur dans la requete AnnulerCommande" + ex.getMessage());
+            System.err.println("Erreur dans la requete InsererDetailCommande " + ex.getMessage());
         }
     }
 
     public void UpdateDetailCommande(int ID_Article, int ID_commande, int Qu) {
         try {
 
-            PreparedStatement Pst = Con.prepareStatement("update detail_commande set QUANTITE=? where IDARTICLE=? and IDCOMMANDE=?");
+            PreparedStatement Pst = Con.prepareStatement("update detail_commande set QUANTITE=QUANTITE+? where IDARTICLE=? and IDCOMMANDE=?");
             Pst.setInt(1, Qu);
             Pst.setInt(2, ID_Article);
             Pst.setInt(3, ID_commande);
             Pst.executeUpdate();
-        } catch (SQLException ex) {
+            
+        } 
+        catch (SQLException ex) {
             System.err.println("Erreur dans la requete UpdateDetailCommande" + ex.getMessage());
         }
     }
@@ -97,12 +130,13 @@ public class Commande {
         try {
             PreparedStatement Pst = Con.prepareStatement("delete from commande where IDCOMMANDE="+Id_commande);
             Pst.executeUpdate();
+            System.out.println("Supprimée");
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
         }
     }
 
-    public void AfficherCommande(int numTable, int IDCOM) {
+  /*  public void AfficherCommande(int numTable, int IDCOM) {
         try {
             PreparedStatement Pst = Con.prepareStatement("select * from Commande where IDCOMMANDE=? AND NumTable=?");
             Pst.setInt(1, IDCOM);
@@ -112,16 +146,16 @@ public class Commande {
             System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
         }
 
-    }
+    } */
 
-    public ResultSet AfficherDetail(int numTable, int IDCOM) {
+    public ResultSet AfficherDetail(int IDCOM) {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
             Res = St.executeQuery("Select DC.IDARTICLE,Designation,Quantite,Prix as PU, Prix*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
 
         } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
+            System.out.println("Erreur dans la requete AfficherDetail  " + ex.getMessage());
         }
         return Res;
     }
