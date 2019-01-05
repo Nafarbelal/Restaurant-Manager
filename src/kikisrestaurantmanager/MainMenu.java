@@ -34,7 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void tableBtnIsClicked(int idTable) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
-        new accesCommandeFrame(this, 1).setVisible(true);
+        new accesCommandeFrame(this, idTable).setVisible(true);
 
          this.setEnabled(false);
     }
