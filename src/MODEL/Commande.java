@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package MODEL;
+
 /*
     Supprimer détail_commande (par code/trigger)
     Ajouter article ds table commande
 
-*/
+ */
 import DAO.DaoBD;
 import java.sql.Connection;
 import java.util.Date;
@@ -52,10 +53,11 @@ public class Commande {
             Pst.setFloat(2, 0);
             Pst.setInt(3, 0);
             Pst.executeUpdate();
-            ResultSet Rs = Pst.getGeneratedKeys(); 
-            if(Rs.next()){
-            int id = Rs.getInt(1);
-            return id ;}
+            ResultSet Rs = Pst.getGeneratedKeys();
+            if (Rs.next()) {
+                int id = Rs.getInt(1);
+                return id;
+            }
 
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete CreerCommande " + ex.getMessage());
@@ -63,46 +65,58 @@ public class Commande {
         return -1;
     }
 
-        public int CheckCreation(int Idcom)
-        {
-            try {
-            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande ="+Idcom);
+    public float getMontantTotalCommande(int Idcom) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select montant from commande where idcommande =" + Idcom);
             ResultSet res = Pst.executeQuery();
-            if(res.next()){
-                int count= res.getInt(1);
+            if (res.next()) {
+                float mnt = res.getFloat(1);
+                return mnt;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete getMontantTotalCommande " + ex.getMessage());
+        }
+        return 0;
+    }
+
+    public int CheckCreation(int Idcom) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande =" + Idcom);
+            ResultSet res = Pst.executeQuery();
+            if (res.next()) {
+                int count = res.getInt(1);
                 return count;
             }
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete CheckCreation " + ex.getMessage());
         }
-            return 0;
-        }
-        
-        public int CheckArticle(int IdArticle,int Idcom)
-        {
-            try {
-            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande ="+Idcom+" and idarticle="+IdArticle);
+        return 0;
+    }
+
+    public int CheckArticle(int IdArticle, int Idcom) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select count(*) from detail_commande where idcommande =" + Idcom + " and idarticle=" + IdArticle);
             ResultSet res = Pst.executeQuery();
-            if(res.next()){
-                int count= res.getInt(1);
-                System.out.println("Count :"+count);
+            if (res.next()) {
+                int count = res.getInt(1);
+                System.out.println("Count :" + count);
                 return count;
             }
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete CheckArticle " + ex.getMessage());
         }
-            return 0;
-        }
+        return 0;
+    }
 
-    
-    public void InsererDetailCommande(int ID_Article, int ID_commande, int Qu) {
+    public void InsererDetailCommande(int ID_Article, int ID_commande, int Qu, float prix) {
 
         try {
 
-            PreparedStatement Pst = Con.prepareStatement("insert into detail_commande(IDARTICLE,IDCOMMANDE,QUANTITE) values (?,?,?)");
+            PreparedStatement Pst = Con.prepareStatement("insert into detail_commande(IDARTICLE,IDCOMMANDE,QUANTITE,prixAchat) values (?,?,?,?)");
             Pst.setInt(1, ID_Article);
             Pst.setInt(2, ID_commande);
             Pst.setInt(3, Qu);
+            Pst.setFloat(4, prix);
             Pst.executeUpdate();
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete InsererDetailCommande " + ex.getMessage());
@@ -117,18 +131,15 @@ public class Commande {
             Pst.setInt(2, ID_Article);
             Pst.setInt(3, ID_commande);
             Pst.executeUpdate();
-            
-        } 
-        catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             System.err.println("Erreur dans la requete UpdateDetailCommande" + ex.getMessage());
         }
     }
 
-    
-    public void AnnulerCommande(int Id_commande) 
-    {
+    public void AnnulerCommande(int Id_commande) {
         try {
-            PreparedStatement Pst = Con.prepareStatement("delete from commande where IDCOMMANDE="+Id_commande);
+            PreparedStatement Pst = Con.prepareStatement("delete from commande where IDCOMMANDE=" + Id_commande);
             Pst.executeUpdate();
             System.out.println("Supprimée");
         } catch (SQLException ex) {
@@ -136,7 +147,7 @@ public class Commande {
         }
     }
 
-  /*  public void AfficherCommande(int numTable, int IDCOM) {
+    /*  public void AfficherCommande(int numTable, int IDCOM) {
         try {
             PreparedStatement Pst = Con.prepareStatement("select * from Commande where IDCOMMANDE=? AND NumTable=?");
             Pst.setInt(1, IDCOM);
@@ -147,12 +158,11 @@ public class Commande {
         }
 
     } */
-
     public ResultSet AfficherDetail(int IDCOM) {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select DC.IDARTICLE,Designation,Quantite,Prix as PU, Prix*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
+            Res = St.executeQuery("Select DC.IDARTICLE,Designation,Quantite,prixAchat as PU, prixAchat*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
 
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete AfficherDetail  " + ex.getMessage());
@@ -180,6 +190,24 @@ public class Commande {
             System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
         }
 
+    }
+
+    public void UpdateMontantTotal(int ID_commande) {
+        try {
+            int mnt = 0;
+            PreparedStatement Pst1 = Con.prepareStatement("select sum(quantite*prixAchat) from detail_commande where idcommande=" + ID_commande);
+            ResultSet res = Pst1.executeQuery();
+            if (res.next()) {
+                mnt = res.getInt(1);
+            }
+            PreparedStatement Pst2 = Con.prepareStatement("update commande set MONTANT=? where IDCOMMANDE=?");
+            Pst2.setInt(1, mnt);
+            Pst2.setInt(2, ID_commande);
+            Pst2.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete UpdateMontantTotal" + ex.getMessage());
+        }
     }
 
     public ResultSet MenuCategorie(String cat) {
