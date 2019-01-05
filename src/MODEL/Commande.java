@@ -31,7 +31,7 @@ public class Commande {
     {
         dao = new DaoBD();
         dao.setPilote("com.mysql.jdbc.Driver");
-        dao.setUrl("jdbc:mysql://localhost:3306/projetjava");
+        dao.setUrl("jdbc:mysql://localhost:3306/KikisBD");
         dao.setLogin("root");
         dao.setPassword("");
         dao.SeConnecter();

@@ -72,6 +72,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TableCommande = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -107,6 +108,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         jLabel17 = new javax.swing.JLabel();
         LabelAdd = new javax.swing.JLabel();
         LabelDelete = new javax.swing.JLabel();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 0));
@@ -707,6 +710,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     private javax.swing.JLabel TxtSandwich;
     private javax.swing.JLabel TxtShawarma;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
