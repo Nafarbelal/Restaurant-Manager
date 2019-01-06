@@ -19,6 +19,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -42,16 +43,25 @@ public class Commande {
         Con = dao.getConnexion();
     }
 
-    public int CreerCommande() {
+    public int CreerCommande(int idTable) {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
 
         try {
-            PreparedStatement Pst = Con.prepareStatement("insert into Commande(date,montant,paye) values (?,?,?)", Statement.RETURN_GENERATED_KEYS);
-            Pst.setString(1, dateFormat.format(date));
-            Pst.setFloat(2, 0);
-            Pst.setInt(3, 0);
+            int maxIdCom = 1;
+            PreparedStatement Pst2 = Con.prepareStatement("select max(idCommande) from commande");
+            ResultSet res = Pst2.executeQuery();
+            if (res.next()) {
+                maxIdCom = res.getInt(1) + 1;
+            }
+            PreparedStatement Pst = Con.prepareStatement("insert into Commande(IDcommande,date,montant,paye,numTable) values (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            Pst.setInt(1, maxIdCom);
+            Pst.setString(2, dateFormat.format(date));
+            Pst.setFloat(3, 0);
+            Pst.setInt(4, 0);
+            Pst.setInt(5, idTable);
+
             Pst.executeUpdate();
             ResultSet Rs = Pst.getGeneratedKeys();
             if (Rs.next()) {
@@ -77,6 +87,49 @@ public class Commande {
             System.err.println("Erreur dans la requete getMontantTotalCommande " + ex.getMessage());
         }
         return 0;
+    }
+
+    public int getNumTableduneCommande(int Idcom) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select numTable from commande where idcommande =" + Idcom);
+            ResultSet res = Pst.executeQuery();
+            if (res.next()) {
+                int numTable = res.getInt(1);
+                return numTable;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete getMontantTotalCommande " + ex.getMessage());
+        }
+        return 0;
+    }
+    
+        public int getIdCommandeFromNumTable(int idTable) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("select idCommande from commande where Paye=0 and numtable=" + idTable);
+            ResultSet res = Pst.executeQuery();
+            if (res.next()) {
+                int idCom = res.getInt(1);
+                return idCom;
+            }
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete getMontantTotalCommande " + ex.getMessage());
+        }
+        return 0;
+    }
+
+    public ArrayList<Integer> getNumTablesOccupé() {
+        try {
+            ArrayList<Integer> TablesOccupied = new ArrayList<Integer>();
+            PreparedStatement Pst = Con.prepareStatement("select distinct numTable from commande where Paye =0");
+            ResultSet res = Pst.executeQuery();
+            while (res.next()) {
+                TablesOccupied.add(res.getInt(1));
+            }
+            return TablesOccupied;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete getMontantTotalCommande " + ex.getMessage());
+        }
+        return null;
     }
 
     public int CheckCreation(int Idcom) {

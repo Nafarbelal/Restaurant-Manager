@@ -18,19 +18,22 @@ import javax.swing.table.TableCellRenderer;
  */
 public class HeaderRenderer implements TableCellRenderer {
 
-    DefaultTableCellRenderer renderer;
+    TableCellRenderer renderer;
+    DefaultTableCellRenderer defaultRenderer;
+
 
     public HeaderRenderer(JTable table) {
-        renderer = (DefaultTableCellRenderer)
-            table.getTableHeader().getDefaultRenderer();
-        renderer.setHorizontalAlignment(JLabel.CENTER);
+        renderer = (TableCellRenderer) table.getTableHeader().getDefaultRenderer();
+        defaultRenderer = (DefaultTableCellRenderer) renderer;
+        defaultRenderer.setHorizontalAlignment(JLabel.CENTER);
     }
 
     @Override
     public Component getTableCellRendererComponent(
-        JTable table, Object value, boolean isSelected,
-        boolean hasFocus, int row, int col) {
-        return renderer.getTableCellRendererComponent(
-            table, value, isSelected, hasFocus, row, col);
+            JTable table, Object value, boolean isSelected,
+            boolean hasFocus, int row, int col) {
+        return defaultRenderer.getTableCellRendererComponent(
+                table, value, isSelected, hasFocus, row, col);
     }
 }
+
