@@ -11,6 +11,7 @@ import MODEL.MonModele;
 import addons.CustomColors;
 import addons.HeaderRenderer;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
@@ -24,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import kikisrestaurantmanager.ConfirmationFrame;
 import kikisrestaurantmanager.MainMenu;
 import kikisrestaurantmanager.accesCommandeFrame;
 
@@ -722,8 +724,17 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         int row = tableCommandeEnCours.getSelectedRow();
         if (row != -1) {
             int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
-            C.AnnulerCommande(idCom);
-            RefreshTableCommandes();
+            int answer = 0;
+            ConfirmationFrame confirmDialog = new ConfirmationFrame();
+            confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            confirmDialog.setLocationRelativeTo(this);
+
+            answer = confirmDialog.getAnswer();
+            if (answer == 1) {
+                C.AnnulerCommande(idCom);
+                RefreshTableCommandes();
+
+            }
         }
     }//GEN-LAST:event_btnTrashCommandeMousePressed
 
