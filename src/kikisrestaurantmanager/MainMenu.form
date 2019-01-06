@@ -408,7 +408,7 @@
             <Component class="kikisrestaurantmanager.ContentPanels.InfosPanel" name="infosPanel1">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="0" y="0" width="1330" height="780"/>
+                  <AbsoluteConstraints x="0" y="0" width="1290" height="780"/>
                 </Constraint>
               </Constraints>
             </Component>

@@ -256,7 +256,7 @@ public class MainMenu extends javax.swing.JFrame {
         ContentPanel.setMaximumSize(new java.awt.Dimension(1000, 1000));
         ContentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         ContentPanel.add(homePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
-        ContentPanel.add(infosPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1330, 780));
+        ContentPanel.add(infosPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
         ContentPanel.add(managerPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 780));
         ContentPanel.add(ordersPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
         ContentPanel.add(statsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
