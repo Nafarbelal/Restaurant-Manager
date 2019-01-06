@@ -5,18 +5,54 @@
  */
 package kikisrestaurantmanager.ContentPanels;
 
+import MODEL.Commande;
+import MODEL.GestionRestau;
+import MODEL.MonModele;
+import addons.HeaderRenderer;
+import java.awt.Color;
+import java.awt.Font;
+import java.sql.ResultSet;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
+import kikisrestaurantmanager.MainMenu;
+
 /**
  *
  * @author Ilyas El Bani
  */
 public class OrdersPanel extends javax.swing.JPanel {
 
+    GestionRestau Gr = new GestionRestau();
+    Commande C = new Commande();
+    MainMenu mainMenu;
     /**
      * Creates new form OrdersPanel
      */
     public OrdersPanel() {
         initComponents();
+        /*
+        OrdersTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(OrdersTable));
+        OrdersTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        OrdersTable.getTableHeader().setOpaque(false);
+        OrdersTable.getTableHeader().setBackground(Color.WHITE);
+        refreshOrdersTable(); */
     }
+    
+    
+    
+    public void refreshOrdersTable() {
+        ResultSet arts = Gr.commandesParDate("1","January","2019");
+        OrdersTable.setModel(new MonModele(arts));
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
+        OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
+
+        for (int i = 0; i < 4; ++i) {
+            OrdersTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        };
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,6 +79,7 @@ public class OrdersPanel extends javax.swing.JPanel {
                 {},
                 {},
                 {},
+                {}
             },
             new String [] {
 
@@ -58,6 +95,7 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jLabel1.setText("Jour");
 
+        jLabel2.setText("Mois");
 
         jLabel3.setText("Année");
 

@@ -179,4 +179,21 @@ public class GestionRestau {
         }
         return "";
     }
+    
+    public ResultSet commandesParDate(String Jour, String Mois, String Annee)
+    {
+        try
+        {
+            PreparedStatement Pst=Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as Table FROM Commande WHERE date>=SELECT STR_TO_DATE(\"? ? ? 00 00 00\", \"%d %M %Y %H %i %S\") AND date<=SELECT STR_TO_DATE(\"? ? ? 23 59 59\", \"%d %M %Y %H %i %S\");");
+            Pst.setString(1, Annee);
+            Pst.setString(2, Mois);
+            Pst.setString(3,Jour);
+            Pst.executeUpdate();
+        }
+        catch(SQLException ex)
+        {
+            System.err.println("Erreur dans la requête SELECT "+ex.getMessage());
+        }
+    }
+    
 }
