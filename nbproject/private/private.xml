@@ -14,10 +14,16 @@
         </group>
         <group>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/Commande.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/MainMenu.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/loginFrame.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/MonModele.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/GestionRestau.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
         </group>
     </open-files>
 </project-private>

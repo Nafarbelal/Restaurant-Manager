@@ -179,21 +179,23 @@ public class GestionRestau {
         }
         return "";
     }
-    
-    public ResultSet commandesParDate(String Jour, String Mois, String Annee)
-    {
-        try
-        {
-            PreparedStatement Pst=Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as Table FROM Commande WHERE date>=SELECT STR_TO_DATE(\"? ? ? 00 00 00\", \"%d %M %Y %H %i %S\") AND date<=SELECT STR_TO_DATE(\"? ? ? 23 59 59\", \"%d %M %Y %H %i %S\");");
-            Pst.setString(1, Annee);
-            Pst.setString(2, Mois);
-            Pst.setString(3,Jour);
-            Pst.executeUpdate();
+
+    public ResultSet commandesParDate(String jourDeb, String moisDeb, String anneeDeb,String jourFin, String moisFin, String anneeFin) {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where Date>='" +anneeDeb +"-"+moisDeb+"-"+jourDeb+"' and date < '"+anneeFin +"-"+moisFin+"-"+jourFin+"'" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing ComamndesParDate");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesParDate " + ex.getMessage());
         }
-        catch(SQLException ex)
-        {
-            System.err.println("Erreur dans la requête SELECT "+ex.getMessage());
-        }
+        return null;
     }
-    
+
 }

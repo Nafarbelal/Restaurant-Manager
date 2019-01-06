@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import kikisrestaurantmanager.MainMenu;
-
+import addons.CustomColors;
 /**
  *
  * @author Ilyas El Bani
@@ -23,8 +23,7 @@ import kikisrestaurantmanager.MainMenu;
 public class OrdersPanel extends javax.swing.JPanel {
 
     GestionRestau Gr = new GestionRestau();
-    Commande C = new Commande();
-    MainMenu mainMenu;
+
     /**
      * Creates new form OrdersPanel
      */
@@ -34,15 +33,15 @@ public class OrdersPanel extends javax.swing.JPanel {
         OrdersTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(OrdersTable));
         OrdersTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         OrdersTable.getTableHeader().setOpaque(false);
-        OrdersTable.getTableHeader().setBackground(Color.WHITE);
-        refreshOrdersTable(); */
+        OrdersTable.getTableHeader().setBackground(Color.WHITE); */
+        refreshOrdersTable();
     }
-    
-    
-    
+
     public void refreshOrdersTable() {
-        ResultSet arts = Gr.commandesParDate("1","January","2019");
+
+        ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
         OrdersTable.setModel(new MonModele(arts));
+        /*
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -51,8 +50,8 @@ public class OrdersPanel extends javax.swing.JPanel {
         for (int i = 0; i < 4; ++i) {
             OrdersTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         };
+         */
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,7 +71,7 @@ public class OrdersPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(CustomColors.tomato);
 
         OrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
