@@ -58,12 +58,26 @@ public class Manager {
         catch( SQLException ex)
         {
          JOptionPane.showMessageDialog(null, " Pb ds la requete d'ajout");
-        }  
+        }
    }
-    public void UPDATEArticle(int ID1, int ID2, String Des , float Price , String Type) throws SQLException
+    public void DeleteArticle(int Id) 
+   {   
+        String Req = "delete from  article where IDARTICLE'"+Id+"'";
+        try 
+        {
+             St = Con.createStatement();
+             St.executeUpdate(Req);
+         JOptionPane.showMessageDialog(null, "Suppression EFFECTUEE " , "SUPPRESSION ",JOptionPane.OK_OPTION);
+        } 
+        catch (SQLException ex) 
+        {
+             JOptionPane.showMessageDialog(null, " Pb ds la requete de Suppression");      
+        }
+   }
+    public void UPDATEArticle(int ID, String Des , float Price , String Type) throws SQLException
     {
      String Req ; 
-     Req = "Update Article set IDARTICLE ='"+ID2+"' DESIGNATION ='"+Des+"' PRIX ='"+Price+"' CATEGORIE ='"+Type+"' Wehre  IDARTICLE ='"+ID1+"'" ;
+     Req = "Update Article set IDARTICLE ='"+ID+"' DESIGNATION ='"+Des+"' PRIX ='"+Price+"' CATEGORIE ='"+Type+"' Wehre  IDARTICLE ='"+ID+"'" ;
      int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du changement", "Mise à jour", JOptionPane.OK_CANCEL_OPTION);
      if(reponse==JOptionPane.YES_OPTION)
         try

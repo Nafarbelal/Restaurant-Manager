@@ -1,5 +1,15 @@
 package kikisrestaurantmanager.ContentPanels;
 
+import MODEL.Manager;
+import MODEL.MonModele;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +21,24 @@ package kikisrestaurantmanager.ContentPanels;
  * @author Ilyas El Bani
  */
 public class ManagerPanel extends javax.swing.JPanel {
-
+    
+      Manager M = new Manager();
     /**
      * Creates new form StatsPanel
      */
     public ManagerPanel() {
         initComponents();
+        Remplir();
+        charger();
+    }
+    
+     private void Remplir()
+    {
+        Vector<String> codes = M.Types();
+//        for(String code : codes)
+//            cmbniveaux.addItem(code);
+        DefaultComboBoxModel df  = new DefaultComboBoxModel(codes);
+        CBXcategorier.setModel(df);
     }
 
     /**
@@ -93,6 +115,11 @@ public class ManagerPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
         MenuC.setViewportView(Menu);
 
         btnAdd.setIcon(new javax.swing.ImageIcon("C:\\Users\\Pc\\Desktop\\ENSA GINF34\\S1.2\\JAVA 2\\Project\\icons8_Add_50px.png")); // NOI18N
@@ -140,6 +167,11 @@ public class ManagerPanel extends javax.swing.JPanel {
         jLabel5.setIconTextGap(20);
 
         CBXcategorier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CBXcategorier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBXcategorierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -225,23 +257,65 @@ public class ManagerPanel extends javax.swing.JPanel {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+       int id = Integer.parseInt(txtID.getText());
+       String type = CBXcategorier.getSelectedItem().toString();
+       String des = txtDesignation.getText();
+       float prix = Float.parseFloat(txtPrice.getText());
+       M.AddArticle(id, des, prix, type);
+        charger();
+        JOptionPane.showMessageDialog(null, "l'Article "+des+" a bien été ajouté");
+    }     
 
+   public void charger()
+    {
+        String Type = CBXcategorier.getSelectedItem().toString();
+        Menu.setModel(new MonModele(M.AllArticles()));
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+       M.DeleteArticle(Integer.parseInt(txtID.getText()));
+        charger();
+        Vider();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
+         int id = Integer.parseInt(txtID.getText());
+       String type = CBXcategorier.getSelectedItem().toString();
+       String des = txtDesignation.getText();
+       float prix = Float.parseFloat(txtPrice.getText());
+          try 
+          {
+              M.UPDATEArticle(id, des, prix, type);
+          } catch (SQLException ex) 
+          {
+              Logger.getLogger(ManagerPanel.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        charger();
+        JOptionPane.showMessageDialog(null, "l'Article "+des+" a bien été Modefier");
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-        txtID.setText(null);
-        txtDesignation.setText(null);
-        txtPrice.setText(null);
+         Vider();
+         charger();
+       
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        // TODO add your handling code here:
+        int lig = Menu.getSelectedRow();
+      txtID.setText(Menu.getValueAt(lig, 0).toString());
+      CBXcategorier.setSelectedItem(Menu.getValueAt(lig, 1).toString());
+      txtDesignation.setText(Menu.getValueAt(lig, 2).toString());
+      txtPrice.setText(Menu.getValueAt(lig, 3).toString());
+    }//GEN-LAST:event_MenuMouseClicked
+
+    private void CBXcategorierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBXcategorierActionPerformed
+        // TODO add your handling code here:
+         charger();
+    }//GEN-LAST:event_CBXcategorierActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -261,4 +335,11 @@ public class ManagerPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
+
+    private void Vider() {
+         txtID.setText("");
+        txtDesignation.setText("");
+        txtPrice.setText("");
+    }
+
 }
