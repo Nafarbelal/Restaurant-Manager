@@ -16,6 +16,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import MODEL.Commande;
 import MODEL.TableModel;
+import java.awt.Dialog;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -49,6 +51,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         }
         this.idCommande = idCommande;
         RefreshCommande();
+        Refresh_Menu();
         setLocationRelativeTo(mainMenu);
     }
 
@@ -65,6 +68,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             TxtCurrentTable.setText("Table " + idTable);
         }
         RefreshCommande();
+        Refresh_Menu();
         setLocationRelativeTo(mainMenu);
 
     }
@@ -99,6 +103,11 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
     public void Refresh_Menu(String cat) {
         ResultSet articles = C.MenuCategorie(cat);
+        Menu.setModel(new TableModel(articles));
+    }
+
+    public void Refresh_Menu() {
+        ResultSet articles = C.MenuCategorieAll();
         Menu.setModel(new TableModel(articles));
     }
 
@@ -739,14 +748,19 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelDessertMouseExited
 
     private void BtnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnnulerActionPerformed
-        int reponse = JOptionPane.showConfirmDialog(null, "Etes vous sur de vouloir supprimer la commande actuelle?", "Attention!", JOptionPane.OK_CANCEL_OPTION);
-        new ConfirmationFrame().setVisible(true);
-
-        if (reponse == JOptionPane.YES_OPTION) {
-            System.out.println("Yes");
+        int answer = 0;
+        ConfirmationFrame confirmDialog = new ConfirmationFrame();
+        confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        confirmDialog.setLocationRelativeTo(this);
+        if (C.CheckCreation(this.idCommande) == 0) {
+            this.disposeNormal();
+        } else {
+            answer = confirmDialog.getAnswer();
         }
-        C.AnnulerCommande(idCommande);
-        this.disposeNormal();
+        if (answer == 1) {
+            C.AnnulerCommande(idCommande);
+            this.disposeNormal();
+        }
     }//GEN-LAST:event_BtnAnnulerActionPerformed
 
     private void BtnAnnulerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnnulerMouseClicked

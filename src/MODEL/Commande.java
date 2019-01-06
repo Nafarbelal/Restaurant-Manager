@@ -194,7 +194,6 @@ public class Commande {
         try {
             PreparedStatement Pst = Con.prepareStatement("delete from commande where IDCOMMANDE=" + Id_commande);
             Pst.executeUpdate();
-            System.out.println("Supprimée");
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requete Supprimer" + ex.getMessage());
         }
@@ -268,6 +267,17 @@ public class Commande {
         try {
             St = Con.createStatement();
             Res = St.executeQuery("Select IDARTICLE,Designation,Prix from article where categorie='" + cat + "'");
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
+        }
+        return Res;
+    }
+    
+        public ResultSet MenuCategorieAll() {
+        ResultSet Res = null;
+        try {
+            St = Con.createStatement();
+            Res = St.executeQuery("Select IDARTICLE,Designation,Prix from article");
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
         }
