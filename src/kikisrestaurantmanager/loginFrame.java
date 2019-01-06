@@ -129,8 +129,8 @@ public class loginFrame extends javax.swing.JDialog {
         jLabel2.setText("Password :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 325, 130, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nihaaw\\Desktop\\Untitled-1.png")); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/loginFixed.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 530));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 399, 530));
 
