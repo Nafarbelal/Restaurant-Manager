@@ -37,8 +37,9 @@ public class loginFrame extends javax.swing.JDialog {
     @Override
     public void dispose() {
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
-        mainMenu.setEnabled(true);
-        mainMenu.setVisible(true);
+        //mainMenu.setEnabled(true);
+        //mainMenu.toFront();
+        
     }
 
     /**

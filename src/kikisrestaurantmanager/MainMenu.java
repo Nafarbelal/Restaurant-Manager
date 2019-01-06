@@ -7,6 +7,7 @@ package kikisrestaurantmanager;
 
 import MODEL.Commande;
 import MODEL.GestionRestau;
+import java.awt.Dialog;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -310,9 +311,8 @@ public class MainMenu extends javax.swing.JFrame {
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
         //       ClickedMenu(source, managerPanel1);
         JDialog loginDialog = new loginFrame(this);
+        loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         loginDialog.setVisible(true);
-        loginDialog.setModal(true);
-        this.setEnabled(false);
     }//GEN-LAST:event_btnManagerMousePressed
 
     private void CloseButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseButtonMousePressed
