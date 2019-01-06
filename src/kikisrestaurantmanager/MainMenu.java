@@ -68,12 +68,11 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ContentPanel = new javax.swing.JPanel();
         homePanel1 = new kikisrestaurantmanager.ContentPanels.HomePanel(this);
-        managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel();
         statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel();
         ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
+        managerPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
 
         BackgroundPane.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -171,7 +170,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(btnStats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnManager, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         TitlePanel.setBackground(new java.awt.Color(122, 72, 221));
@@ -199,9 +198,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(CloseButton)
-                .addGap(88, 88, 88))
+                .addGap(166, 166, 166))
         );
         TitlePanelLayout.setVerticalGroup(
             TitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,10 +219,37 @@ public class MainMenu extends javax.swing.JFrame {
         ContentPanel.setBackground(new java.awt.Color(255, 255, 255));
         ContentPanel.setMaximumSize(new java.awt.Dimension(1000, 1000));
         ContentPanel.setLayout(new java.awt.BorderLayout());
+
+        homePanel1.setMaximumSize(new java.awt.Dimension(200, 200));
+        homePanel1.setMinimumSize(new java.awt.Dimension(200, 200));
+        homePanel1.setPreferredSize(new java.awt.Dimension(200, 200));
         ContentPanel.add(homePanel1, java.awt.BorderLayout.CENTER);
-        ContentPanel.add(managerPanel1, java.awt.BorderLayout.PAGE_START);
+
+        statsPanel1.setMaximumSize(new java.awt.Dimension(200, 200));
+        statsPanel1.setMinimumSize(new java.awt.Dimension(200, 200));
+        statsPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
         ContentPanel.add(statsPanel1, java.awt.BorderLayout.PAGE_END);
+
+        ordersPanel1.setMaximumSize(new java.awt.Dimension(200, 200));
+        ordersPanel1.setMinimumSize(new java.awt.Dimension(200, 200));
+        ordersPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
         ContentPanel.add(ordersPanel1, java.awt.BorderLayout.LINE_START);
+
+        managerPanel1.setMaximumSize(new java.awt.Dimension(200, 200));
+        managerPanel1.setPreferredSize(new java.awt.Dimension(200, 200));
+
+        javax.swing.GroupLayout managerPanel1Layout = new javax.swing.GroupLayout(managerPanel1);
+        managerPanel1.setLayout(managerPanel1Layout);
+        managerPanel1Layout.setHorizontalGroup(
+            managerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1041, Short.MAX_VALUE)
+        );
+        managerPanel1Layout.setVerticalGroup(
+            managerPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        ContentPanel.add(managerPanel1, java.awt.BorderLayout.PAGE_START);
 
         javax.swing.GroupLayout BackgroundPaneLayout = new javax.swing.GroupLayout(BackgroundPane);
         BackgroundPane.setLayout(BackgroundPaneLayout);
@@ -231,28 +257,36 @@ public class MainMenu extends javax.swing.JFrame {
             BackgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundPaneLayout.createSequentialGroup()
                 .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(ContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
             .addComponent(TitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         BackgroundPaneLayout.setVerticalGroup(
             BackgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundPaneLayout.createSequentialGroup()
                 .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(BackgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addComponent(ContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(BackgroundPaneLayout.createSequentialGroup()
+                        .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackgroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BackgroundPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(BackgroundPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -358,13 +392,13 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel labelOrders;
     private javax.swing.JLabel labelOrders1;
     private javax.swing.JLabel labelOrders3;
-    private kikisrestaurantmanager.ContentPanels.ManagerPanel managerPanel1;
+    private javax.swing.JPanel managerPanel1;
     private kikisrestaurantmanager.ContentPanels.OrdersPanel ordersPanel1;
     private kikisrestaurantmanager.ContentPanels.StatsPanel statsPanel1;
     // End of variables declaration//GEN-END:variables
 
-    public ManagerPanel getManagerPanel1() {
-        return managerPanel1;
+    public JPanel getManagerPanel1() {
+        return  managerPanel1;
     }
 
     public JPanel getBtnManager() {

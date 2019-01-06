@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import kikisrestaurantmanager.MainMenu;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -23,13 +24,19 @@ import javax.swing.JOptionPane;
 public class ManagerPanel extends javax.swing.JPanel {
     
       Manager M = new Manager();
+      MainMenu mainMenu;
     /**
      * Creates new form StatsPanel
      */
-    public ManagerPanel() {
+    public ManagerPanel(MainMenu mn) {
         initComponents();
         Remplir();
         charger();
+        mainMenu=  mn ;
+    }
+
+    public ManagerPanel() {
+        initComponents();
     }
     
      private void Remplir()

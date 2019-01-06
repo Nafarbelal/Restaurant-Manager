@@ -121,15 +121,13 @@ public class loginFrame extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(54, 33, 89));
-        jLabel1.setText("Login :");
+        jLabel1.setText("USERNAME :");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(54, 33, 89));
         jLabel2.setText("Password :");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 325, 130, 30));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Nihaaw\\Desktop\\Untitled-1.png")); // NOI18N
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 399, 530));
@@ -144,12 +142,16 @@ public class loginFrame extends javax.swing.JDialog {
         Employee emp = Gr.getLoginInfos(username);
         if (emp == null) {
             labelWrongPassword.setVisible(true);
-        } else {
-            if ( username.equals(emp.getLogin()) && password.equals(emp.getPassword()) ) {
+        } else 
+        {
+            if 
+             ( username.equals(emp.getLogin()) && password.equals(emp.getPassword()) )
+            {
                 System.out.println("Connexion Reussie");
                 mainMenu.ClickedMenu(mainMenu.getBtnManager(), mainMenu.getManagerPanel1());
                 dispose();
-            } else {
+            } else 
+            {
                 labelWrongPassword.setVisible(true);
 
             }
