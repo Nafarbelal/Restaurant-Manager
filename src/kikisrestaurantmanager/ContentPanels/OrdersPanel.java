@@ -29,7 +29,7 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(102, 204, 0));
 
         jLabel1.setText("Temporary order panel");
 
