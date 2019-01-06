@@ -7,12 +7,12 @@
             <file>file:/D:/Java/Restaurant-Manager/src/MODEL/Commande.java</file>
         </group>
         <group name="S2">
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/confirmationPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/accesCommandePanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/GestionRestau.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/loginFrame.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MainMenu.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/Commande.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/HeaderRenderer.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
         </group>
