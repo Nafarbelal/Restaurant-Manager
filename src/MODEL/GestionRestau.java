@@ -34,19 +34,19 @@ public class GestionRestau {
     public Employee getLoginInfos(String login) {
         ResultSet Res;
         //System.out.println("No Errors");
-    
+
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("select * from employees where login = '" + login+"'");
+            Res = St.executeQuery("select * from employees where login = '" + login + "'");
             if (Res.next()) {
                 int id = Res.getInt("IDEMPLOYEE");
                 String lg = Res.getString("LOGIN");
                 String pw = Res.getString("MOTDEPASSE");
-                String nom = Res.getString("NOM");                
+                String nom = Res.getString("NOM");
                 System.out.println(nom);
                 String prenom = Res.getString("PRENOM");
-                
-                Employee emp = new Employee(id, lg , pw , nom , prenom);
+
+                Employee emp = new Employee(id, lg, pw, nom, prenom);
                 return emp;
             }
             return null;
@@ -54,6 +54,17 @@ public class GestionRestau {
             System.out.println("Erreur dans la requete Select: ou ST :;; " + ex.getMessage());
         }
         return null;
+    }
+
+    public ResultSet TousLesCommandesNonPayées() {
+        ResultSet Res = null;
+        try {
+            St = Con.createStatement();
+            Res = St.executeQuery("Select idcommande as Id,date as Date,montant as MontantTotal,numTable as 'Table' from commande ");
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete Select: ou ST : " + ex.getMessage());
+        }
+        return Res;
     }
 
     public void Create(int apogee, int cne, String Nom, String Prenom,
@@ -115,17 +126,6 @@ public class GestionRestau {
         }
     }
 
-    public ResultSet TousLesCommandesNonPayées() {
-        ResultSet Res = null;
-        try {
-            St = Con.createStatement();
-            Res = St.executeQuery("Select idcommande,date,montant from commande ");
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete Select: ou ST : " + ex.getMessage());
-        }
-        return Res;
-    }
-
     public ResultSet EleveFiliere(int idFiliere) {
         ResultSet Res = null;
         try {
@@ -179,4 +179,125 @@ public class GestionRestau {
         }
         return "";
     }
+
+    public ResultSet commandesParDate(String jourDeb, String moisDeb, String anneeDeb,String jourFin, String moisFin, String anneeFin) {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where Date>='" +anneeDeb +"-"+moisDeb+"-"+jourDeb+"' and date < '"+anneeFin +"-"+moisFin+"-"+jourFin+"'" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing ComamndesParDate");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesParDate " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesToday() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M %d\")=DATE_FORMAT(CURDATE(),\"%Y %M %d\")" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesToday");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesToday " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesYesterday() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M %d\")=DATE_FORMAT(DATE_SUB(CURDATE(),INTERVAL 1 DAY),\"%Y %M %d\")" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesToday");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesToday " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    
+    public ResultSet commandesThisWeek() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where YEARWEEK(Date,1)=YEARWEEK(CURDATE(),1)" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisWeek");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisWeek " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesThisMonth() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M\")=DATE_FORMAT(CURDATE(),\"%Y %M\")" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisMonth");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisMonth " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesThisYear() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y\")=DATE_FORMAT(CURDATE(),\"%Y\")" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisYear");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisYear " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesShowAll() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandes ShowAll");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
+        }
+        return null;
+    }
+
+       
+
 }

@@ -5,15 +5,27 @@
  */
 package kikisrestaurantmanager.ContentPanels;
 
+import MODEL.Commande;
 import MODEL.GestionRestau;
 import MODEL.MonModele;
+import addons.CustomColors;
+import addons.HeaderRenderer;
 import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import kikisrestaurantmanager.ConfirmationFrame;
 import kikisrestaurantmanager.MainMenu;
 import kikisrestaurantmanager.accesCommandeFrame;
 
@@ -21,12 +33,13 @@ import kikisrestaurantmanager.accesCommandeFrame;
  *
  * @author Ilyas El Bani
  */
-public class HomePanel extends javax.swing.JPanel {
+public class HomePanel extends javax.swing.JPanel implements ListSelectionListener {
 
     /**
      * Creates new form HomePanel
      */
     GestionRestau Gr = new GestionRestau();
+    Commande C = new Commande();
     MainMenu mainMenu;
 
     public HomePanel() {
@@ -35,14 +48,105 @@ public class HomePanel extends javax.swing.JPanel {
 
     public HomePanel(MainMenu mn) {
         initComponents();
-        Refresh();
+        tableCommandeEnCours.getTableHeader().setDefaultRenderer(new HeaderRenderer(tableCommandeEnCours));
+        tableCommandeEnCours.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        tableCommandeEnCours.getTableHeader().setOpaque(false);
+        tableCommandeEnCours.getTableHeader().setBackground(Color.WHITE);
+        RefreshTableCommandes();
         mainMenu = mn;
 
     }
 
-    public void Refresh() {
+    public void RefreshTables() {
+        btnT1.setBackground(CustomColors.tableNotOccupied);
+        btnT2.setBackground(CustomColors.tableNotOccupied);
+        btnT3.setBackground(CustomColors.tableNotOccupied);
+        btnT4.setBackground(CustomColors.tableNotOccupied);
+        btnT5.setBackground(CustomColors.tableNotOccupied);
+        btnT6.setBackground(CustomColors.tableNotOccupied);
+        btnT7.setBackground(CustomColors.tableNotOccupied);
+        btnT8.setBackground(CustomColors.tableNotOccupied);
+        btnT9.setBackground(CustomColors.tableNotOccupied);
+        btnT10.setBackground(CustomColors.tableNotOccupied);
+        btnT11.setBackground(CustomColors.tableNotOccupied);
+        btnT12.setBackground(CustomColors.tableNotOccupied);
+        btnT13.setBackground(CustomColors.tableNotOccupied);
+        btnT14.setBackground(CustomColors.tableNotOccupied);
+        btnT15.setBackground(CustomColors.tableNotOccupied);
+        btnT16.setBackground(CustomColors.tableNotOccupied);
+        btnT17.setBackground(CustomColors.tableNotOccupied);
+        btnEmporter.setBackground(CustomColors.tableNotOccupied);
+        ArrayList<Integer> occupiedTables = C.getNumTablesOccupé();
+        for (Integer table : occupiedTables) {
+            switch (table) {
+                case 1:
+                    btnT1.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 2:
+                    btnT2.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 3:
+                    btnT3.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 4:
+                    btnT4.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 5:
+                    btnT5.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 6:
+                    btnT6.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 7:
+                    btnT7.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 8:
+                    btnT8.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 9:
+                    btnT9.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 10:
+                    btnT10.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 11:
+                    btnT11.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 12:
+                    btnT12.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 13:
+                    btnT13.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 14:
+                    btnT14.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 15:
+                    btnT15.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 16:
+                    btnT16.setBackground(CustomColors.tableOccupied);
+                    break;
+                case 17:
+                    btnT17.setBackground(CustomColors.tableOccupied);
+                    break;
+            }
+        }
+
+    }
+
+    public void RefreshTableCommandes() {
         ResultSet arts = Gr.TousLesCommandesNonPayées();
         tableCommandeEnCours.setModel(new MonModele(arts));
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        tableCommandeEnCours.getColumnModel().getColumn(0).setMaxWidth(60);
+        tableCommandeEnCours.getColumnModel().getColumn(1).setMinWidth(150);
+
+        for (int i = 0; i < 4; ++i) {
+            tableCommandeEnCours.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+        RefreshTables();
     }
 
     /**
@@ -62,20 +166,18 @@ public class HomePanel extends javax.swing.JPanel {
         btnT3 = new javax.swing.JButton();
         btnT4 = new javax.swing.JButton();
         btnT5 = new javax.swing.JButton();
+        btnT6 = new javax.swing.JButton();
+        btnT7 = new javax.swing.JButton();
+        btnT8 = new javax.swing.JButton();
         btnT9 = new javax.swing.JButton();
         btnT13 = new javax.swing.JButton();
         btnT14 = new javax.swing.JButton();
         btnT15 = new javax.swing.JButton();
-        btnT17 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         btnT16 = new javax.swing.JButton();
-        btnT6 = new javax.swing.JButton();
-        btnT7 = new javax.swing.JButton();
+        btnT17 = new javax.swing.JButton();
         btnT10 = new javax.swing.JButton();
         btnT11 = new javax.swing.JButton();
         btnT12 = new javax.swing.JButton();
-        btnT8 = new javax.swing.JButton();
         btnEmporter = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -84,9 +186,9 @@ public class HomePanel extends javax.swing.JPanel {
         tableCommandeEnCours = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        btnEditCommande = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel9 = new javax.swing.JPanel();
+        btnTrashCommande = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -151,6 +253,38 @@ public class HomePanel extends javax.swing.JPanel {
         });
         jPanel3.add(btnT5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 85, 85));
 
+        btnT6.setBackground(new java.awt.Color(204, 204, 255));
+        btnT6.setText("T6");
+        btnT6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnT6MousePressed(evt);
+            }
+        });
+        jPanel3.add(btnT6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 85, 85));
+
+        btnT7.setBackground(new java.awt.Color(204, 204, 255));
+        btnT7.setText("T7");
+        btnT7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnT7MousePressed(evt);
+            }
+        });
+        jPanel3.add(btnT7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 85, 85));
+
+        btnT8.setBackground(new java.awt.Color(204, 204, 255));
+        btnT8.setText("T8");
+        btnT8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnT8MousePressed(evt);
+            }
+        });
+        btnT8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnT8ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnT8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 85, 85));
+
         btnT9.setBackground(new java.awt.Color(204, 204, 255));
         btnT9.setText("T9");
         btnT9.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,23 +321,6 @@ public class HomePanel extends javax.swing.JPanel {
         });
         jPanel3.add(btnT15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 85, 85));
 
-        btnT17.setBackground(new java.awt.Color(204, 204, 255));
-        btnT17.setText("T17");
-        btnT17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnT17MousePressed(evt);
-            }
-        });
-        jPanel3.add(btnT17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 85, 85));
-
-        jButton11.setBackground(new java.awt.Color(204, 204, 255));
-        jButton11.setText("T20");
-        jPanel3.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 650, 85, 85));
-
-        jButton12.setBackground(new java.awt.Color(204, 204, 255));
-        jButton12.setText("T18");
-        jPanel3.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 650, 85, 85));
-
         btnT16.setBackground(new java.awt.Color(204, 204, 255));
         btnT16.setText("T16");
         btnT16.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,23 +330,14 @@ public class HomePanel extends javax.swing.JPanel {
         });
         jPanel3.add(btnT16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 85, 85));
 
-        btnT6.setBackground(new java.awt.Color(204, 204, 255));
-        btnT6.setText("T6");
-        btnT6.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnT17.setBackground(new java.awt.Color(204, 204, 255));
+        btnT17.setText("T17");
+        btnT17.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnT6MousePressed(evt);
+                btnT17MousePressed(evt);
             }
         });
-        jPanel3.add(btnT6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 85, 85));
-
-        btnT7.setBackground(new java.awt.Color(204, 204, 255));
-        btnT7.setText("T7");
-        btnT7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnT7MousePressed(evt);
-            }
-        });
-        jPanel3.add(btnT7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 85, 85));
+        jPanel3.add(btnT17, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 85, 85));
 
         btnT10.setBackground(new java.awt.Color(204, 204, 255));
         btnT10.setText("T10");
@@ -257,20 +365,6 @@ public class HomePanel extends javax.swing.JPanel {
             }
         });
         jPanel3.add(btnT12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, 85, 85));
-
-        btnT8.setBackground(new java.awt.Color(204, 204, 255));
-        btnT8.setText("T8");
-        btnT8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnT8MousePressed(evt);
-            }
-        });
-        btnT8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnT8ActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnT8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 85, 85));
 
         btnEmporter.setBackground(new java.awt.Color(204, 255, 204));
         btnEmporter.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
@@ -301,7 +395,7 @@ public class HomePanel extends javax.swing.JPanel {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tableCommandeEnCours.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tableCommandeEnCours.setModel(new javax.swing.table.DefaultTableModel(
@@ -335,7 +429,7 @@ public class HomePanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tableCommandeEnCours.setRowSelectionAllowed(true);
+        tableCommandeEnCours.setColumnSelectionAllowed(true);
         tableCommandeEnCours.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tableCommandeEnCours.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableCommandeEnCours);
@@ -351,9 +445,14 @@ public class HomePanel extends javax.swing.JPanel {
         jLabel4.setText("Finaliser La Commande");
         jPanel7.add(jLabel4, java.awt.BorderLayout.CENTER);
 
-        jPanel8.setBackground(new java.awt.Color(122, 72, 221));
-        jPanel8.setPreferredSize(new java.awt.Dimension(175, 50));
-        jPanel8.setLayout(new java.awt.BorderLayout());
+        btnEditCommande.setBackground(new java.awt.Color(122, 72, 221));
+        btnEditCommande.setPreferredSize(new java.awt.Dimension(175, 50));
+        btnEditCommande.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEditCommandeMousePressed(evt);
+            }
+        });
+        btnEditCommande.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -362,17 +461,22 @@ public class HomePanel extends javax.swing.JPanel {
         jLabel1.setMaximumSize(new java.awt.Dimension(175, 50));
         jLabel1.setMinimumSize(new java.awt.Dimension(175, 50));
         jLabel1.setPreferredSize(new java.awt.Dimension(175, 50));
-        jPanel8.add(jLabel1, java.awt.BorderLayout.CENTER);
+        btnEditCommande.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        jPanel9.setBackground(new java.awt.Color(255, 99, 71));
-        jPanel9.setPreferredSize(new java.awt.Dimension(175, 50));
-        jPanel9.setLayout(new java.awt.BorderLayout());
+        btnTrashCommande.setBackground(new java.awt.Color(255, 99, 71));
+        btnTrashCommande.setPreferredSize(new java.awt.Dimension(175, 50));
+        btnTrashCommande.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnTrashCommandeMousePressed(evt);
+            }
+        });
+        btnTrashCommande.setLayout(new java.awt.BorderLayout());
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Trash_30px_2.png"))); // NOI18N
-        jPanel9.add(jLabel5, java.awt.BorderLayout.CENTER);
+        btnTrashCommande.add(jLabel5, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -385,17 +489,17 @@ public class HomePanel extends javax.swing.JPanel {
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTrashCommande, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(25, 25, 25)
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnEditCommande, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTrashCommande, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditCommande, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -467,80 +571,178 @@ public class HomePanel extends javax.swing.JPanel {
 
     private void btnT1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT1MousePressed
         //System.out.println("hello");
-        mainMenu.tableBtnIsClicked(1);
+        int isOccupied = 0;
+        if (btnT1.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(1, isOccupied);
     }//GEN-LAST:event_btnT1MousePressed
 
     private void btnT2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT2MousePressed
-        mainMenu.tableBtnIsClicked(2);
+        int isOccupied = 0;
+        if (btnT2.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(2, isOccupied);
     }//GEN-LAST:event_btnT2MousePressed
 
     private void btnT3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT3MousePressed
-        mainMenu.tableBtnIsClicked(3);
+        int isOccupied = 0;
+        if (btnT3.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(3, isOccupied);
     }//GEN-LAST:event_btnT3MousePressed
 
     private void btnT4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT4MousePressed
-        mainMenu.tableBtnIsClicked(4);
+        int isOccupied = 0;
+        if (btnT4.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(4, isOccupied);
     }//GEN-LAST:event_btnT4MousePressed
 
     private void btnT5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT5MousePressed
-        mainMenu.tableBtnIsClicked(5);
+        int isOccupied = 0;
+        if (btnT5.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(5, isOccupied);
     }//GEN-LAST:event_btnT5MousePressed
 
     private void btnT6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT6MousePressed
-        mainMenu.tableBtnIsClicked(6);
+        int isOccupied = 0;
+        if (btnT6.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(6, isOccupied);
     }//GEN-LAST:event_btnT6MousePressed
 
     private void btnT7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT7MousePressed
-        mainMenu.tableBtnIsClicked(7);
+        int isOccupied = 0;
+        if (btnT7.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(7, isOccupied);
     }//GEN-LAST:event_btnT7MousePressed
 
     private void btnT8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT8MousePressed
-        mainMenu.tableBtnIsClicked(8);
+        int isOccupied = 0;
+        if (btnT8.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(8, isOccupied);
     }//GEN-LAST:event_btnT8MousePressed
 
     private void btnT9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT9MousePressed
-        mainMenu.tableBtnIsClicked(9);
+        int isOccupied = 0;
+        if (btnT9.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(9, isOccupied);
     }//GEN-LAST:event_btnT9MousePressed
 
     private void btnT10MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT10MousePressed
-        mainMenu.tableBtnIsClicked(10);
+        int isOccupied = 0;
+        if (btnT10.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(10, isOccupied);
     }//GEN-LAST:event_btnT10MousePressed
 
     private void btnT11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT11MousePressed
-        mainMenu.tableBtnIsClicked(11);
+        int isOccupied = 0;
+        if (btnT11.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(11, isOccupied);
     }//GEN-LAST:event_btnT11MousePressed
 
     private void btnT12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT12MousePressed
-        mainMenu.tableBtnIsClicked(12);
+        int isOccupied = 0;
+        if (btnT12.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(12, isOccupied);
     }//GEN-LAST:event_btnT12MousePressed
 
     private void btnT13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT13MousePressed
-        mainMenu.tableBtnIsClicked(13);
+        int isOccupied = 0;
+        if (btnT13.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(13, isOccupied);
     }//GEN-LAST:event_btnT13MousePressed
 
     private void btnT14MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT14MousePressed
-        mainMenu.tableBtnIsClicked(14);
+        int isOccupied = 0;
+        if (btnT14.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(14, isOccupied);
     }//GEN-LAST:event_btnT14MousePressed
 
     private void btnT15MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT15MousePressed
-        mainMenu.tableBtnIsClicked(15);
+        int isOccupied = 0;
+        if (btnT15.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(15, isOccupied);
     }//GEN-LAST:event_btnT15MousePressed
 
     private void btnT16MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT16MousePressed
-        mainMenu.tableBtnIsClicked(16);
+        int isOccupied = 0;
+        if (btnT16.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(16, isOccupied);
     }//GEN-LAST:event_btnT16MousePressed
 
     private void btnT17MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnT17MousePressed
-        mainMenu.tableBtnIsClicked(17);
+        int isOccupied = 0;
+        if (btnT17.getBackground() == CustomColors.tableOccupied) {
+            isOccupied = 1;
+        }
+        mainMenu.tableBtnIsClicked(17, isOccupied);
     }//GEN-LAST:event_btnT17MousePressed
 
     private void btnEmporterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEmporterMousePressed
-        mainMenu.tableBtnIsClicked(0);
+        mainMenu.tableBtnEmporterIsClicked(0);
     }//GEN-LAST:event_btnEmporterMousePressed
+
+    private void btnEditCommandeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditCommandeMousePressed
+        int row = tableCommandeEnCours.getSelectedRow();
+        if (row != -1) {
+            int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
+            int numTable = C.getNumTableduneCommande(idCom);
+            accesCommandeFrame FrameCommande = new accesCommandeFrame(mainMenu, numTable, idCom);
+            FrameCommande.setVisible(true);
+            this.setEnabled(false);
+        }
+    }//GEN-LAST:event_btnEditCommandeMousePressed
+
+    private void btnTrashCommandeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrashCommandeMousePressed
+        int row = tableCommandeEnCours.getSelectedRow();
+        if (row != -1) {
+            int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
+            int answer = 0;
+            ConfirmationFrame confirmDialog = new ConfirmationFrame();
+            confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            confirmDialog.setLocationRelativeTo(this);
+
+            answer = confirmDialog.getAnswer();
+            if (answer == 1) {
+                C.AnnulerCommande(idCom);
+                RefreshTableCommandes();
+
+            }
+        }
+    }//GEN-LAST:event_btnTrashCommandeMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LayoutRestaurant;
+    private javax.swing.JPanel btnEditCommande;
     private javax.swing.JButton btnEmporter;
     private javax.swing.JButton btnT1;
     private javax.swing.JButton btnT10;
@@ -559,8 +761,7 @@ public class HomePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnT7;
     private javax.swing.JButton btnT8;
     private javax.swing.JButton btnT9;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
+    private javax.swing.JPanel btnTrashCommande;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -571,10 +772,13 @@ public class HomePanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCommandeEnCours;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

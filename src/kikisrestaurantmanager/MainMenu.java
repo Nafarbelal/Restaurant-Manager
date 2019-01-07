@@ -5,10 +5,14 @@
  */
 package kikisrestaurantmanager;
 
+import MODEL.Commande;
 import MODEL.GestionRestau;
+import java.awt.Dialog;
 import java.sql.ResultSet;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import kikisrestaurantmanager.ContentPanels.HomePanel;
 import kikisrestaurantmanager.ContentPanels.ManagerPanel;
 
 /**
@@ -21,7 +25,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     GestionRestau Gr = new GestionRestau();
-
+    Commande C = new Commande();
     public MainMenu() {
         //this.setUndecorated(true);
         //this.setResizable(true);
@@ -32,11 +36,23 @@ public class MainMenu extends javax.swing.JFrame {
 
     }
 
-    public void tableBtnIsClicked(int idTable) {
+    public void tableBtnIsClicked(int idTable, int isOccupied) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
-        new accesCommandeFrame(this, 1).setVisible(true);
+        if (isOccupied == 0) {
+            new accesCommandeFrame(this, idTable).setVisible(true);
+        } else {
+            int idCom = C.getIdCommandeFromNumTable(idTable);
+            new accesCommandeFrame(this,idTable,idCom).setVisible(true);
+        }
 
-         this.setEnabled(false);
+        this.setEnabled(false);
+    }
+    
+        public void tableBtnEmporterIsClicked(int idTable) {
+        //  new accesCommandeFrame(this,idTable).setVisible(true);
+            new accesCommandeFrame(this, idTable).setVisible(true);
+
+        this.setEnabled(false);
     }
 
     /**
@@ -294,8 +310,9 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnManagerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagerMousePressed
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
         //       ClickedMenu(source, managerPanel1);
-        new loginFrame(this).setVisible(true);
-        this.setEnabled(false);
+        JDialog loginDialog = new loginFrame(this);
+        loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        loginDialog.setVisible(true);
     }//GEN-LAST:event_btnManagerMousePressed
 
     private void CloseButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseButtonMousePressed
@@ -370,5 +387,9 @@ public class MainMenu extends javax.swing.JFrame {
     public JPanel getBtnManager() {
         return btnManager;
     }
-    
+
+    public HomePanel getHomePanel1() {
+        return homePanel1;
+    }
+
 }
