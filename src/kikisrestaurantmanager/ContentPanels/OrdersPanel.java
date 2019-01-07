@@ -45,10 +45,11 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     @Override
 public void valueChanged(ListSelectionEvent e) {
     System.out.println("You clicked a row!");
+    
     if(e.getSource()==OrdersTable.getSelectionModel() && e.getValueIsAdjusting())
     {
-        TableModel model=(TableModel)OrdersTable.getModel();
-        String ID=model.getValueAt(OrdersTable.getSelectedRow(),0).toString();
+      //  TableModel model=(TableModel)OrdersTable.getModel();
+        String ID=OrdersTable.getValueAt(OrdersTable.getSelectedRow(),0).toString();
         DetailsTable.setModel(new MonModele(Gr.detailsByID(Integer.parseInt(ID))));
     }
 }
@@ -56,7 +57,7 @@ public void valueChanged(ListSelectionEvent e) {
 
     public void refreshOrdersTable(ResultSet arts) {
 
-        
+        OrdersTable.clearSelection();
         // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
         OrdersTable.setModel(new MonModele(arts));
         /*
