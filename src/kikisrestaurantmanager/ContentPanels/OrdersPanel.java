@@ -413,10 +413,12 @@ public class OrdersPanel extends javax.swing.JPanel {
 
     private void YesterdayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseClicked
         // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesYesterday());
     }//GEN-LAST:event_YesterdayPanelMouseClicked
 
     private void ThisWeekPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseClicked
         // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesThisWeek());
     }//GEN-LAST:event_ThisWeekPanelMouseClicked
 
     private void ThisMonthPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseClicked

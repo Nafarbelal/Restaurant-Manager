@@ -216,6 +216,41 @@ public class GestionRestau {
         return null;
     }
     
+    public ResultSet commandesYesterday() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M %d\")=DATE_FORMAT(DATE_SUB(CURDATE(),INTERVAL 1 DAY),\"%Y %M %d\")" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesToday");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesToday " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    
+    public ResultSet commandesThisWeek() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where YEARWEEK(Date,1)=YEARWEEK(CURDATE(),1)" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisWeek");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisWeek " + ex.getMessage());
+        }
+        return null;
+    }
+    
     public ResultSet commandesThisMonth() {
         try {
             ResultSet Rs;
