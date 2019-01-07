@@ -17,5 +17,8 @@ public class CustomColors {
     public static final Color lightViolet = new Color(122, 72, 221);
     public static final Color tomato = new Color(255, 99, 71);
     public static final Color tableNotOccupied = new Color(204,255,204);
+    public static final Color panelHoveredOn = new Color(122,72,221);
+    public static final Color ordersFilterText = new Color(255,255,255);
+    public static final Color defaultlabel
     public static final Color tableOccupied = tomato;
 }
