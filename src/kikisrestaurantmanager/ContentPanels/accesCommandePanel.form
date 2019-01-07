@@ -187,7 +187,7 @@
                       <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel12" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -218,8 +218,8 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel5">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -241,8 +241,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel7">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -264,8 +264,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel8">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -287,8 +287,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel9">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -310,8 +310,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel10">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -333,8 +333,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel11">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -356,8 +356,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel12">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 
@@ -389,8 +389,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="d9" green="c3" red="d9" type="rgb"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="CustomColors.panelDefault" type="code"/>
             </Property>
           </Properties>
 

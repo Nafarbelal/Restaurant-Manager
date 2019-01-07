@@ -197,5 +197,72 @@ public class GestionRestau {
         }
         return null;
     }
+    
+    public ResultSet commandesToday() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M %d\")=DATE_FORMAT(CURDATE(),\"%Y %M %d\")" );
+            System.out.println(Pst.toString());
+
+
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesToday");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesToday " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesThisMonth() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y %M\")=DATE_FORMAT(CURDATE(),\"%Y %M\")" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisMonth");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisMonth " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesThisYear() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande "
+                    + " where DATE_FORMAT(Date,\"%Y\")=DATE_FORMAT(CURDATE(),\"%Y\")" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandesThisYear");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesThisYear " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet commandesShowAll() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT idcommande as Id,date as Date,montant as MontantTotal,numTable as \"Table\" FROM Commande" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandes ShowAll");
+          
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
+        }
+        return null;
+    }
+
+       
 
 }

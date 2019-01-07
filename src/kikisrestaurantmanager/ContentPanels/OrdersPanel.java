@@ -33,12 +33,13 @@ public class OrdersPanel extends javax.swing.JPanel {
         OrdersTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         OrdersTable.getTableHeader().setOpaque(false);
         OrdersTable.getTableHeader().setBackground(Color.WHITE); */
-        refreshOrdersTable();
+        refreshOrdersTable(Gr.commandesShowAll());
     }
 
-    public void refreshOrdersTable() {
+    public void refreshOrdersTable(ResultSet arts) {
 
-        ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
+        
+        // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
         OrdersTable.setModel(new MonModele(arts));
         /*
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
@@ -92,8 +93,11 @@ public class OrdersPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(CustomColors.darkViolet);
 
-        TodayPanel.setBackground(CustomColors.darkViolet);
+        TodayPanel.setBackground(CustomColors.panelDefault);
         TodayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TodayPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 TodayPanelMouseEntered(evt);
             }
@@ -122,8 +126,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        YesterdayPanel.setBackground(CustomColors.darkViolet);
+        YesterdayPanel.setBackground(CustomColors.panelDefault);
         YesterdayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YesterdayPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 YesterdayPanelMouseEntered(evt);
             }
@@ -152,8 +159,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ThisWeekPanel.setBackground(CustomColors.darkViolet);
+        ThisWeekPanel.setBackground(CustomColors.panelDefault);
         ThisWeekPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisWeekPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ThisWeekPanelMouseEntered(evt);
             }
@@ -182,8 +192,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ThisMonthPanel.setBackground(CustomColors.darkViolet);
+        ThisMonthPanel.setBackground(CustomColors.panelDefault);
         ThisMonthPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisMonthPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ThisMonthPanelMouseEntered(evt);
             }
@@ -212,8 +225,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ThisYearPanel.setBackground(CustomColors.darkViolet);
+        ThisYearPanel.setBackground(CustomColors.panelDefault);
         ThisYearPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisYearPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ThisYearPanelMouseEntered(evt);
             }
@@ -242,8 +258,11 @@ public class OrdersPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ShowAllPanel.setBackground(CustomColors.darkViolet);
+        ShowAllPanel.setBackground(CustomColors.panelDefault);
         ShowAllPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowAllPanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 ShowAllPanelMouseEntered(evt);
             }
@@ -386,6 +405,34 @@ public class OrdersPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         ShowAllPanel.setBackground(CustomColors.panelDefault);
     }//GEN-LAST:event_ShowAllPanelMouseExited
+
+    private void TodayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayPanelMouseClicked
+        // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesToday());
+    }//GEN-LAST:event_TodayPanelMouseClicked
+
+    private void YesterdayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_YesterdayPanelMouseClicked
+
+    private void ThisWeekPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ThisWeekPanelMouseClicked
+
+    private void ThisMonthPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseClicked
+        // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesThisMonth());
+    }//GEN-LAST:event_ThisMonthPanelMouseClicked
+
+    private void ThisYearPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisYearPanelMouseClicked
+        // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesThisYear());
+    }//GEN-LAST:event_ThisYearPanelMouseClicked
+
+    private void ShowAllPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowAllPanelMouseClicked
+        // TODO add your handling code here:
+        refreshOrdersTable(Gr.commandesShowAll());
+    }//GEN-LAST:event_ShowAllPanelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

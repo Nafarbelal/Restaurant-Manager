@@ -86,7 +86,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(217, 195, 217));
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jPanel5.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel5.setBackground(CustomColors.panelDefault);
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtSandwich.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -95,7 +95,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtSandwich.setText("Sandwich");
         jPanel5.add(TxtSandwich);
 
-        jPanel7.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel7.setBackground(CustomColors.panelDefault);
         jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtBurger.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -104,7 +104,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtBurger.setText("Burger");
         jPanel7.add(TxtBurger);
 
-        jPanel8.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel8.setBackground(CustomColors.panelDefault);
         jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtPizza.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -113,7 +113,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtPizza.setText("Pizza");
         jPanel8.add(TxtPizza);
 
-        jPanel9.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel9.setBackground(CustomColors.panelDefault);
         jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtShawarma.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -122,7 +122,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtShawarma.setText("Shawarma");
         jPanel9.add(TxtShawarma);
 
-        jPanel10.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel10.setBackground(CustomColors.panelDefault);
         jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtPlat.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -131,7 +131,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtPlat.setText("Plat");
         jPanel10.add(TxtPlat);
 
-        jPanel11.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel11.setBackground(CustomColors.panelDefault);
         jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtDessert.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -140,7 +140,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
         TxtDessert.setText("Dessert");
         jPanel11.add(TxtDessert);
 
-        jPanel12.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel12.setBackground(CustomColors.panelDefault);
 
         TxtBoisson.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
         TxtBoisson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Cocktail_25px_1.png"))); // NOI18N
@@ -157,7 +157,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
             .addComponent(TxtBoisson, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jPanel4.setBackground(new java.awt.Color(217, 195, 217));
+        jPanel4.setBackground(CustomColors.panelDefault);
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.LINE_AXIS));
 
         TxtPanini.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
@@ -181,7 +181,7 @@ public class accesCommandePanel extends javax.swing.JPanel {
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
