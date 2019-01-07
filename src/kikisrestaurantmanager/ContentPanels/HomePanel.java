@@ -395,7 +395,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         tableCommandeEnCours.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         tableCommandeEnCours.setModel(new javax.swing.table.DefaultTableModel(
@@ -429,7 +429,6 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
                 return canEdit [columnIndex];
             }
         });
-        tableCommandeEnCours.setColumnSelectionAllowed(true);
         tableCommandeEnCours.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tableCommandeEnCours.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tableCommandeEnCours);
