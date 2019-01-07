@@ -354,6 +354,11 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
         BtnAnnuler.setBackground(new java.awt.Color(204, 204, 204));
         BtnAnnuler.setText("Annuler");
+        BtnAnnuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAnnulerActionPerformed(evt);
+            }
+        });
 
         jLabel13.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -361,6 +366,11 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
         BtnConfirmer.setBackground(new java.awt.Color(204, 204, 204));
         BtnConfirmer.setText("Confirmer");
+        BtnConfirmer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConfirmerActionPerformed(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -646,6 +656,10 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         this.dispose();
 
     }//GEN-LAST:event_BtnAnnulerActionPerformed
+
+    private void BtnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnConfirmerActionPerformed
 
     /**
      * @param args the command line arguments

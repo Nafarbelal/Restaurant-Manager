@@ -9,6 +9,7 @@ import DB_Objects.Employee;
 import MODEL.GestionRestau;
 import java.awt.Color;
 import java.sql.ResultSet;
+import kikisrestaurantmanager.ContentPanels.ManagerPanel;
 
 /**
  *
