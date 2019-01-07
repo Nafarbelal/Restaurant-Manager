@@ -64,15 +64,14 @@ public class Manager {
    }
     public void DeleteArticle(int Id ) 
    {   
-        String Req = "delete * from  article where IDARTICLE =?";
+        String Req = "delete * from  article where IDARTICLE = "+Id+"";
         try 
         {
-            PreparedStatement pst = Con.prepareStatement(Req);
-            pst.setInt(1, Id);
             int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du suppression", "Suppression", JOptionPane.OK_CANCEL_OPTION);
             if(reponse==JOptionPane.YES_OPTION)
            {
-            pst.executeUpdate(); 
+            St = Con.createStatement();
+            St.executeUpdate(Req); 
             JOptionPane.showMessageDialog(null, "Suppression EFFECTUEE " , "Suppression ",JOptionPane.OK_OPTION);
            }
         }
