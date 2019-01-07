@@ -56,6 +56,10 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         TxtCurrentTable.setText("Table " + idTable);
     }
 
+    accesCommandeFrame(MainMenu aThis, int idTable, int idCom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public void dispose() {
         super.dispose(); //To change body of generated methods, choose Tools | Templates.

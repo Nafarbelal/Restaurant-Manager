@@ -22,6 +22,7 @@ import kikisrestaurantmanager.MainMenu;
  * @author Ilyas El Bani
  */
 public class ManagerPanel extends javax.swing.JPanel {
+
     
       Manager M = new Manager();
       MainMenu mainMenu;
@@ -30,6 +31,7 @@ public class ManagerPanel extends javax.swing.JPanel {
      */
     public ManagerPanel(MainMenu mn) {
         initComponents();
+
         Remplir();
         charger();
         mainMenu=  mn ;
@@ -37,6 +39,8 @@ public class ManagerPanel extends javax.swing.JPanel {
 
     public ManagerPanel() {
         initComponents();
+        charger();
+        Remplir();
     }
     
      private void Remplir()
@@ -269,33 +273,27 @@ public class ManagerPanel extends javax.swing.JPanel {
        String des = txtDesignation.getText();
        float prix = Float.parseFloat(txtPrice.getText());
        M.AddArticle(id, des, prix, type);
-        charger();
-        JOptionPane.showMessageDialog(null, "l'Article "+des+" a bien été ajouté");
-    }     
-
-   public void charger()
-    {
-        String Type = CBXcategorier.getSelectedItem().toString();
-        Menu.setModel(new MonModele(M.AllArticles()));
+       charger();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       M.DeleteArticle(Integer.parseInt(txtID.getText()));
+        int id = Integer.parseInt(txtID.getText());
+        M.DeleteArticle(id);
         charger();
-        Vider();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-         int id = Integer.parseInt(txtID.getText());
+       int id = Integer.parseInt(txtID.getText());
        String type = CBXcategorier.getSelectedItem().toString();
        String des = txtDesignation.getText();
        float prix = Float.parseFloat(txtPrice.getText());
           try 
           {
               M.UPDATEArticle(id, des, prix, type);
-          } catch (SQLException ex) 
+          } 
+          catch (SQLException ex) 
           {
               Logger.getLogger(ManagerPanel.class.getName()).log(Level.SEVERE, null, ex);
           }
@@ -305,18 +303,18 @@ public class ManagerPanel extends javax.swing.JPanel {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
-         Vider();
-         charger();
-       
+        Vider();
+        charger();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         // TODO add your handling code here:
-        int lig = Menu.getSelectedRow();
+      int lig = Menu.getSelectedRow();
       txtID.setText(Menu.getValueAt(lig, 0).toString());
-      CBXcategorier.setSelectedItem(Menu.getValueAt(lig, 1).toString());
-      txtDesignation.setText(Menu.getValueAt(lig, 2).toString());
-      txtPrice.setText(Menu.getValueAt(lig, 3).toString());
+      CBXcategorier.setSelectedItem(Menu.getValueAt(lig, 3).toString());
+      txtDesignation.setText(Menu.getValueAt(lig, 1).toString());
+      txtPrice.setText(Menu.getValueAt(lig, 2).toString());
+
     }//GEN-LAST:event_MenuMouseClicked
 
     private void CBXcategorierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBXcategorierActionPerformed
@@ -343,10 +341,16 @@ public class ManagerPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 
-    private void Vider() {
-         txtID.setText("");
-        txtDesignation.setText("");
-        txtPrice.setText("");
+    private void charger()
+    {
+       String Type = CBXcategorier.getSelectedItem().toString();
+       Menu.setModel(new MonModele(M.AllArticles()));
     }
 
+    private void Vider() 
+    {
+        txtID.setText(null);
+        txtDesignation.setText(null);
+        txtPrice.setText(null);
+    }
 }

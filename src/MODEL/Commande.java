@@ -128,5 +128,9 @@ public class Commande {
         }
         return 0;
     }
+
+    public int getIdCommandeFromNumTable(int idTable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      
 }
