@@ -7,6 +7,7 @@ package MODEL;
 
 import DAO.DaoBD;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -63,14 +64,17 @@ public class Manager {
    }
     public void DeleteArticle(int Id ) 
    {   
-        String Req = "delete * from article where IDARTICLE='"+Id+"'";
-        int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du suppression", "Suppression", JOptionPane.OK_CANCEL_OPTION);
-        if(reponse==JOptionPane.YES_OPTION)
+        String Req = "delete * from  article where IDARTICLE =?";
         try 
         {
-             St = Con.createStatement();
-             St.executeUpdate(Req);
-             JOptionPane.showMessageDialog(null, "Suppression EFFECTUEE " , "Suppression ",JOptionPane.OK_OPTION);
+            PreparedStatement pst = Con.prepareStatement(Req);
+            pst.setInt(1, Id);
+            int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du suppression", "Suppression", JOptionPane.OK_CANCEL_OPTION);
+            if(reponse==JOptionPane.YES_OPTION)
+           {
+            pst.executeUpdate(); 
+            JOptionPane.showMessageDialog(null, "Suppression EFFECTUEE " , "Suppression ",JOptionPane.OK_OPTION);
+           }
         }
         catch( SQLException ex)
         {
@@ -80,15 +84,22 @@ public class Manager {
     public void UPDATEArticle(int ID, String Des , float Price , String Type) throws SQLException
     {
      String Req ; 
-     Req = "Update Article set IDARTICLE ='"+ID+"' DESIGNATION ='"+Des+"' PRIX ='"+Price+"' CATEGORIE ='"+Type+"' Wehre  IDARTICLE ='"+ID+"'" ;
-     int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du changement", "Mise à jour", JOptionPane.OK_CANCEL_OPTION);
-     if(reponse==JOptionPane.YES_OPTION)
+     Req = "update article set DESIGNATION =?, PRIX =?, CATEGORIE =? where  IDARTICLE =?" ;
+     
         try
         {
-             St = Con.createStatement();
-             St.executeUpdate(Req);  
+            PreparedStatement pst = Con.prepareStatement(Req);
+            pst.setString(1, Des);
+            pst.setFloat(2, Price);
+            pst.setString(3, Type);
+            pst.setInt(4, ID);
+            int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du changement", "Mise à jour", JOptionPane.OK_CANCEL_OPTION);
+            if(reponse==JOptionPane.YES_OPTION)
+           {
+             pst.executeUpdate();  
              JOptionPane.showMessageDialog(null, "MAJ EFFECTUEE " , "Mise à jour ",JOptionPane.OK_OPTION);
-        } 
+           }
+        }
         catch (SQLException ex) 
         {
              JOptionPane.showMessageDialog(null, " Pb ds la requete de Mise à jour");      

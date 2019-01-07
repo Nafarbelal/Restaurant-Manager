@@ -41,6 +41,8 @@ public class ManagerPanel extends javax.swing.JPanel {
         initComponents();
         charger();
         Remplir();
+        btnEdit.setEnabled(false);
+        btnDelete.setEnabled(false);
     }
     
      private void Remplir()
@@ -108,11 +110,11 @@ public class ManagerPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Type", "Designation", "Price"
+                "ID", "Designation", "Price", "Type"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Float.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -177,7 +179,7 @@ public class ManagerPanel extends javax.swing.JPanel {
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel5.setIconTextGap(20);
 
-        CBXcategorier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CBXcategorier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boisson", "Panini", "Sandwich", "Burger", "Pizza", "Shawarma", "Plat", "Dessert", " " }));
         CBXcategorier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBXcategorierActionPerformed(evt);
@@ -280,7 +282,12 @@ public class ManagerPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int id = Integer.parseInt(txtID.getText());
         M.DeleteArticle(id);
+        btnEdit.setEnabled(false);
+        btnDelete.setEnabled(false);
+        btnAdd.setEnabled(true);
+        txtID.setEnabled(true);
         charger();
+        Vider();    
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -289,22 +296,25 @@ public class ManagerPanel extends javax.swing.JPanel {
        String type = CBXcategorier.getSelectedItem().toString();
        String des = txtDesignation.getText();
        float prix = Float.parseFloat(txtPrice.getText());
-          try 
-          {
-              M.UPDATEArticle(id, des, prix, type);
-          } 
-          catch (SQLException ex) 
-          {
+       try 
+       {  
+              M.UPDATEArticle(id , des , prix , type);
+       }
+       catch (SQLException ex) 
+       {
               Logger.getLogger(ManagerPanel.class.getName()).log(Level.SEVERE, null, ex);
-          }
-        charger();
-        JOptionPane.showMessageDialog(null, "l'Article "+des+" a bien été Modefier");
+       }
+       btnEdit.setEnabled(false);
+       btnDelete.setEnabled(false);
+       btnAdd.setEnabled(true);
+       txtID.setEnabled(true);
+       charger();
+       Vider(); 
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         // TODO add your handling code here:
         Vider();
-        charger();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
@@ -314,6 +324,10 @@ public class ManagerPanel extends javax.swing.JPanel {
       CBXcategorier.setSelectedItem(Menu.getValueAt(lig, 3).toString());
       txtDesignation.setText(Menu.getValueAt(lig, 1).toString());
       txtPrice.setText(Menu.getValueAt(lig, 2).toString());
+      txtID.setEnabled(false);
+      btnEdit.setEnabled(true);
+      btnDelete.setEnabled(true);
+      btnAdd.setEnabled(false);
 
     }//GEN-LAST:event_MenuMouseClicked
 
