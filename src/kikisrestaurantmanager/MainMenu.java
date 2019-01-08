@@ -28,13 +28,12 @@ public class MainMenu extends javax.swing.JFrame {
     Commande C = new Commande();
 
     public MainMenu() {
-        //this.setUndecorated(true);
+        this.setUndecorated(true);
         //this.setResizable(true);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
         HideAllContent();
         homePanel1.setVisible(true);
-
     }
 
     public void tableBtnIsClicked(int idTable, int isOccupied) {
