@@ -77,7 +77,7 @@ public class ChangerMdp extends javax.swing.JDialog {
         jLabel3.setText("Confirmer nouveau mot de passe:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 124, -1, -1));
 
-        txtOldPassword.setBackground(new java.awt.Color(204, 204, 255));
+        txtOldPassword.setBackground(new java.awt.Color(229, 229, 237));
         txtOldPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtOldPasswordMouseClicked(evt);
@@ -85,7 +85,7 @@ public class ChangerMdp extends javax.swing.JDialog {
         });
         jPanel1.add(txtOldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 153, -1));
 
-        txtNewPassword.setBackground(new java.awt.Color(204, 204, 255));
+        txtNewPassword.setBackground(new java.awt.Color(229, 229, 237));
         txtNewPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNewPasswordActionPerformed(evt);
@@ -93,7 +93,7 @@ public class ChangerMdp extends javax.swing.JDialog {
         });
         jPanel1.add(txtNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 153, -1));
 
-        txtConfirmNewPassword.setBackground(new java.awt.Color(204, 204, 255));
+        txtConfirmNewPassword.setBackground(new java.awt.Color(229, 229, 237));
         txtConfirmNewPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtConfirmNewPasswordMouseClicked(evt);
