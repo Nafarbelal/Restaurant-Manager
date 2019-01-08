@@ -1,6 +1,8 @@
 package kikisrestaurantmanager.ContentPanels;
 
 import addons.*;
+import java.awt.Dialog;
+import kikisrestaurantmanager.ChangerMdp;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -66,6 +68,11 @@ public class ManagerPanel extends javax.swing.JPanel {
         jLabel3.setForeground(CustomColors.textColorOnColoredPanel);
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Changez Mot de Passe");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel3MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -242,6 +249,14 @@ public class ManagerPanel extends javax.swing.JPanel {
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(621, 85, -1, 590));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        ChangerMdp c = new ChangerMdp();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_jLabel3MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -57,7 +57,38 @@ public class GestionRestau {
         }
         return null;
     }
+    
+   public int CheckPassword(String pwd)
+   {
+      
+       try
+       {
+           PreparedStatement Pst = Con.prepareStatement("Select count(*) from Employees where motdepasse='"+pwd+"'");
+           ResultSet rs= Pst.executeQuery();
+           if(rs.next())
+               return rs.getInt(1);
+       }
+       catch(SQLException e)
+       {
+             System.out.println("Erreur dans la requete CheckPassword " + e.getMessage());
 
+       }
+       return 0;
+   }
+   
+   public void UpdatePwd(String pwd)
+   {
+       try {
+           PreparedStatement Pst=Con.prepareStatement("update Employees set motdepasse='"+pwd+"' where idemployee=1");
+           Pst.executeUpdate();
+       }
+       catch(SQLException e)
+       {
+            System.out.println("Erreur dans la requete UpdatePwd " + e.getMessage());
+
+       }
+   }
+   
     public ResultSet TousLesCommandesNonPayées() {
         ResultSet Res = null;
         try {
