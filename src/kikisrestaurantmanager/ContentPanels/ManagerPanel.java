@@ -59,6 +59,11 @@ public class ManagerPanel extends javax.swing.JPanel {
         txtNomPrenom.setForeground(CustomColors.lightViolet);
         txtNomPrenom.setText("Bourqadi Amine");
 
+        jPanel3.setBackground(CustomColors.lightViolet);
+
+        jLabel3.setBackground(CustomColors.lightViolet);
+        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        jLabel3.setForeground(CustomColors.textColorOnColoredPanel);
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Changez Mot de Passe");
 
@@ -73,8 +78,12 @@ public class ManagerPanel extends javax.swing.JPanel {
             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
+        jPanel6.setBackground(CustomColors.lightViolet);
         jPanel6.setPreferredSize(new java.awt.Dimension(41, 60));
 
+        jLabel2.setBackground(CustomColors.lightViolet);
+        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        jLabel2.setForeground(CustomColors.textColorOnColoredPanel);
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Modifier Menu");
 
@@ -89,6 +98,10 @@ public class ManagerPanel extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
+        jPanel7.setBackground(CustomColors.lightViolet);
+
+        jLabel5.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        jLabel5.setForeground(CustomColors.textColorOnColoredPanel);
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Se deconnecter");
 
@@ -112,14 +125,14 @@ public class ManagerPanel extends javax.swing.JPanel {
                     .addGroup(LayoutRestaurantLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(LayoutRestaurantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNomPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(LayoutRestaurantLayout.createSequentialGroup()
                         .addGap(220, 220, 220)
                         .addComponent(jLabel1)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         LayoutRestaurantLayout.setVerticalGroup(
             LayoutRestaurantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,14 +154,19 @@ public class ManagerPanel extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel2.setBackground(CustomColors.lightViolet
+        );
+
         txtClock.setFont(new java.awt.Font("SansSerif", 0, 48)); // NOI18N
+        txtClock.setForeground(CustomColors.textColorOnColoredPanel);
         txtClock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtClock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Alarm_Clock_50px.png"))); // NOI18N
+        txtClock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Alarm_Clock_50px_1.png"))); // NOI18N
         txtClock.setText("12:33:15 AM");
 
         txtDate.setFont(new java.awt.Font("SansSerif", 0, 40)); // NOI18N
+        txtDate.setForeground(CustomColors.textColorOnColoredPanel);
         txtDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Event_50px.png"))); // NOI18N
+        txtDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Event_50px_1.png"))); // NOI18N
         txtDate.setText("mardi 08 janvier 2019");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -231,14 +249,12 @@ public class ManagerPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;

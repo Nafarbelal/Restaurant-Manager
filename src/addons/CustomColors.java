@@ -21,4 +21,5 @@ public class CustomColors {
     public static final Color ordersFilterText = new Color(255,255,255);
     public static final Color panelDefault = new Color(54,33,89);
     public static final Color tableOccupied = tomato;
+    public static final Color textColorOnColoredPanel = Color.WHITE;
 }
