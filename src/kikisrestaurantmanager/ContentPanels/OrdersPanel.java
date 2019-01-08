@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import kikisrestaurantmanager.MainMenu;
 import addons.CustomColors;
+import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -33,47 +35,56 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
      */
     public OrdersPanel() {
         initComponents();
-        /*
         OrdersTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(OrdersTable));
         OrdersTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         OrdersTable.getTableHeader().setOpaque(false);
-        OrdersTable.getTableHeader().setBackground(Color.WHITE); */
+        OrdersTable.getTableHeader().setBackground(Color.WHITE);
+        DetailsTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(DetailsTable));
+        DetailsTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        DetailsTable.getTableHeader().setOpaque(false);
+        DetailsTable.getTableHeader().setBackground(Color.WHITE);
+
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jScrollPane2.getViewport().setBackground(Color.WHITE);
+
+        /*
+        OrdersTable.ExitedeHeader().setDefaultRenderer(new HeaderRenderer(OrdersTable));
+        OrdersTable.ExitedHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        OrdersTable.getTableHeader().setOpaque(false);
+        OrdersTable.Exitedeader().setBackground(Color.WHITE); */
         refreshOrdersTable(Gr.commandesShowAll());
+        refreshDetailsCommande(0);
         ListSelectionModel selectionModel = OrdersTable.getSelectionModel();
         selectionModel.addListSelectionListener(this);
+        TodayPanelMouseClicked(null);
     }
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
-        /* System.out.println("You clicked a row!");
-
-        if (e.getSource() == OrdersTable.getSelectionModel() && e.getValueIsAdjusting()) {
-            //  TableModel model=(TableModel)OrdersTable.getModel();
-            System.out.println(e.getFirstIndex());
-            System.out.println(e.getLastIndex());
-            System.out.println(e.getValueIsAdjusting());
-            System.out.println("==========");
-
-            String ID = OrdersTable.getValueAt(OrdersTable.getSelectedRow(), 0).toString();
-            DetailsTable.setModel(new MonModele(Gr.detailsByID(Integer.parseInt(ID))));
-        }*/
     }
 
     public void refreshOrdersTable(ResultSet arts) {
-
         OrdersTable.clearSelection();
         // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
         OrdersTable.setModel(new MonModele(arts));
-        /*
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
-        OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
-
+        //OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
+        //OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
         for (int i = 0; i < 4; ++i) {
             OrdersTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        };
-         */
+        }
+    }
+
+    public void refreshDetailsCommande(int idCommande) {
+        DetailsTable.setModel(new MonModele(Gr.detailsByID(idCommande)));
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        //  OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
+        //OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
+        for (int i = 0; i < 4; ++i) {
+            DetailsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     /**
@@ -85,23 +96,44 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         OrdersTable = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DetailsTable = new javax.swing.JTable();
         TodayPanel = new javax.swing.JPanel();
         TodayLabel = new javax.swing.JLabel();
         YesterdayPanel = new javax.swing.JPanel();
         YesterdayLabel = new javax.swing.JLabel();
-        ThisWeekPanel = new javax.swing.JPanel();
-        ThisWeekLabel = new javax.swing.JLabel();
         ThisMonthPanel = new javax.swing.JPanel();
         ThisMonthLabel = new javax.swing.JLabel();
         ThisYearPanel = new javax.swing.JPanel();
         ThisYearLabel = new javax.swing.JLabel();
         ShowAllPanel = new javax.swing.JPanel();
         ShowAllLabel = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        DetailsTable = new javax.swing.JTable();
+        ThisWeekPanel = new javax.swing.JPanel();
+        ThisWeekLabel = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jPanel4.setBackground(new java.awt.Color(54, 33, 89));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         OrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,238 +153,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         });
         jScrollPane1.setViewportView(OrdersTable);
 
-        jPanel1.setBackground(CustomColors.darkViolet);
-
-        TodayPanel.setBackground(CustomColors.panelDefault);
-        TodayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TodayPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                TodayPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                TodayPanelMouseExited(evt);
-            }
-        });
-
-        TodayLabel.setForeground(CustomColors.ordersFilterText);
-        TodayLabel.setText("Today");
-
-        javax.swing.GroupLayout TodayPanelLayout = new javax.swing.GroupLayout(TodayPanel);
-        TodayPanel.setLayout(TodayPanelLayout);
-        TodayPanelLayout.setHorizontalGroup(
-            TodayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TodayPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TodayLabel)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        TodayPanelLayout.setVerticalGroup(
-            TodayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(TodayPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(TodayLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        YesterdayPanel.setBackground(CustomColors.panelDefault);
-        YesterdayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                YesterdayPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                YesterdayPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                YesterdayPanelMouseExited(evt);
-            }
-        });
-
-        YesterdayLabel.setForeground(CustomColors.ordersFilterText);
-        YesterdayLabel.setText("Yesterday");
-
-        javax.swing.GroupLayout YesterdayPanelLayout = new javax.swing.GroupLayout(YesterdayPanel);
-        YesterdayPanel.setLayout(YesterdayPanelLayout);
-        YesterdayPanelLayout.setHorizontalGroup(
-            YesterdayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YesterdayPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(YesterdayLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        YesterdayPanelLayout.setVerticalGroup(
-            YesterdayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(YesterdayPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(YesterdayLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        ThisWeekPanel.setBackground(CustomColors.panelDefault);
-        ThisWeekPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ThisWeekPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ThisWeekPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ThisWeekPanelMouseExited(evt);
-            }
-        });
-
-        ThisWeekLabel.setForeground(CustomColors.ordersFilterText);
-        ThisWeekLabel.setText("This Week");
-
-        javax.swing.GroupLayout ThisWeekPanelLayout = new javax.swing.GroupLayout(ThisWeekPanel);
-        ThisWeekPanel.setLayout(ThisWeekPanelLayout);
-        ThisWeekPanelLayout.setHorizontalGroup(
-            ThisWeekPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisWeekPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ThisWeekLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ThisWeekPanelLayout.setVerticalGroup(
-            ThisWeekPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisWeekPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(ThisWeekLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        ThisMonthPanel.setBackground(CustomColors.panelDefault);
-        ThisMonthPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ThisMonthPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ThisMonthPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ThisMonthPanelMouseExited(evt);
-            }
-        });
-
-        ThisMonthLabel.setForeground(CustomColors.ordersFilterText);
-        ThisMonthLabel.setText("This Month");
-
-        javax.swing.GroupLayout ThisMonthPanelLayout = new javax.swing.GroupLayout(ThisMonthPanel);
-        ThisMonthPanel.setLayout(ThisMonthPanelLayout);
-        ThisMonthPanelLayout.setHorizontalGroup(
-            ThisMonthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisMonthPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ThisMonthLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ThisMonthPanelLayout.setVerticalGroup(
-            ThisMonthPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisMonthPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(ThisMonthLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        ThisYearPanel.setBackground(CustomColors.panelDefault);
-        ThisYearPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ThisYearPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ThisYearPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ThisYearPanelMouseExited(evt);
-            }
-        });
-
-        ThisYearLabel.setForeground(CustomColors.ordersFilterText);
-        ThisYearLabel.setText("This Year");
-
-        javax.swing.GroupLayout ThisYearPanelLayout = new javax.swing.GroupLayout(ThisYearPanel);
-        ThisYearPanel.setLayout(ThisYearPanelLayout);
-        ThisYearPanelLayout.setHorizontalGroup(
-            ThisYearPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisYearPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ThisYearLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ThisYearPanelLayout.setVerticalGroup(
-            ThisYearPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ThisYearPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(ThisYearLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        ShowAllPanel.setBackground(CustomColors.panelDefault);
-        ShowAllPanel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ShowAllPanelMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ShowAllPanelMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                ShowAllPanelMouseExited(evt);
-            }
-        });
-
-        ShowAllLabel.setForeground(CustomColors.ordersFilterText);
-        ShowAllLabel.setText("Show All");
-
-        javax.swing.GroupLayout ShowAllPanelLayout = new javax.swing.GroupLayout(ShowAllPanel);
-        ShowAllPanel.setLayout(ShowAllPanelLayout);
-        ShowAllPanelLayout.setHorizontalGroup(
-            ShowAllPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ShowAllPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ShowAllLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        ShowAllPanelLayout.setVerticalGroup(
-            ShowAllPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ShowAllPanelLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(ShowAllLabel)
-                .addContainerGap(19, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(TodayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(YesterdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ThisMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ThisYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TodayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(YesterdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33))
-        );
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
         DetailsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,131 +168,373 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         ));
         jScrollPane2.setViewportView(DetailsTable);
 
+        TodayPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        TodayPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        TodayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TodayPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                TodayPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                TodayPanelMouseExited(evt);
+            }
+        });
+        TodayPanel.setLayout(new java.awt.BorderLayout());
+
+        TodayLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        TodayLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        TodayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TodayLabel.setText("Aujourd'hui");
+        TodayPanel.add(TodayLabel, java.awt.BorderLayout.CENTER);
+
+        YesterdayPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        YesterdayPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        YesterdayPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YesterdayPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                YesterdayPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                YesterdayPanelMouseExited(evt);
+            }
+        });
+        YesterdayPanel.setLayout(new java.awt.BorderLayout());
+
+        YesterdayLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        YesterdayLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        YesterdayLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        YesterdayLabel.setText("Hier");
+        YesterdayPanel.add(YesterdayLabel, java.awt.BorderLayout.CENTER);
+
+        ThisMonthPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisMonthPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        ThisMonthPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisMonthPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ThisMonthPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ThisMonthPanelMouseExited(evt);
+            }
+        });
+        ThisMonthPanel.setLayout(new java.awt.BorderLayout());
+
+        ThisMonthLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        ThisMonthLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        ThisMonthLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ThisMonthLabel.setText("Ce Mois");
+        ThisMonthLabel.setPreferredSize(new java.awt.Dimension(140, 23));
+        ThisMonthPanel.add(ThisMonthLabel, java.awt.BorderLayout.CENTER);
+
+        ThisYearPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisYearPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        ThisYearPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisYearPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ThisYearPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ThisYearPanelMouseExited(evt);
+            }
+        });
+        ThisYearPanel.setLayout(new java.awt.BorderLayout());
+
+        ThisYearLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        ThisYearLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        ThisYearLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ThisYearLabel.setText("Cette Année");
+        ThisYearPanel.add(ThisYearLabel, java.awt.BorderLayout.CENTER);
+
+        ShowAllPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ShowAllPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        ShowAllPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ShowAllPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ShowAllPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ShowAllPanelMouseExited(evt);
+            }
+        });
+        ShowAllPanel.setLayout(new java.awt.BorderLayout());
+
+        ShowAllLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        ShowAllLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        ShowAllLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ShowAllLabel.setText("Depuis Début");
+        ShowAllPanel.add(ShowAllLabel, java.awt.BorderLayout.CENTER);
+
+        ThisWeekPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisWeekPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        ThisWeekPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThisWeekPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ThisWeekPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ThisWeekPanelMouseExited(evt);
+            }
+        });
+
+        ThisWeekLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        ThisWeekLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        ThisWeekLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ThisWeekLabel.setText("Cette Semaine");
+
+        javax.swing.GroupLayout ThisWeekPanelLayout = new javax.swing.GroupLayout(ThisWeekPanel);
+        ThisWeekPanel.setLayout(ThisWeekPanelLayout);
+        ThisWeekPanelLayout.setHorizontalGroup(
+            ThisWeekPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ThisWeekLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        ThisWeekPanelLayout.setVerticalGroup(
+            ThisWeekPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(ThisWeekLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(CustomColors.sidesSeparator);
+        jPanel5.setMaximumSize(new java.awt.Dimension(11, 0));
+        jPanel5.setMinimumSize(new java.awt.Dimension(11, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel6.setBackground(CustomColors.sidesSeparator);
+        jPanel6.setMaximumSize(new java.awt.Dimension(11, 0));
+        jPanel6.setMinimumSize(new java.awt.Dimension(11, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 204, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(CustomColors.sidesSeparator);
+        jPanel1.setMaximumSize(new java.awt.Dimension(11, 0));
+        jPanel1.setMinimumSize(new java.awt.Dimension(11, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(11, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 36)); // NOI18N
+        jLabel3.setForeground(CustomColors.title);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Details de la commande");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(TodayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(YesterdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(ThisMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(ThisYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
+                        .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(YesterdayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(TodayPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ThisYearPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ThisMonthPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    private void FilterDefaultColorAll() {
+        ShowAllPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisYearPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisMonthPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        ThisWeekPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        YesterdayPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        TodayPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
 
+    }
+
+    private void FilterMouseEntered(JPanel p) {
+        if (p.getBackground() != CustomColors.orderFilterPanelSelected) {
+            p.setBackground(CustomColors.orderFilterPanelHoveredOn);
+        }
+    }
+
+    private void FilterMouseExited(JPanel p) {
+        if (p.getBackground() != CustomColors.orderFilterPanelSelected) {
+            p.setBackground(CustomColors.panelDefaultBackgroundColor);
+        }
+    }
+
+    private void FilterSelected(JPanel p) {
+        FilterDefaultColorAll();
+        p.setBackground(CustomColors.orderFilterPanelSelected);
+    }
     private void TodayPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayPanelMouseEntered
-        // TODO add your handling code here:
-        TodayPanel.setBackground(CustomColors.panelHoveredOn);
+        FilterMouseEntered(TodayPanel);
     }//GEN-LAST:event_TodayPanelMouseEntered
 
     private void YesterdayPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseEntered
-        // TODO add your handling code here:
-        YesterdayPanel.setBackground(CustomColors.panelHoveredOn);
+        FilterMouseEntered(YesterdayPanel);
     }//GEN-LAST:event_YesterdayPanelMouseEntered
 
-    private void ThisWeekPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseEntered
-        // TODO add your handling code here:
-        ThisWeekPanel.setBackground(CustomColors.panelHoveredOn);
-    }//GEN-LAST:event_ThisWeekPanelMouseEntered
-
     private void ThisMonthPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseEntered
-        // TODO add your handling code here:
-        ThisMonthPanel.setBackground(CustomColors.panelHoveredOn);
+        FilterMouseEntered(ThisMonthPanel);
     }//GEN-LAST:event_ThisMonthPanelMouseEntered
 
     private void ThisYearPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisYearPanelMouseEntered
-        // TODO add your handling code here:
-        ThisYearPanel.setBackground(CustomColors.panelHoveredOn);
+        FilterMouseEntered(ThisYearPanel);
     }//GEN-LAST:event_ThisYearPanelMouseEntered
 
     private void ShowAllPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowAllPanelMouseEntered
-        // TODO add your handling code here:
-        ShowAllPanel.setBackground(CustomColors.panelHoveredOn);
+        FilterMouseEntered(ShowAllPanel);
     }//GEN-LAST:event_ShowAllPanelMouseEntered
 
     private void TodayPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayPanelMouseExited
-        // TODO add your handling code here:
-        TodayPanel.setBackground(CustomColors.panelDefault);
+        FilterMouseExited(TodayPanel);
     }//GEN-LAST:event_TodayPanelMouseExited
 
     private void YesterdayPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseExited
-        // TODO add your handling code here:
-        YesterdayPanel.setBackground(CustomColors.panelDefault);
+        FilterMouseExited(YesterdayPanel);
     }//GEN-LAST:event_YesterdayPanelMouseExited
 
-    private void ThisWeekPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseExited
-        // TODO add your handling code here:
-        ThisWeekPanel.setBackground(CustomColors.panelDefault);
-    }//GEN-LAST:event_ThisWeekPanelMouseExited
-
     private void ThisMonthPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseExited
-        // TODO add your handling code here:
-        ThisMonthPanel.setBackground(CustomColors.panelDefault);
+        FilterMouseExited(ThisMonthPanel);
     }//GEN-LAST:event_ThisMonthPanelMouseExited
 
     private void ThisYearPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisYearPanelMouseExited
-        // TODO add your handling code here:
-        ThisYearPanel.setBackground(CustomColors.panelDefault);
+        FilterMouseExited(ThisYearPanel);
     }//GEN-LAST:event_ThisYearPanelMouseExited
 
     private void ShowAllPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowAllPanelMouseExited
-        // TODO add your handling code here:
-        ShowAllPanel.setBackground(CustomColors.panelDefault);
+        FilterMouseExited(ShowAllPanel);
     }//GEN-LAST:event_ShowAllPanelMouseExited
 
     private void TodayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayPanelMouseClicked
         // TODO add your handling code here:
         refreshOrdersTable(Gr.commandesToday());
+        FilterSelected(TodayPanel);
     }//GEN-LAST:event_TodayPanelMouseClicked
 
     private void YesterdayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseClicked
         // TODO add your handling code here:
         refreshOrdersTable(Gr.commandesYesterday());
+        FilterSelected(YesterdayPanel);
     }//GEN-LAST:event_YesterdayPanelMouseClicked
-
-    private void ThisWeekPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseClicked
-        // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesThisWeek());
-    }//GEN-LAST:event_ThisWeekPanelMouseClicked
 
     private void ThisMonthPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseClicked
         // TODO add your handling code here:
         refreshOrdersTable(Gr.commandesThisMonth());
+        FilterSelected(ThisMonthPanel);
     }//GEN-LAST:event_ThisMonthPanelMouseClicked
 
     private void ThisYearPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisYearPanelMouseClicked
         // TODO add your handling code here:
         refreshOrdersTable(Gr.commandesThisYear());
+        FilterSelected(ThisYearPanel);
+
     }//GEN-LAST:event_ThisYearPanelMouseClicked
 
     private void ShowAllPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowAllPanelMouseClicked
         // TODO add your handling code here:
         refreshOrdersTable(Gr.commandesShowAll());
+        FilterSelected(ShowAllPanel);
     }//GEN-LAST:event_ShowAllPanelMouseClicked
 
     private void OrdersTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdersTableMousePressed
         int row = OrdersTable.getSelectedRow();
         if (row != -1) {
-            //  TableModel model=(TableModel)OrdersTable.getModel();
             String ID = OrdersTable.getValueAt(OrdersTable.getSelectedRow(), 0).toString();
-            DetailsTable.setModel(new MonModele(Gr.detailsByID(Integer.parseInt(ID))));
+            refreshDetailsCommande(Integer.parseInt(ID));
         }
-        
     }//GEN-LAST:event_OrdersTableMousePressed
+
+    private void ThisWeekPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseExited
+        FilterMouseExited(ThisWeekPanel);
+
+    }//GEN-LAST:event_ThisWeekPanelMouseExited
+
+    private void ThisWeekPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseEntered
+        FilterMouseEntered(ThisWeekPanel);
+    }//GEN-LAST:event_ThisWeekPanelMouseEntered
+
+    private void ThisWeekPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseClicked
+        refreshOrdersTable(Gr.commandesThisWeek());
+        FilterSelected(ThisWeekPanel);
+    }//GEN-LAST:event_ThisWeekPanelMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -509,7 +552,13 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     private javax.swing.JPanel TodayPanel;
     private javax.swing.JLabel YesterdayLabel;
     private javax.swing.JPanel YesterdayPanel;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
