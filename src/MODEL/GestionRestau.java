@@ -60,7 +60,7 @@ public class GestionRestau {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select idcommande as Id,date as Date,montant as MontantTotal,numTable as 'Table' from commande ");
+            Res = St.executeQuery("Select idcommande as Id,date as Date,montant as MontantTotal,numTable as 'Table' from commande where paye=0 ");
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete Select: ou ST : " + ex.getMessage());
         }

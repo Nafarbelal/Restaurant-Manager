@@ -184,7 +184,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCommandeEnCours = new javax.swing.JTable();
-        jPanel7 = new javax.swing.JPanel();
+        BtnFinaliser = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         btnEditCommande = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -435,14 +435,19 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         tableCommandeEnCours.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
 
-        jPanel7.setBackground(new java.awt.Color(54, 33, 89));
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        BtnFinaliser.setBackground(new java.awt.Color(54, 33, 89));
+        BtnFinaliser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                BtnFinaliserMousePressed(evt);
+            }
+        });
+        BtnFinaliser.setLayout(new java.awt.BorderLayout());
 
         jLabel4.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Finaliser La Commande");
-        jPanel7.add(jLabel4, java.awt.BorderLayout.CENTER);
+        BtnFinaliser.add(jLabel4, java.awt.BorderLayout.CENTER);
 
         btnEditCommande.setBackground(new java.awt.Color(122, 72, 221));
         btnEditCommande.setPreferredSize(new java.awt.Dimension(175, 50));
@@ -485,7 +490,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
                 .addGap(53, 53, 53)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnFinaliser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(btnTrashCommande, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -502,7 +507,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BtnFinaliser, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -541,7 +546,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(LayoutRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LayoutRestaurant, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -553,9 +558,9 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(LayoutRestaurant, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(85, 85, 85)
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(80, 80, 80))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -738,8 +743,18 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         }
     }//GEN-LAST:event_btnTrashCommandeMousePressed
 
+    private void BtnFinaliserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnFinaliserMousePressed
+        int row = tableCommandeEnCours.getSelectedRow();
+        int idcom = Integer.parseInt(tableCommandeEnCours.getValueAt(row,0).toString());
+        C.FinaliserCommande(idcom);
+        RefreshTableCommandes();
+        
+        
+    }//GEN-LAST:event_BtnFinaliserMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BtnFinaliser;
     private javax.swing.JPanel LayoutRestaurant;
     private javax.swing.JPanel btnEditCommande;
     private javax.swing.JButton btnEmporter;
@@ -770,7 +785,6 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableCommandeEnCours;
     // End of variables declaration//GEN-END:variables

@@ -8,6 +8,7 @@ package kikisrestaurantmanager;
 import DB_Objects.Employee;
 import MODEL.GestionRestau;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 
 /**
@@ -39,7 +40,7 @@ public class loginFrame extends javax.swing.JDialog {
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
         //mainMenu.setEnabled(true);
         //mainMenu.toFront();
-        
+
     }
 
     /**
@@ -103,6 +104,11 @@ public class loginFrame extends javax.swing.JDialog {
                 jLabel8MousePressed(evt);
             }
         });
+        jLabel8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel8KeyPressed(evt);
+            }
+        });
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 400, 70));
 
         jLabel4.setFont(new java.awt.Font("Source Sans Pro", 0, 22)); // NOI18N
@@ -146,7 +152,7 @@ public class loginFrame extends javax.swing.JDialog {
         if (emp == null) {
             labelWrongPassword.setVisible(true);
         } else {
-            if ( username.equals(emp.getLogin()) && password.equals(emp.getPassword()) ) {
+            if (username.equals(emp.getLogin()) && password.equals(emp.getPassword())) {
                 System.out.println("Connexion Reussie");
                 mainMenu.ClickedMenu(mainMenu.getBtnManager(), mainMenu.getManagerPanel1());
                 dispose();
@@ -164,6 +170,12 @@ public class loginFrame extends javax.swing.JDialog {
     private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordFieldActionPerformed
+
+    private void jLabel8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel8KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER ) {
+            System.out.println("enter clicked");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel8KeyPressed
 
     /**
      * @param args the command line arguments

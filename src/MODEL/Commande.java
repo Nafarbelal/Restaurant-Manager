@@ -88,7 +88,15 @@ public class Commande {
         }
         return 0;
     }
-
+    public void FinaliserCommande(int idcom)
+    {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("update Commande set paye=1 where idcommande=" +idcom);
+            Pst.executeUpdate();
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requete FinaliserCommande " + ex.getMessage());
+        }
+    }
     public int getNumTableduneCommande(int Idcom) {
         try {
             PreparedStatement Pst = Con.prepareStatement("select numTable from commande where idcommande =" + Idcom);
