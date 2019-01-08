@@ -64,6 +64,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="OrdersTableMousePressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -99,12 +102,12 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="57" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="ShowAllPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="ThisYearPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="TodayPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="ThisWeekPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="YesterdayPanel" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="ThisMonthPanel" alignment="1" min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="ShowAllPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="ThisYearPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="TodayPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="ThisWeekPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="YesterdayPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="ThisMonthPanel" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
@@ -139,7 +142,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="TodayLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,7 +185,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="YesterdayLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -225,7 +228,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="ThisWeekLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -268,7 +271,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="ThisMonthLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -311,7 +314,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="ThisYearLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -354,7 +357,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="ShowAllLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
