@@ -8,6 +8,7 @@ package kikisrestaurantmanager.ContentPanels;
 import MODEL.Commande;
 import MODEL.GestionRestau;
 import MODEL.MonModele;
+import MODEL.TableModel;
 import addons.HeaderRenderer;
 import java.awt.Font;
 import java.sql.ResultSet;
@@ -15,11 +16,15 @@ import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import kikisrestaurantmanager.MainMenu;
 import addons.CustomColors;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author Ilyas El Bani
  */
-public class OrdersPanel extends javax.swing.JPanel {
+public class OrdersPanel extends javax.swing.JPanel implements ListSelectionListener {
 
     GestionRestau Gr = new GestionRestau();
 
@@ -34,11 +39,29 @@ public class OrdersPanel extends javax.swing.JPanel {
         OrdersTable.getTableHeader().setOpaque(false);
         OrdersTable.getTableHeader().setBackground(Color.WHITE); */
         refreshOrdersTable(Gr.commandesShowAll());
+        ListSelectionModel selectionModel = OrdersTable.getSelectionModel();
+        selectionModel.addListSelectionListener(this);
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        /* System.out.println("You clicked a row!");
+
+        if (e.getSource() == OrdersTable.getSelectionModel() && e.getValueIsAdjusting()) {
+            //  TableModel model=(TableModel)OrdersTable.getModel();
+            System.out.println(e.getFirstIndex());
+            System.out.println(e.getLastIndex());
+            System.out.println(e.getValueIsAdjusting());
+            System.out.println("==========");
+
+            String ID = OrdersTable.getValueAt(OrdersTable.getSelectedRow(), 0).toString();
+            DetailsTable.setModel(new MonModele(Gr.detailsByID(Integer.parseInt(ID))));
+        }*/
     }
 
     public void refreshOrdersTable(ResultSet arts) {
 
-        
+        OrdersTable.clearSelection();
         // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
         OrdersTable.setModel(new MonModele(arts));
         /*
@@ -77,6 +100,8 @@ public class OrdersPanel extends javax.swing.JPanel {
         ThisYearLabel = new javax.swing.JLabel();
         ShowAllPanel = new javax.swing.JPanel();
         ShowAllLabel = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DetailsTable = new javax.swing.JTable();
 
         OrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,6 +114,11 @@ public class OrdersPanel extends javax.swing.JPanel {
 
             }
         ));
+        OrdersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                OrdersTableMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(OrdersTable);
 
         jPanel1.setBackground(CustomColors.darkViolet);
@@ -123,7 +153,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(TodayPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(TodayLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         YesterdayPanel.setBackground(CustomColors.panelDefault);
@@ -156,7 +186,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(YesterdayPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(YesterdayLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         ThisWeekPanel.setBackground(CustomColors.panelDefault);
@@ -189,7 +219,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(ThisWeekPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(ThisWeekLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         ThisMonthPanel.setBackground(CustomColors.panelDefault);
@@ -222,7 +252,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(ThisMonthPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(ThisMonthLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         ThisYearPanel.setBackground(CustomColors.panelDefault);
@@ -255,7 +285,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(ThisYearPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(ThisYearLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         ShowAllPanel.setBackground(CustomColors.panelDefault);
@@ -288,7 +318,7 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(ShowAllPanelLayout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(ShowAllLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -315,25 +345,40 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(57, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TodayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(YesterdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ThisMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ShowAllPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ThisYearPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TodayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ThisWeekPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(YesterdayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ThisMonthPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
+
+        DetailsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(DetailsTable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -341,7 +386,9 @@ public class OrdersPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -436,8 +483,19 @@ public class OrdersPanel extends javax.swing.JPanel {
         refreshOrdersTable(Gr.commandesShowAll());
     }//GEN-LAST:event_ShowAllPanelMouseClicked
 
+    private void OrdersTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OrdersTableMousePressed
+        int row = OrdersTable.getSelectedRow();
+        if (row != -1) {
+            //  TableModel model=(TableModel)OrdersTable.getModel();
+            String ID = OrdersTable.getValueAt(OrdersTable.getSelectedRow(), 0).toString();
+            DetailsTable.setModel(new MonModele(Gr.detailsByID(Integer.parseInt(ID))));
+        }
+        
+    }//GEN-LAST:event_OrdersTableMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable DetailsTable;
     private javax.swing.JTable OrdersTable;
     private javax.swing.JLabel ShowAllLabel;
     private javax.swing.JPanel ShowAllPanel;
@@ -453,5 +511,6 @@ public class OrdersPanel extends javax.swing.JPanel {
     private javax.swing.JPanel YesterdayPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

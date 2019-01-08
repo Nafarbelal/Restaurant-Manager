@@ -20,7 +20,9 @@ public class GestionRestau {
     private Connection Con;
     private Statement St;
     private DaoBD dao;
+    
 
+       
     public GestionRestau() {
         dao = new DaoBD();
         dao.setPilote("com.mysql.jdbc.Driver");
@@ -294,6 +296,21 @@ public class GestionRestau {
             return Rs;
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
+        }
+        return null;
+    }
+    
+    public ResultSet detailsByID(int ID) {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("SELECT article.idarticle as ID ,article.designation as Designation ,detail_commande.quantite as Quantite ,detail_commande.prixachat as Prix FROM article,detail_commande WHERE idcommande="+ID+" AND article.idarticle=detail_commande.idarticle" );
+            System.out.println(Pst.toString());
+            Rs = Pst.executeQuery();
+            System.out.println("Testing commandes detailsByID");      
+            return Rs;
+        } 
+        catch (SQLException ex) {
+            System.err.println("Erreur dans la requête detailsByID " + ex.getMessage());
         }
         return null;
     }
