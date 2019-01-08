@@ -64,7 +64,7 @@ public class Manager {
    }
     public void DeleteArticle(int Id ) 
    {   
-        String Req = "delete * from  article where IDARTICLE = "+Id+"";
+        String Req = "delete from  article where IDARTICLE = "+Id+"";
         try 
         {
             int reponse =JOptionPane.showConfirmDialog(null, "Etes vous sur du suppression", "Suppression", JOptionPane.OK_CANCEL_OPTION);
