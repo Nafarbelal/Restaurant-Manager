@@ -745,11 +745,13 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
 
     private void BtnFinaliserMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnFinaliserMousePressed
         int row = tableCommandeEnCours.getSelectedRow();
-        int idcom = Integer.parseInt(tableCommandeEnCours.getValueAt(row,0).toString());
-        C.FinaliserCommande(idcom);
-        RefreshTableCommandes();
-        
-        
+        if (row != -1) {
+            int idcom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
+            C.FinaliserCommande(idcom);
+            RefreshTableCommandes();
+        }
+
+
     }//GEN-LAST:event_BtnFinaliserMousePressed
 
 
