@@ -5,7 +5,7 @@
  */
 package kikisrestaurantmanager.ContentPanels;
 
-import MODEL.Commande;
+import MODEL.DB_Commande;
 import MODEL.GestionRestau;
 import MODEL.MonModele;
 import addons.CustomColors;
@@ -39,7 +39,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
      * Creates new form HomePanel
      */
     GestionRestau Gr = new GestionRestau();
-    Commande C = new Commande();
+    DB_Commande C = new DB_Commande();
     MainMenu mainMenu;
 
     public HomePanel() {

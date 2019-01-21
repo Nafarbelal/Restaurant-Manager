@@ -5,7 +5,7 @@
  */
 package kikisrestaurantmanager;
 
-import MODEL.Commande;
+import MODEL.DB_Commande;
 import MODEL.GestionRestau;
 import java.awt.Dialog;
 import java.sql.ResultSet;
@@ -25,7 +25,7 @@ public class MainMenu extends javax.swing.JFrame {
      * Creates new form MainMenu
      */
     GestionRestau Gr = new GestionRestau();
-    Commande C = new Commande();
+    DB_Commande C = new DB_Commande();
 
     public MainMenu() {
         this.setUndecorated(true);
@@ -41,7 +41,7 @@ public class MainMenu extends javax.swing.JFrame {
         if (isOccupied == 0) {
             new accesCommandeFrame(this, idTable).setVisible(true);
         } else {
-            int idCom = C.getIdCommandeFromNumTable(idTable);
+            int idCom = C.getIdCommandeNonPayéFromNumTable(idTable);
             new accesCommandeFrame(this, idTable, idCom).setVisible(true);
         }
 

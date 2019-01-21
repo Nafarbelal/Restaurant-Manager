@@ -5,6 +5,7 @@
  */
 package kikisrestaurantmanager;
 
+import MODEL.DB_Manager;
 import MODEL.GestionRestau;
 import java.awt.Dialog;
 import addons.CustomColors;
@@ -16,7 +17,7 @@ import addons.CustomColors;
 public class ChangerMdp extends javax.swing.JDialog {
 
     GestionRestau Gr = new GestionRestau();
-
+    DB_Manager dbManager = new DB_Manager();
     /**
      * Creates new form ChangerMdp
      */
@@ -166,9 +167,9 @@ public class ChangerMdp extends javax.swing.JDialog {
         String nw1 = txtNewPassword.getText();
         String nw2 = txtConfirmNewPassword.getText();
 
-        if (Gr.CheckPassword(old) == 1) {
+        if (dbManager.CheckPassword(old) == 1) {
             if (nw1.equals(nw2)) {
-                Gr.UpdatePwd(nw2);
+                dbManager.UpdatePwd(nw2);
                 MotDePasseChangé mdp= new MotDePasseChangé();
                 mdp.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 mdp.setLocationRelativeTo(this);

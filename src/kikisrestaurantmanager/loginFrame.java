@@ -6,6 +6,7 @@
 package kikisrestaurantmanager;
 
 import DB_Objects.Employee;
+import MODEL.DB_Manager;
 import MODEL.GestionRestau;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -22,6 +23,7 @@ public class loginFrame extends javax.swing.JDialog {
      */
     MainMenu mainMenu;
     GestionRestau Gr = new GestionRestau();
+    DB_Manager dbManager = new DB_Manager();
 
     public loginFrame() {
         initComponents();
@@ -148,7 +150,7 @@ public class loginFrame extends javax.swing.JDialog {
         System.out.println("Se Connecter Clicked");
         String username = loginField.getText();
         String password = passwordField.getText();
-        Employee emp = Gr.getLoginInfos(username);
+        Employee emp = dbManager.getLoginInfos(username);
         if (emp == null) {
             labelWrongPassword.setVisible(true);
         } else {

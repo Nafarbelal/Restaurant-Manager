@@ -5,7 +5,8 @@
  */
 package kikisrestaurantmanager.ContentPanels;
 
-import MODEL.Commande;
+import MODEL.DB_Commande;
+import MODEL.DB_DetailCommande;
 import MODEL.GestionRestau;
 import MODEL.MonModele;
 import MODEL.TableModel;
@@ -29,6 +30,8 @@ import javax.swing.event.ListSelectionListener;
 public class OrdersPanel extends javax.swing.JPanel implements ListSelectionListener {
 
     GestionRestau Gr = new GestionRestau();
+    DB_DetailCommande dbDetailCommande = new DB_DetailCommande();
+    DB_Commande dbCommande = new DB_Commande();
 
     /**
      * Creates new form OrdersPanel
@@ -52,7 +55,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         OrdersTable.ExitedHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         OrdersTable.getTableHeader().setOpaque(false);
         OrdersTable.Exitedeader().setBackground(Color.WHITE); */
-        refreshOrdersTable(Gr.commandesShowAll());
+        refreshOrdersTable(dbCommande.commandesShowAll());
         refreshDetailsCommande(0);
         ListSelectionModel selectionModel = OrdersTable.getSelectionModel();
         selectionModel.addListSelectionListener(this);
@@ -77,7 +80,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     }
 
     public void refreshDetailsCommande(int idCommande) {
-        DetailsTable.setModel(new MonModele(Gr.detailsByID(idCommande)));
+        DetailsTable.setModel(new MonModele(dbDetailCommande.detailsByID(idCommande)));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         //  OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
@@ -343,7 +346,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel8Layout.createSequentialGroup()
@@ -492,7 +495,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
 
     private void ShowAllPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ShowAllPanelMouseClicked
         // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesShowAll());
+        refreshOrdersTable(dbCommande.commandesShowAll());
         FilterSelected(ShowAllPanel);
     }//GEN-LAST:event_ShowAllPanelMouseClicked
 
@@ -536,8 +539,6 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     private javax.swing.JPanel YesterdayPanel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;

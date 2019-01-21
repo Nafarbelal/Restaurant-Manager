@@ -14,7 +14,9 @@ import javax.swing.JRadioButton;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import MODEL.Commande;
+import MODEL.DB_Commande;
+import MODEL.DB_Article;
+import MODEL.DB_DetailCommande;
 import MODEL.TableModel;
 import java.awt.Dialog;
 import javax.swing.JDialog;
@@ -27,7 +29,9 @@ import javax.swing.UIManager;
  */
 public class accesCommandeFrame extends javax.swing.JFrame implements ListSelectionListener {
 
-    Commande C = new Commande();
+    DB_Commande dbCommande = new DB_Commande();
+    DB_DetailCommande dbDetailCommande = new DB_DetailCommande();
+    DB_Article        dbArticle        = new DB_Article();
     int idCommande;
 
     /**
@@ -35,7 +39,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
      */
     public accesCommandeFrame() {
         initComponents();
-        C.CreerCommande(0);
+        dbCommande.CreerCommande(0);
     }
     MainMenu mainMenu;
 
@@ -59,7 +63,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         //     this.setUndecorated(true);
         mainMenu = mn;
         initComponents();
-        idCommande = C.CreerCommande(idTable);
+        idCommande = dbCommande.CreerCommande(idTable);
         System.out.println("Commande créée");
         this.getContentPane().setBackground(Color.white);
         if (idTable == 0) {
@@ -78,8 +82,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         super.dispose(); //To change body of generated methods, choose Tools | Templates.
         mainMenu.setEnabled(true);
         mainMenu.setVisible(true);
-        if (C.CheckCreation(idCommande) == 0) {
-            C.AnnulerCommande(idCommande);
+        if (dbDetailCommande.CheckCreation(idCommande) == 0) {
+            dbCommande.AnnulerCommande(idCommande);
         }
 
         mainMenu.getHomePanel1().RefreshTableCommandes();
@@ -94,20 +98,20 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }
 
     public void RefreshCommande() {
-        ResultSet details = C.AfficherDetail(idCommande);
+        ResultSet details = dbDetailCommande.AfficherDetail(idCommande);
         TableCommande.setModel(new TableModel(details));
-        C.UpdateMontantTotal(idCommande);
-        TxtMontant.setText(Float.toString(C.getMontantTotalCommande(idCommande)) + " MAD");
+        dbCommande.UpdateMontantTotal(idCommande);
+        TxtMontant.setText(Float.toString(dbCommande.getMontantTotalCommande(idCommande)) + " MAD");
 
     } // to refresh the order table 
 
     public void Refresh_Menu(String cat) {
-        ResultSet articles = C.MenuCategorie(cat);
+        ResultSet articles = dbArticle.MenuCategorie(cat);
         Menu.setModel(new TableModel(articles));
     }
 
     public void Refresh_Menu() {
-        ResultSet articles = C.MenuCategorieAll();
+        ResultSet articles = dbArticle.MenuCategorieAll();
         Menu.setModel(new TableModel(articles));
     }
 
@@ -587,11 +591,11 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 System.err.println("Prob de compteur " + e.getMessage());
             }
             int qu = (Integer) Compteur.getValue();
-            if (C.CheckArticle(id_article, idCommande) == 1) {
-                C.UpdateDetailCommande(id_article, idCommande, qu);
+            if (dbDetailCommande.CheckArticle(id_article, idCommande) == 1) {
+                dbDetailCommande.UpdateDetailCommande(id_article, idCommande, qu);
             } else {
                 float prix = Float.parseFloat(Menu.getValueAt(row, 2).toString());
-                C.InsererDetailCommande(id_article, idCommande, qu, prix);
+                dbDetailCommande.InsererDetailCommande(id_article, idCommande, qu, prix);
             }
             // Affichage depuis la base de données dans la table TableCommande
             RefreshCommande();
@@ -605,9 +609,9 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             int qu = Integer.parseInt(TableCommande.getValueAt(row, 2).toString());
             int id_article = Integer.parseInt(TableCommande.getValueAt(row, 0).toString());
             if (qu == 1) {
-                C.SupprimerArticleCommande(idCommande, id_article);
+                dbDetailCommande.SupprimerArticleCommande(idCommande, id_article);
             } else {
-                C.UpdateDetailCommande(id_article, idCommande, -1);
+                dbDetailCommande.UpdateDetailCommande(id_article, idCommande, -1);
             }
             RefreshCommande();
             if (qu > 1) {
@@ -752,13 +756,13 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         ConfirmationFrame confirmDialog = new ConfirmationFrame();
         confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         confirmDialog.setLocationRelativeTo(this);
-        if (C.CheckCreation(this.idCommande) == 0) {
+        if (dbDetailCommande.CheckCreation(this.idCommande) == 0) {
             this.disposeNormal();
         } else {
             answer = confirmDialog.getAnswer();
         }
         if (answer == 1) {
-            C.AnnulerCommande(idCommande);
+            dbCommande.AnnulerCommande(idCommande);
             this.disposeNormal();
         }
     }//GEN-LAST:event_BtnAnnulerActionPerformed
@@ -768,8 +772,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_BtnAnnulerMouseClicked
 
     private void BtnConfirmerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConfirmerActionPerformed
-        if (C.CheckCreation(idCommande) == 0) {
-            C.AnnulerCommande(idCommande);
+        if (dbDetailCommande.CheckCreation(idCommande) == 0) {
+            dbCommande.AnnulerCommande(idCommande);
         }
         this.disposeNormal();
     }//GEN-LAST:event_BtnConfirmerActionPerformed
@@ -778,7 +782,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         int row = TableCommande.getSelectedRow();
         if (row != -1) {
             int id_article = Integer.parseInt(TableCommande.getValueAt(row, 0).toString());
-            C.SupprimerArticleCommande(idCommande, id_article);
+            dbDetailCommande.SupprimerArticleCommande(idCommande, id_article);
             RefreshCommande();
         }
     }//GEN-LAST:event_btnTrashMousePressed

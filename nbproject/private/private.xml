@@ -3,12 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="S2">
+            <file>file:/D:/Java/KikisRestaurantManager/src/DAO/DaoBD.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/CustomColors.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/ClockLabel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MainMenu.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
         </group>
     </open-files>
 </project-private>
