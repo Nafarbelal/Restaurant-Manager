@@ -86,10 +86,10 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ContentPanel = new javax.swing.JPanel();
         homePanel1 = new kikisrestaurantmanager.ContentPanels.HomePanel(this);
-        infosPanel1 = new kikisrestaurantmanager.ContentPanels.InfosPanel();
         managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel();
-        ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
         statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel();
+        ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
+        infosPanel1 = new kikisrestaurantmanager.ContentPanels.InfosPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,7 +112,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelHome.setFont(new java.awt.Font("Montserrat Light", 0, 18)); // NOI18N
         labelHome.setForeground(new java.awt.Color(255, 255, 255));
         labelHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelHome.setText("Home");
+        labelHome.setText("Accueil");
         btnHome.add(labelHome, java.awt.BorderLayout.PAGE_END);
 
         btnOrders.setBackground(new java.awt.Color(54, 33, 89));
@@ -130,7 +130,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelOrders.setFont(new java.awt.Font("Montserrat Light", 0, 18)); // NOI18N
         labelOrders.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelOrders.setText("Orders");
+        labelOrders.setText("Commandes");
         btnOrders.add(labelOrders, java.awt.BorderLayout.PAGE_END);
 
         btnStats.setBackground(new java.awt.Color(54, 33, 89));
@@ -148,7 +148,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelOrders1.setFont(new java.awt.Font("Montserrat Light", 0, 18)); // NOI18N
         labelOrders1.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelOrders1.setText("Statistics");
+        labelOrders1.setText("Statistiques");
         btnStats.add(labelOrders1, java.awt.BorderLayout.PAGE_END);
 
         btnManager.setBackground(new java.awt.Color(54, 33, 89));
@@ -166,7 +166,7 @@ public class MainMenu extends javax.swing.JFrame {
         labelOrders3.setFont(new java.awt.Font("Montserrat Light", 0, 18)); // NOI18N
         labelOrders3.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labelOrders3.setText("Manager Mode");
+        labelOrders3.setText("Mode Manager");
         btnManager.add(labelOrders3, java.awt.BorderLayout.PAGE_END);
 
         btnInfos.setBackground(new java.awt.Color(54, 33, 89));
@@ -175,12 +175,23 @@ public class MainMenu extends javax.swing.JFrame {
                 btnInfosMousePressed(evt);
             }
         });
-        btnInfos.setLayout(new java.awt.BorderLayout());
 
-        jLabel3.setBackground(new java.awt.Color(54, 33, 89));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Info_60px.png"))); // NOI18N
-        btnInfos.add(jLabel3, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout btnInfosLayout = new javax.swing.GroupLayout(btnInfos);
+        btnInfos.setLayout(btnInfosLayout);
+        btnInfosLayout.setHorizontalGroup(
+            btnInfosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        btnInfosLayout.setVerticalGroup(
+            btnInfosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnInfosLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel3)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout SidePanelLayout = new javax.swing.GroupLayout(SidePanel);
         SidePanel.setLayout(SidePanelLayout);
@@ -189,13 +200,13 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(btnOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnStats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnManager, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-            .addComponent(btnInfos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(btnManager, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+            .addComponent(btnInfos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         SidePanelLayout.setVerticalGroup(
             SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SidePanelLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnOrders, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,9 +214,8 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(btnStats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnManager, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(btnInfos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(btnInfos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         TitlePanel.setBackground(new java.awt.Color(122, 72, 221));
@@ -233,7 +243,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 410, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 374, Short.MAX_VALUE)
                 .addComponent(CloseButton)
                 .addGap(88, 88, 88))
         );
@@ -253,12 +263,12 @@ public class MainMenu extends javax.swing.JFrame {
 
         ContentPanel.setBackground(new java.awt.Color(255, 255, 255));
         ContentPanel.setMaximumSize(new java.awt.Dimension(1000, 1000));
-        ContentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        ContentPanel.add(homePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
-        ContentPanel.add(infosPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
-        ContentPanel.add(managerPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 780));
-        ContentPanel.add(ordersPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
-        ContentPanel.add(statsPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 780));
+        ContentPanel.setLayout(new java.awt.BorderLayout());
+        ContentPanel.add(homePanel1, java.awt.BorderLayout.CENTER);
+        ContentPanel.add(managerPanel1, java.awt.BorderLayout.PAGE_START);
+        ContentPanel.add(statsPanel1, java.awt.BorderLayout.PAGE_END);
+        ContentPanel.add(ordersPanel1, java.awt.BorderLayout.LINE_START);
+        ContentPanel.add(infosPanel1, java.awt.BorderLayout.LINE_END);
 
         javax.swing.GroupLayout BackgroundPaneLayout = new javax.swing.GroupLayout(BackgroundPane);
         BackgroundPane.setLayout(BackgroundPaneLayout);
@@ -266,7 +276,7 @@ public class MainMenu extends javax.swing.JFrame {
             BackgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundPaneLayout.createSequentialGroup()
                 .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addComponent(TitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
