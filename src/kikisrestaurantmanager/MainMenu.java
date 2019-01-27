@@ -28,7 +28,7 @@ public class MainMenu extends javax.swing.JFrame {
     DB_Commande C = new DB_Commande();
 
     public MainMenu() {
-        this.setUndecorated(true);
+        //this.setUndecorated(true);
         //this.setResizable(true);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
@@ -87,7 +87,7 @@ public class MainMenu extends javax.swing.JFrame {
         ContentPanel = new javax.swing.JPanel();
         homePanel1 = new kikisrestaurantmanager.ContentPanels.HomePanel(this);
         managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel();
-        statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel();
+        statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel(this);
         ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
         infosPanel1 = new kikisrestaurantmanager.ContentPanels.InfosPanel();
 
@@ -263,12 +263,12 @@ public class MainMenu extends javax.swing.JFrame {
 
         ContentPanel.setBackground(new java.awt.Color(255, 255, 255));
         ContentPanel.setMaximumSize(new java.awt.Dimension(1000, 1000));
-        ContentPanel.setLayout(new java.awt.BorderLayout());
-        ContentPanel.add(homePanel1, java.awt.BorderLayout.CENTER);
-        ContentPanel.add(managerPanel1, java.awt.BorderLayout.PAGE_START);
-        ContentPanel.add(statsPanel1, java.awt.BorderLayout.PAGE_END);
-        ContentPanel.add(ordersPanel1, java.awt.BorderLayout.LINE_START);
-        ContentPanel.add(infosPanel1, java.awt.BorderLayout.LINE_END);
+        ContentPanel.setLayout(new java.awt.CardLayout());
+        ContentPanel.add(homePanel1, "card2");
+        ContentPanel.add(managerPanel1, "card3");
+        ContentPanel.add(statsPanel1, "card4");
+        ContentPanel.add(ordersPanel1, "card5");
+        ContentPanel.add(infosPanel1, "card6");
 
         javax.swing.GroupLayout BackgroundPaneLayout = new javax.swing.GroupLayout(BackgroundPane);
         BackgroundPane.setLayout(BackgroundPaneLayout);
@@ -340,7 +340,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnManagerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagerMousePressed
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
-         //     ClickedMenu(source, managerPanel1);
+        //     ClickedMenu(source, managerPanel1);
         JDialog loginDialog = new loginFrame(this);
         loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         loginDialog.setVisible(true);
