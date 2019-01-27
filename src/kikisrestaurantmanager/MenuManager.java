@@ -24,7 +24,7 @@ import kikisrestaurantmanager.MainMenu;
 public class MenuManager extends javax.swing.JPanel {
 
     
-      Manager M = new Manager();
+    //  Manager M = nuu;
       MainMenu mainMenu;
     /**
      * Creates new form StatsPanel
