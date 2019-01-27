@@ -436,7 +436,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         panelTotal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         panelTotal.setLayout(new java.awt.BorderLayout());
 
-        TxtCurrentTable.setBackground(new java.awt.Color(255, 255, 255));
+        TxtCurrentTable.setBackground(new java.awt.Color(122, 72, 221));
         TxtCurrentTable.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
         TxtCurrentTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtCurrentTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Service_Bell_32px.png"))); // NOI18N
@@ -758,6 +758,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         confirmDialog.setLocationRelativeTo(this);
         if (dbDetailCommande.CheckCreation(this.idCommande) == 0) {
             this.disposeNormal();
+            answer=1;
         } else {
             answer = confirmDialog.getAnswer();
         }
