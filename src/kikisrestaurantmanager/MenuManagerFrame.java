@@ -7,6 +7,7 @@ package kikisrestaurantmanager;
 
 import MODEL.DB_Article;
 import MODEL.MonModele;
+import java.awt.Dialog;
 import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -51,8 +52,8 @@ public class MenuManagerFrame extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         MenuTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        AddArticleButton = new javax.swing.JButton();
+        UpdateArticleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -69,9 +70,19 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(MenuTable);
 
-        jButton1.setText("Ajouter un article");
+        AddArticleButton.setText("Ajouter un article");
+        AddArticleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AddArticleButtonMousePressed(evt);
+            }
+        });
 
-        jButton2.setText("Modifier");
+        UpdateArticleButton.setText("Modifier");
+        UpdateArticleButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                UpdateArticleButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,8 +91,8 @@ public class MenuManagerFrame extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AddArticleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(UpdateArticleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
@@ -94,14 +105,32 @@ public class MenuManagerFrame extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(149, 149, 149)
-                .addComponent(jButton1)
+                .addComponent(AddArticleButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(UpdateArticleButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AddArticleButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddArticleButtonMousePressed
+        // TODO add your handling code here:
+        AjoutArticle c=new AjoutArticle();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_AddArticleButtonMousePressed
+
+    private void UpdateArticleButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateArticleButtonMousePressed
+        // TODO add your handling code here:
+        ModificationArticle c=new ModificationArticle();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_UpdateArticleButtonMousePressed
 
     /**
      * @param args the command line arguments
@@ -139,9 +168,9 @@ public class MenuManagerFrame extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddArticleButton;
     private javax.swing.JTable MenuTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton UpdateArticleButton;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,17 +5,31 @@
  */
 package kikisrestaurantmanager;
 
+import MODEL.DB_Article;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author HP
  */
-public class AjoutArticle extends javax.swing.JFrame {
+public class AjoutArticle extends javax.swing.JDialog {
+    
+    DB_Article dbArticle=new DB_Article();
 
     /**
      * Creates new form AjoutArticle
      */
     public AjoutArticle() {
         initComponents();
+        remplirCMB();
+        
+    }
+    
+    public void remplirCMB(){
+        Vector<String> C=dbArticle.Categories();
+        DefaultComboBoxModel CBM=new DefaultComboBoxModel(C);
+        CategorieComboBox.setModel(CBM);
     }
 
     /**
@@ -27,17 +41,68 @@ public class AjoutArticle extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        DesignationTxt = new javax.swing.JTextField();
+        PrixTxt = new javax.swing.JTextField();
+        CategorieComboBox = new javax.swing.JComboBox<>();
+        AjouterButton = new javax.swing.JButton();
+        AnnulerButton = new javax.swing.JButton();
+        jCheckBox1 = new javax.swing.JCheckBox();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        DesignationTxt.setText("jTextField1");
+
+        PrixTxt.setText("jTextField1");
+
+        CategorieComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        AjouterButton.setText("Ajouter");
+
+        AnnulerButton.setText("Annuler");
+
+        jCheckBox1.setText("jCheckBox1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(CategorieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(208, 208, 208)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(PrixTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(DesignationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(AjouterButton)
+                        .addGap(97, 97, 97)
+                        .addComponent(AnnulerButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jCheckBox1)))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(DesignationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PrixTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CategorieComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jCheckBox1)
+                .addGap(58, 58, 58)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AjouterButton)
+                    .addComponent(AnnulerButton))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +144,11 @@ public class AjoutArticle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AjouterButton;
+    private javax.swing.JButton AnnulerButton;
+    private javax.swing.JComboBox<String> CategorieComboBox;
+    private javax.swing.JTextField DesignationTxt;
+    private javax.swing.JTextField PrixTxt;
+    private javax.swing.JCheckBox jCheckBox1;
     // End of variables declaration//GEN-END:variables
 }
