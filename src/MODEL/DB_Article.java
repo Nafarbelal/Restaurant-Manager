@@ -77,4 +77,15 @@ public class DB_Article {
         }
         return 0;
     }
+    
+    public ResultSet MenuAll() {
+        ResultSet Res = null;
+        try {
+            St = Con.createStatement();
+            Res = St.executeQuery("Select IDARTICLE as ID,Designation,Prix,Categorie,Archivé as Invisible from article");
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
+        }
+        return Res;
+    }
 }

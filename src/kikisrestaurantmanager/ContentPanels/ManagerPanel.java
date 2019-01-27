@@ -3,6 +3,7 @@ package kikisrestaurantmanager.ContentPanels;
 import addons.*;
 import java.awt.Dialog;
 import kikisrestaurantmanager.ChangerMdp;
+import kikisrestaurantmanager.MenuManagerFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,7 +40,7 @@ public class ManagerPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        ModifierMenuPanel = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -88,21 +89,26 @@ public class ManagerPanel extends javax.swing.JPanel {
         jPanel6.setBackground(CustomColors.lightViolet);
         jPanel6.setPreferredSize(new java.awt.Dimension(41, 60));
 
-        jLabel2.setBackground(CustomColors.lightViolet);
-        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
-        jLabel2.setForeground(CustomColors.textColorOnColoredPanel);
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Modifier Menu");
+        ModifierMenuPanel.setBackground(CustomColors.lightViolet);
+        ModifierMenuPanel.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
+        ModifierMenuPanel.setForeground(CustomColors.textColorOnColoredPanel);
+        ModifierMenuPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ModifierMenuPanel.setText("Modifier Menu");
+        ModifierMenuPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ModifierMenuPanelMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(ModifierMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(ModifierMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(CustomColors.lightViolet);
@@ -180,7 +186,7 @@ public class ManagerPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(txtClock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -258,11 +264,20 @@ public class ManagerPanel extends javax.swing.JPanel {
         this.setEnabled(false);
     }//GEN-LAST:event_jLabel3MousePressed
 
+    private void ModifierMenuPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifierMenuPanelMousePressed
+        // TODO add your handling code here:
+        MenuManagerFrame c=new MenuManagerFrame();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false);
+    }//GEN-LAST:event_ModifierMenuPanelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LayoutRestaurant;
+    private javax.swing.JLabel ModifierMenuPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
