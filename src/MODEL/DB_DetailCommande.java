@@ -94,7 +94,7 @@ public class DB_DetailCommande {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select DC.IDARTICLE,Designation,Quantite,prixAchat as PU, prixAchat*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
+            Res = St.executeQuery("Select DC.IDARTICLE as ID,Designation,Quantite,prixAchat as PU, prixAchat*Quantite as montant from detail_commande DC, Article A where DC.IDARTICLE=A.IDARTICLE and DC.IDCOMMANDE=" + IDCOM);
 
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete AfficherDetail  " + ex.getMessage());
