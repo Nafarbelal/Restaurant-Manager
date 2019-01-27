@@ -5,6 +5,13 @@
         <group name="S2">
             <file>file:/D:/Java/KikisRestaurantManager/src/DAO/DaoBD.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Statistics.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Manager.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Commande.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_DetailCommande.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Article.java</file>
         </group>
     </open-files>
 </project-private>

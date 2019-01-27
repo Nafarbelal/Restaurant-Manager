@@ -7,6 +7,9 @@ package MODEL;
 
 import DAO.DaoBD;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
@@ -28,11 +31,21 @@ public class DB_Statistics {
         dao.SeConnecter();
         Con = dao.getConnexion();
     }
+    //select DATE_FORMAT(date,'%Y-%m-%d %H:%i:%s'),sum(MONTANT) from commande group by year(Date),month(date),day(date),hour(date);
+    public ResultSet RevenusDerniereSemaine() {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("select DATE_FORMAT(date,'%Y-%m-%d %H:%i:%s') DATE,sum(MONTANT) MntTotal from commande group by year(Date),month(date),day(date);");
+            Rs = Pst.executeQuery();
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
+        }
+        return null;
+    }
 
     public Connection getConnexion() {
         return Con;
     }
-    
-    
 
 }
