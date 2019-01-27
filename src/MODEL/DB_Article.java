@@ -38,7 +38,7 @@ public class DB_Article {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select IDARTICLE as ID ,Designation,Prix from article where categorie='" + cat + "'");
+            Res = St.executeQuery("Select IDARTICLE as ID ,Designation,Prix from article where categorie='" + cat + "' AND archivé=0");
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
         }
@@ -49,7 +49,7 @@ public class DB_Article {
         ResultSet Res = null;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select IDARTICLE as ID,Designation,Prix from article");
+            Res = St.executeQuery("Select IDARTICLE as ID,Designation,Prix from article WHERE archivé=0");
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete select ou ST , " + ex.getMessage());
         }
@@ -71,7 +71,7 @@ public class DB_Article {
         ResultSet Res;
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("Select IDARTICLE from Article where categorie='" + cat + "'");
+            Res = St.executeQuery("Select IDARTICLE from Article where categorie='" + cat + "' AND archivé=0");
             if (Res.next()) {
                 return Res.getInt(1);
             }
