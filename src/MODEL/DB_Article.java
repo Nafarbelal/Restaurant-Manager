@@ -92,10 +92,10 @@ public class DB_Article {
         return Res;
     }
     
-    public void AddArticle(String Des , float Price , String Categorie) 
+    public void AddArticle(String Des , float Price , String Categorie,int Archive) 
     {
        
-        String Req = "insert into article(Designation,Prix,Categorie,Archivé) values ('"+Des+"','"+Price+"','"+Categorie+"',0)";
+        String Req = "insert into article(Designation,Prix,Categorie,Archivé) values ('"+Des+"','"+Price+"','"+Categorie+"',"+Archive+")";
         try 
         {
              St = Con.createStatement();
