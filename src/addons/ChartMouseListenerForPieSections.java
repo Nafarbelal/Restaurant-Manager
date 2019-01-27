@@ -25,12 +25,13 @@ import org.jfree.data.jdbc.JDBCPieDataset;
  * @author Ilyas El Bani
  */
 public class ChartMouseListenerForPieSections implements ChartMouseListener {
+
     private DB_Statistics dbStat = new DB_Statistics();
 
     public ChartMouseListenerForPieSections() {
-        
+
     }
-    
+
     @Override
     public void chartMouseClicked(ChartMouseEvent event) {
         ChartEntity entity = event.getEntity();
@@ -48,7 +49,9 @@ public class ChartMouseListenerForPieSections implements ChartMouseListener {
                 String query
                         = "select A.designation, quantite from article A,detail_commande DC where A.idArticle = DC.idArticle and categorie=\"" + cat + "\";";
                 JDBCPieDataset dataset = new JDBCPieDataset(dbStat.getConnexion(), query);
-                JFreeChart chart = ChartFactory.createPieChart3D("Pie Chart Example", dataset, true, true, true);
+                JFreeChart chart = ChartFactory.createPieChart3D("Ventes par Article " + cat, dataset, true, true, true);
+                chart.getTitle().setPaint(CustomColors.lightViolet);
+
                 PiePlot3D P = (PiePlot3D) chart.getPlot();
                 //  P.setSimpleLabels(true);
                 PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
@@ -59,7 +62,7 @@ public class ChartMouseListenerForPieSections implements ChartMouseListener {
 
                 ChartFrame frame = new ChartFrame("Pie Chart", chart);
                 frame.setVisible(true);
-                frame.setSize(600, 500);
+                frame.setSize(700, 500);
                 frame.setLocationRelativeTo(null);
 
             } catch (SQLException ex) {

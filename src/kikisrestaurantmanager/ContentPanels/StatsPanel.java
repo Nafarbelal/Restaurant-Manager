@@ -3,6 +3,7 @@ package kikisrestaurantmanager.ContentPanels;
 import MODEL.DB_Statistics;
 import addons.ChartDrawingSupplier;
 import addons.ChartMouseListenerForPieSections;
+import addons.CustomColors;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPanel;
 import kikisrestaurantmanager.MainMenu;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
@@ -44,11 +46,15 @@ public class StatsPanel extends javax.swing.JPanel {
      */
     public StatsPanel() {
         initComponents();
+        //    VentesPanelMouseClicked(null);
+
     }
 
     public StatsPanel(MainMenu mn) {
         initComponents();
         mainMenu = mn;
+        FilterSelected(VentesPanel);
+        showVentesCharte();
     }
 
     /**
@@ -63,13 +69,16 @@ public class StatsPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         panelChart = new javax.swing.JPanel();
-        test = new javax.swing.JButton();
-        dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
+        VentesPanel = new javax.swing.JPanel();
+        VentesLabel = new javax.swing.JLabel();
+        RevenusPanel = new javax.swing.JPanel();
+        RevenusLabel = new javax.swing.JLabel();
+        HeuresPanel = new javax.swing.JPanel();
+        HeuresLabel = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new java.awt.CardLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -83,101 +92,187 @@ public class StatsPanel extends javax.swing.JPanel {
         );
         panelChartLayout.setVerticalGroup(
             panelChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 499, Short.MAX_VALUE)
+            .addGap(0, 557, Short.MAX_VALUE)
         );
 
-        test.setText("jButton1");
-        test.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                testActionPerformed(evt);
+        VentesPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        VentesPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        VentesPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VentesPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                VentesPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                VentesPanelMouseExited(evt);
             }
         });
+        VentesPanel.setLayout(new java.awt.BorderLayout());
 
-        dateChooserCombo1.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
-            new datechooser.view.appearance.ViewAppearance("custom",
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    true,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 255),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(128, 128, 128),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(0, 0, 255),
-                    false,
-                    true,
-                    new datechooser.view.appearance.swing.LabelPainter()),
-                new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
-                    new java.awt.Color(0, 0, 0),
-                    new java.awt.Color(255, 0, 0),
-                    false,
-                    false,
-                    new datechooser.view.appearance.swing.ButtonPainter()),
-                (datechooser.view.BackRenderer)null,
-                false,
-                true)));
-    dateChooserCombo1.setCalendarBackground(new java.awt.Color(255, 255, 255));
-    dateChooserCombo1.setCalendarPreferredSize(new java.awt.Dimension(267, 180));
-    dateChooserCombo1.setFormat(2);
-    dateChooserCombo1.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 12));
-    dateChooserCombo1.setLocale(new java.util.Locale("fr", "", ""));
-    dateChooserCombo1.setCurrentNavigateIndex(0);
-    dateChooserCombo1.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
+        VentesLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel.setText("% des Ventes");
+        VentesPanel.add(VentesLabel, java.awt.BorderLayout.CENTER);
 
-    javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-    jPanel1.setLayout(jPanel1Layout);
-    jPanel1Layout.setHorizontalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-            .addGap(85, 85, 85)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        RevenusPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        RevenusPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        RevenusPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RevenusPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RevenusPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RevenusPanelMouseExited(evt);
+            }
+        });
+        RevenusPanel.setLayout(new java.awt.BorderLayout());
+
+        RevenusLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        RevenusLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        RevenusLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RevenusLabel.setText("Revenus");
+        RevenusPanel.add(RevenusLabel, java.awt.BorderLayout.CENTER);
+
+        HeuresPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeuresPanel.setPreferredSize(new java.awt.Dimension(140, 55));
+        HeuresPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HeuresPanelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeuresPanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeuresPanelMouseExited(evt);
+            }
+        });
+        HeuresPanel.setLayout(new java.awt.BorderLayout());
+
+        HeuresLabel.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        HeuresLabel.setForeground(CustomColors.ordersFilterTextUnselected);
+        HeuresLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        HeuresLabel.setText("Heures Actives");
+        HeuresPanel.add(HeuresLabel, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(VentesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(RevenusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(107, 107, 107)
+                        .addComponent(HeuresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(171, 171, 171))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 11, Short.MAX_VALUE)
+                        .addComponent(panelChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(206, 206, 206))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(test)))
-            .addGap(159, 159, 159))
-    );
-    jPanel1Layout.setVerticalGroup(
-        jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        .addGroup(jPanel1Layout.createSequentialGroup()
-            .addGap(86, 86, 86)
-            .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGap(28, 28, 28)
-            .addComponent(panelChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGap(18, 18, 18)
-            .addComponent(test)
-            .addContainerGap())
-    );
+                    .addComponent(VentesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(RevenusPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HeuresPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(panelChart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-    add(jPanel1, "card2");
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
+        private void FilterDefaultColorAll() {
+        RevenusPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        VentesPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeuresPanel.setBackground(CustomColors.panelDefaultBackgroundColor);
 
-    private void testActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testActionPerformed
-        showPieChartCategoriesCommandées();
-    }//GEN-LAST:event_testActionPerformed
-    private void showPieChartCategoriesCommandées(){
+    }
+
+    private void FilterMouseEntered(JPanel p) {
+        if (p.getBackground() != CustomColors.orderFilterPanelSelected) {
+            p.setBackground(CustomColors.orderFilterPanelHoveredOn);
+        }
+    }
+
+    private void FilterMouseExited(JPanel p) {
+        if (p.getBackground() != CustomColors.orderFilterPanelSelected) {
+            p.setBackground(CustomColors.panelDefaultBackgroundColor);
+        }
+    }
+
+    private void FilterSelected(JPanel p) {
+        FilterDefaultColorAll();
+        p.setBackground(CustomColors.orderFilterPanelSelected);
+    }
+
+    private void VentesPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentesPanelMouseClicked
+
+        FilterSelected(VentesPanel);
+        showVentesCharte();
+    }//GEN-LAST:event_VentesPanelMouseClicked
+
+    private void VentesPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentesPanelMouseEntered
+        FilterMouseEntered(VentesPanel);
+    }//GEN-LAST:event_VentesPanelMouseEntered
+
+    private void VentesPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentesPanelMouseExited
+        FilterMouseExited(RevenusPanel);
+    }//GEN-LAST:event_VentesPanelMouseExited
+
+    private void RevenusPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RevenusPanelMouseClicked
+
+        FilterSelected(RevenusPanel);
+
+    }//GEN-LAST:event_RevenusPanelMouseClicked
+
+    private void RevenusPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RevenusPanelMouseEntered
+        FilterMouseEntered(RevenusPanel);
+    }//GEN-LAST:event_RevenusPanelMouseEntered
+
+    private void RevenusPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RevenusPanelMouseExited
+
+        FilterMouseExited(RevenusPanel);
+    }//GEN-LAST:event_RevenusPanelMouseExited
+
+    private void HeuresPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeuresPanelMouseClicked
+        FilterSelected(HeuresPanel);
+    }//GEN-LAST:event_HeuresPanelMouseClicked
+
+    private void HeuresPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeuresPanelMouseEntered
+        FilterMouseEntered(HeuresPanel);
+    }//GEN-LAST:event_HeuresPanelMouseEntered
+
+    private void HeuresPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeuresPanelMouseExited
+        FilterMouseExited(HeuresPanel);
+    }//GEN-LAST:event_HeuresPanelMouseExited
+    private void showVentesCharte() {
         String query = "select A.Categorie, SUM(quantite) from article A,detail_commande DC where A.idArticle = DC.idArticle group by categorie;";
         try {
             JDBCPieDataset dataset = new JDBCPieDataset(dbStat.getConnexion(), query);
-            JFreeChart chart = ChartFactory.createPieChart3D("Pie Chart Example", dataset, true, true, true);
+            JFreeChart chart = ChartFactory.createPieChart3D("Ventes Par Catégorie", dataset, true, true, true);
+            chart.getTitle().setPaint(CustomColors.lightViolet);
             PiePlot3D P = (PiePlot3D) chart.getPlot();
             //  P.setSimpleLabels(true);
             PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
@@ -185,25 +280,31 @@ public class StatsPanel extends javax.swing.JPanel {
             P.setLabelGenerator(gen);
             P.setBackgroundPaint(Color.white);
             P.setDrawingSupplier(new ChartDrawingSupplier());
+            
             ChartPanel cp = new ChartPanel(chart);
-            cp.addChartMouseListener( new ChartMouseListenerForPieSections());
-            cp.setPreferredSize(new Dimension(panelChart.getWidth(), panelChart.getHeight()));
+            cp.addChartMouseListener(new ChartMouseListenerForPieSections());
+            panelChart.updateUI();
+            cp.setPreferredSize(panelChart.getPreferredSize());
             //Adding the chart to the panel to be viewed
             panelChart.removeAll();
-            panelChart.setLayout(new GridLayout(0, 1));
             Component c = panelChart.add(cp);
-            panelChart.updateUI();
-            
+            panelChart.setLayout(new GridLayout(0, 1));
+            // panelChart.updateUI();
+
         } catch (SQLException ex) {
             System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private datechooser.beans.DateChooserCombo dateChooserCombo1;
+    private javax.swing.JLabel HeuresLabel;
+    private javax.swing.JPanel HeuresPanel;
+    private javax.swing.JLabel RevenusLabel;
+    private javax.swing.JPanel RevenusPanel;
+    private javax.swing.JLabel VentesLabel;
+    private javax.swing.JPanel VentesPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelChart;
-    private javax.swing.JButton test;
     // End of variables declaration//GEN-END:variables
 }
