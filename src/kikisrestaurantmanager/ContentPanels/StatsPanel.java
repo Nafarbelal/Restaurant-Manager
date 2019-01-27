@@ -14,6 +14,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -523,10 +524,22 @@ public class StatsPanel extends javax.swing.JPanel {
         periodChooserDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         periodChooserDialog.setLocationRelativeTo(this);
 
-        String [] answer = periodChooserDialog.getAnswer();
-        String DateDeb = answer[0];
-        String DateFin = answer[1];
-        System.out.println(DateDeb+"    " + DateFin);
+        String[] answer = periodChooserDialog.getAnswer();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/YY");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date datedeb = null;
+        java.util.Date datefin = null;
+
+        try {
+            datedeb = format1.parse(answer[0]);
+            datefin = format1.parse(answer[1]);
+
+        } catch (ParseException ex) {
+        }
+        String DateDeb = format2.format(datedeb);
+        String DateFin = format2.format(datefin);
+
+        System.out.println(DateDeb + "    " + DateFin);
 
     }//GEN-LAST:event_venteFiltrePeriodeMousePressed
     private void showVentesCharte(String debutDate, String finDate) {
