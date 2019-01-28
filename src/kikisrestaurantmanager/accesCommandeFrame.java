@@ -74,7 +74,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         RefreshCommande();
         Refresh_Menu();
         setLocationRelativeTo(mainMenu);
-
     }
 
     @Override
@@ -808,12 +807,14 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         ConfirmationFrame confirmDialog = new ConfirmationFrame();
         confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         confirmDialog.setLocationRelativeTo(this);
+        
         if (dbDetailCommande.CheckCreation(this.idCommande) == 0) {
             this.disposeNormal();
             answer=1;
         } else {
             answer = confirmDialog.getAnswer();
         }
+        
         if (answer == 1) {
             dbCommande.AnnulerCommande(idCommande);
             this.disposeNormal();

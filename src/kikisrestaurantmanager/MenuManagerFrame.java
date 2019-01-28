@@ -56,8 +56,9 @@ public class MenuManagerFrame extends javax.swing.JDialog {
     }
 
     private void emptyAllTextFields() {
-        DesignationTxt.setText(null);
-        PrixTxt.setText(null);
+        DesignationTxt.setText("");
+        PrixTxt.setText("");
+        ArchiveCheckBox.setSelected(false);
     }
 
     public void remplirCMB() {

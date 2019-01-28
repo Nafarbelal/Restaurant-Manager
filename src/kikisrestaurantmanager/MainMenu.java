@@ -51,7 +51,6 @@ public class MainMenu extends javax.swing.JFrame {
     public void tableBtnEmporterIsClicked(int idTable) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
         new accesCommandeFrame(this, idTable).setVisible(true);
-
         this.setEnabled(false);
     }
 
@@ -340,10 +339,10 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnManagerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagerMousePressed
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
-             ClickedMenu(source, managerPanel1);
-       /* JDialog loginDialog = new loginFrame(this);
+        /* ClickedMenu(source, managerPanel1);*/
+        JDialog loginDialog = new loginFrame(this);
         loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        loginDialog.setVisible(true);*/
+        loginDialog.setVisible(true);
     }//GEN-LAST:event_btnManagerMousePressed
 
     private void CloseButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseButtonMousePressed
