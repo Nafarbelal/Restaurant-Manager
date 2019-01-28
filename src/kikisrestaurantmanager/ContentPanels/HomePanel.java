@@ -738,7 +738,6 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
             if (answer == 1) {
                 C.AnnulerCommande(idCom);
                 RefreshTableCommandes();
-
             }
         }
     }//GEN-LAST:event_btnTrashCommandeMousePressed

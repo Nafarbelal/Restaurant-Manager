@@ -307,7 +307,7 @@ btnConfirmer.addActionListener(new java.awt.event.ActionListener() {
             String debstring = format1.format(deb);
             dateDebCombo.setText(debstring);
         } else {
-            this.setVisible(false);
+            //this.setVisible(false);
             dispose();
         }
     }//GEN-LAST:event_btnConfirmerActionPerformed

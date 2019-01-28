@@ -932,6 +932,7 @@ public class StatsPanel extends javax.swing.JPanel {
         try {
             JDBCPieDataset dataset = new JDBCPieDataset(dbStat.getConnexion(), query);
             JFreeChart chart = ChartFactory.createPieChart3D("Ventes Par Catégorie", dataset, true, true, true);
+            //DESIGN
             chart.getTitle().setPaint(CustomColors.lightViolet);
             PiePlot3D P = (PiePlot3D) chart.getPlot();
             //  P.setSimpleLabels(true);
@@ -940,14 +941,15 @@ public class StatsPanel extends javax.swing.JPanel {
             P.setLabelGenerator(gen);
             P.setBackgroundPaint(Color.white);
             P.setDrawingSupplier(new ChartDrawingSupplier());
-
+            //Fin DESIGN 
+            
             ChartPanel cp = new ChartPanel(chart);
             cp.addChartMouseListener(new ChartMouseListenerForPieSections());
             panelChart.updateUI();
             cp.setPreferredSize(panelChart.getPreferredSize());
             //Adding the chart to the panel to be viewed
             panelChart.removeAll();
-            Component c = panelChart.add(cp);
+            panelChart.add(cp);
             panelChart.setLayout(new GridLayout(0, 1));
             // panelChart.updateUI();
 
@@ -1072,7 +1074,6 @@ public class StatsPanel extends javax.swing.JPanel {
                 System.out.println("====>" + time + "    " + value);
             }
             TimeSeriesCollection dataset = new TimeSeriesCollection(serieRevenus);
-
             JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Semaine", "Date", "Revenu", dataset);
             XYPlot plot = chart.getXYPlot();
             plot.setDomainPannable(true);

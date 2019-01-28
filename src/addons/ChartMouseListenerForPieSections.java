@@ -35,6 +35,7 @@ public class ChartMouseListenerForPieSections implements ChartMouseListener {
     @Override
     public void chartMouseClicked(ChartMouseEvent event) {
         ChartEntity entity = event.getEntity();
+        //System.out.println(entity);
         String entitiyString = entity.toString();
         String cat = "";
         if (entitiyString.startsWith("PieSection")) {

@@ -11,11 +11,15 @@ import java.awt.Color;
 import java.awt.Dialog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -23,8 +27,8 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author HP
  */
 public class MenuManagerFrame extends javax.swing.JDialog {
-    
-    DB_Article dbArticle=new DB_Article();
+
+    DB_Article dbArticle = new DB_Article();
 
     /**
      * Creates new form MenuManagerFrame
@@ -35,8 +39,9 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         refreshMenuTable(dbArticle.MenuAll());
         remplirCMB();
         EditButton.setEnabled(false);
+        
     }
-    
+
     public void refreshMenuTable(ResultSet arts) {
         MenuTable.clearSelection();
         // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
@@ -49,16 +54,16 @@ public class MenuManagerFrame extends javax.swing.JDialog {
             MenuTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
     }
-    
-    private void emptyAllTextFields() 
-    {
-        DesignationTxt.setText(null);
-        PrixTxt.setText(null);
+
+    private void emptyAllTextFields() {
+        DesignationTxt.setText("");
+        PrixTxt.setText("");
+        ArchiveCheckBox.setSelected(false);
     }
-    
-    public void remplirCMB(){
-        Vector<String> C=dbArticle.Categories();
-        DefaultComboBoxModel CBM=new DefaultComboBoxModel(C);
+
+    public void remplirCMB() {
+        Vector<String> C = dbArticle.Categories();
+        DefaultComboBoxModel CBM = new DefaultComboBoxModel(C);
         CategoriesComboBox.setModel(CBM);
     }
 
@@ -85,11 +90,12 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -112,9 +118,9 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         jScrollPane1.setViewportView(MenuTable);
 
         AddButton.setText("Ajouter");
-        AddButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                AddButtonMousePressed(evt);
+        AddButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddButtonActionPerformed(evt);
             }
         });
 
@@ -124,10 +130,17 @@ public class MenuManagerFrame extends javax.swing.JDialog {
                 EditButtonMousePressed(evt);
             }
         });
+        EditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditButtonActionPerformed(evt);
+            }
+        });
 
-        DesignationTxt.setText("jTextField1");
-
-        PrixTxt.setText("jTextField2");
+        PrixTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrixTxtActionPerformed(evt);
+            }
+        });
 
         CategoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -145,8 +158,6 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         jLabel3.setText("Categorie");
 
         jLabel4.setText("Archivé");
-
-        jLabel5.setText("Détails Article");
 
         jPanel1.setBackground(new java.awt.Color(122, 72, 221));
 
@@ -172,61 +183,84 @@ public class MenuManagerFrame extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Détails Article");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PrixTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(52, 52, 52)
-                        .addComponent(DesignationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ArchiveCheckBox)
-                            .addComponent(CategoriesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PrixTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(DesignationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ArchiveCheckBox)
+                                    .addComponent(CategoriesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(AddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(EditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGap(24, 24, 24))
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(52, 52, 52)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(DesignationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -242,78 +276,24 @@ public class MenuManagerFrame extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(ArchiveCheckBox))
-                        .addGap(52, 52, 52)
+                        .addGap(130, 130, 130)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61)
                         .addComponent(AddButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(EditButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(CancelButton)))
-                .addGap(43, 43, 43))
+                        .addComponent(CancelButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddButtonMousePressed
-        // TODO add your handling code here:
-        /*
-        AjoutArticle c=new AjoutArticle();
-        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        c.setLocationRelativeTo(this);
-        c.setVisible(true);
-        this.setEnabled(false); */
-        int i;
-        String type = CategoriesComboBox.getSelectedItem().toString();
-        String des = DesignationTxt.getText();
-        float prix = Float.parseFloat(PrixTxt.getText());
-        boolean archive=ArchiveCheckBox.isSelected();
-        if(archive==true)
-            i=1;
-        else
-            i=0;
-        dbArticle.AddArticle(des, prix, type,i);
-        refreshMenuTable(dbArticle.MenuAll());
-        emptyAllTextFields();
-    }//GEN-LAST:event_AddButtonMousePressed
-
     private void EditButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditButtonMousePressed
-        // TODO add your handling code here:
-        /*
-        ModificationArticle c=new ModificationArticle();
-        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-        c.setLocationRelativeTo(this);
-        c.setVisible(true);
-        this.setEnabled(false); */
-        int i;
-        int lig=MenuTable.getSelectedRow();
-        int id;
-        id = Integer.parseInt(MenuTable.getValueAt(lig, 0).toString());
-        String type = CategoriesComboBox.getSelectedItem().toString();
-        String des = DesignationTxt.getText();
-        float prix = Float.parseFloat(PrixTxt.getText());
-        boolean archive=ArchiveCheckBox.isSelected();
-        if(archive==true)
-            i=1;
-        else
-            i=0;
-        try 
-        {  
-            dbArticle.UPDATEArticle(id , des , prix , type, i);
-        }
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(MenuManagerFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        EditButton.setEnabled(false);
-        //btnDelete.setEnabled(false);
-        AddButton.setEnabled(true);
-        //txtID.setEnabled(true);
-        MenuTable.clearSelection();
-        refreshMenuTable(dbArticle.MenuAll());
-        emptyAllTextFields();
-        
+
+
     }//GEN-LAST:event_EditButtonMousePressed
 
     private void MenuTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuTableMouseClicked
@@ -323,10 +303,11 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         CategoriesComboBox.setSelectedItem(MenuTable.getValueAt(lig, 3).toString());
         DesignationTxt.setText(MenuTable.getValueAt(lig, 1).toString());
         PrixTxt.setText(MenuTable.getValueAt(lig, 2).toString());
-        if("false".equals(MenuTable.getValueAt(lig,4).toString()))
+        if ("false".equals(MenuTable.getValueAt(lig, 4).toString())) {
             ArchiveCheckBox.setSelected(false);
-        else
+        } else {
             ArchiveCheckBox.setSelected(true);
+        }
         EditButton.setEnabled(true);
         AddButton.setEnabled(false);
     }//GEN-LAST:event_MenuTableMouseClicked
@@ -338,6 +319,68 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         EditButton.setEnabled(false);
         AddButton.setEnabled(true);
     }//GEN-LAST:event_CancelButtonMousePressed
+
+    private void AddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddButtonActionPerformed
+        // TODO add your handling code here:
+        /*
+        AjoutArticle c=new AjoutArticle();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false); */
+        int i;
+        String type = CategoriesComboBox.getSelectedItem().toString();
+        String des = DesignationTxt.getText();
+        float prix = Float.parseFloat(PrixTxt.getText());
+        boolean archive = ArchiveCheckBox.isSelected();
+        if (archive == true) {
+            i = 1;
+        } else {
+            i = 0;
+        }
+        dbArticle.AddArticle(des, prix, type, i);
+        refreshMenuTable(dbArticle.MenuAll());
+        emptyAllTextFields();
+    }//GEN-LAST:event_AddButtonActionPerformed
+
+    private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
+        // TODO add your handling code here:
+        /*
+        ModificationArticle c=new ModificationArticle();
+        c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        c.setLocationRelativeTo(this);
+        c.setVisible(true);
+        this.setEnabled(false); */
+        int i;
+        int lig = MenuTable.getSelectedRow();
+        int id;
+        id = Integer.parseInt(MenuTable.getValueAt(lig, 0).toString());
+        String type = CategoriesComboBox.getSelectedItem().toString();
+        String des = DesignationTxt.getText();
+        float prix = Float.parseFloat(PrixTxt.getText());
+        boolean archive = ArchiveCheckBox.isSelected();
+        if (archive == true) {
+            i = 1;
+        } else {
+            i = 0;
+        }
+        try {
+            dbArticle.UPDATEArticle(id, des, prix, type, i);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuManagerFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        EditButton.setEnabled(false);
+        //btnDelete.setEnabled(false);
+        AddButton.setEnabled(true);
+        //txtID.setEnabled(true);
+        MenuTable.clearSelection();
+        refreshMenuTable(dbArticle.MenuAll());
+        emptyAllTextFields();
+    }//GEN-LAST:event_EditButtonActionPerformed
+
+    private void PrixTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrixTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrixTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,6 +433,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

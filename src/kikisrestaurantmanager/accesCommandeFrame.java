@@ -49,7 +49,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         initComponents();
         this.getContentPane().setBackground(Color.white);
         if (idTable == 0) {
-            TxtCurrentTable.setText("A emporté");
+            TxtCurrentTable.setText("A emporter");
         } else {
             TxtCurrentTable.setText("Table " + idTable);
         }
@@ -74,7 +74,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         RefreshCommande();
         Refresh_Menu();
         setLocationRelativeTo(mainMenu);
-
     }
 
     @Override
@@ -139,13 +138,17 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         TxtShawarma = new javax.swing.JLabel();
         PanelPlat = new javax.swing.JPanel();
         TxtPlat = new javax.swing.JLabel();
-        PanelDessert = new javax.swing.JPanel();
-        TxtDessert = new javax.swing.JLabel();
         PanelBoisson = new javax.swing.JPanel();
         TxtBoisson = new javax.swing.JLabel();
         PanelPanini = new javax.swing.JPanel();
         TxtPanini = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        PanelTacos = new javax.swing.JPanel();
+        TxtTacos = new javax.swing.JLabel();
+        PanelSalade = new javax.swing.JPanel();
+        TxtDessert1 = new javax.swing.JLabel();
+        PanelDessert = new javax.swing.JPanel();
+        TxtDessert2 = new javax.swing.JLabel();
         BtnAnnuler = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         BtnConfirmer = new javax.swing.JButton();
@@ -292,26 +295,6 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         TxtPlat.setText("Plat");
         PanelPlat.add(TxtPlat);
 
-        PanelDessert.setBackground(new java.awt.Color(217, 195, 217));
-        PanelDessert.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelDessertMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelDessertMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                PanelDessertMousePressed(evt);
-            }
-        });
-        PanelDessert.setLayout(new javax.swing.BoxLayout(PanelDessert, javax.swing.BoxLayout.LINE_AXIS));
-
-        TxtDessert.setFont(new java.awt.Font("SimHei", 0, 14)); // NOI18N
-        TxtDessert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtDessert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
-        TxtDessert.setText("Dessert");
-        PanelDessert.add(TxtDessert);
-
         PanelBoisson.setBackground(new java.awt.Color(217, 195, 217));
         PanelBoisson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -361,6 +344,66 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         PanelPanini.add(TxtPanini);
         PanelPanini.add(filler1);
 
+        PanelTacos.setBackground(new java.awt.Color(217, 195, 217));
+        PanelTacos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelTacosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelTacosMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelTacosMousePressed(evt);
+            }
+        });
+        PanelTacos.setLayout(new javax.swing.BoxLayout(PanelTacos, javax.swing.BoxLayout.LINE_AXIS));
+
+        TxtTacos.setFont(new java.awt.Font("SimHei", 0, 14)); // NOI18N
+        TxtTacos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtTacos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
+        TxtTacos.setText("Tacos");
+        PanelTacos.add(TxtTacos);
+
+        PanelSalade.setBackground(new java.awt.Color(217, 195, 217));
+        PanelSalade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelSaladeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelSaladeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelSaladeMousePressed(evt);
+            }
+        });
+        PanelSalade.setLayout(new javax.swing.BoxLayout(PanelSalade, javax.swing.BoxLayout.LINE_AXIS));
+
+        TxtDessert1.setFont(new java.awt.Font("SimHei", 0, 14)); // NOI18N
+        TxtDessert1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtDessert1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
+        TxtDessert1.setText("Salade");
+        PanelSalade.add(TxtDessert1);
+
+        PanelDessert.setBackground(new java.awt.Color(217, 195, 217));
+        PanelDessert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelDessertMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelDessertMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelDessertMousePressed(evt);
+            }
+        });
+        PanelDessert.setLayout(new javax.swing.BoxLayout(PanelDessert, javax.swing.BoxLayout.LINE_AXIS));
+
+        TxtDessert2.setFont(new java.awt.Font("SimHei", 0, 14)); // NOI18N
+        TxtDessert2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtDessert2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
+        TxtDessert2.setText("Dessert");
+        PanelDessert.add(TxtDessert2);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -369,19 +412,21 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(PanelPanini, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelDessert, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelTacos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelPlat, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelShawarma, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                     .addComponent(PanelPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelBurger, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PanelSandwich, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelBoisson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanelBoisson, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelSalade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PanelDessert, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(11, 11, 11)
                 .addComponent(PanelBoisson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelPanini, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -396,8 +441,12 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelPlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelTacos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelSalade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         BtnAnnuler.setBackground(new java.awt.Color(204, 204, 204));
@@ -564,16 +613,18 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                             .addComponent(btnTrash))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2))
+                        .addGap(19, 19, 19)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnConfirmer)
+                            .addComponent(BtnAnnuler)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnConfirmer)
-                    .addComponent(BtnAnnuler))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -622,7 +673,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_LabelDeleteMousePressed
 
     private void PanelBoissonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBoissonMousePressed
-        String cat = "Boisson";
+        String cat = "Boissons";
         Refresh_Menu(cat);
     }//GEN-LAST:event_PanelBoissonMousePressed
 
@@ -632,10 +683,10 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 // TODO add your handling code here:
     }//GEN-LAST:event_PanelPaniniMousePressed
 
-    private void PanelDessertMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMousePressed
-        String cat = "Dessert";
+    private void PanelTacosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMousePressed
+        String cat = "Tacos";
         Refresh_Menu(cat);
-    }//GEN-LAST:event_PanelDessertMousePressed
+    }//GEN-LAST:event_PanelTacosMousePressed
 
     private void PanelPlatMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPlatMousePressed
         String cat = "Plat";
@@ -643,7 +694,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelPlatMousePressed
 
     private void PanelShawarmaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelShawarmaMousePressed
-        String cat = "Shawarma";
+        String cat = "Chawarma";
         Refresh_Menu(cat);
 
     }//GEN-LAST:event_PanelShawarmaMousePressed
@@ -654,7 +705,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelPizzaMousePressed
 
     private void PanelBurgerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelBurgerMousePressed
-        String cat = "Burger";
+        String cat = "Burgers";
         Refresh_Menu(cat);
     }//GEN-LAST:event_PanelBurgerMousePressed
 
@@ -710,10 +761,10 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         src.setBackground(new java.awt.Color(193, 153, 204));        // TODO add your handling code here:
     }//GEN-LAST:event_PanelPlatMouseEntered
 
-    private void PanelDessertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseEntered
+    private void PanelTacosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMouseEntered
         JPanel src = (JPanel) evt.getSource();
         src.setBackground(new java.awt.Color(193, 153, 204)); // TODO add your handling code here:
-    }//GEN-LAST:event_PanelDessertMouseEntered
+    }//GEN-LAST:event_PanelTacosMouseEntered
 
     private void PanelPaniniMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelPaniniMouseExited
         JPanel src = (JPanel) evt.getSource();
@@ -746,22 +797,24 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         src.setBackground(new java.awt.Color(217, 195, 217));        // TODO add your handling code here:
     }//GEN-LAST:event_PanelPlatMouseExited
 
-    private void PanelDessertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseExited
+    private void PanelTacosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMouseExited
         JPanel src = (JPanel) evt.getSource();
         src.setBackground(new java.awt.Color(217, 195, 217));// TODO add your handling code here:
-    }//GEN-LAST:event_PanelDessertMouseExited
+    }//GEN-LAST:event_PanelTacosMouseExited
 
     private void BtnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnnulerActionPerformed
         int answer = 0;
         ConfirmationFrame confirmDialog = new ConfirmationFrame();
         confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         confirmDialog.setLocationRelativeTo(this);
+        
         if (dbDetailCommande.CheckCreation(this.idCommande) == 0) {
             this.disposeNormal();
             answer=1;
         } else {
             answer = confirmDialog.getAnswer();
         }
+        
         if (answer == 1) {
             dbCommande.AnnulerCommande(idCommande);
             this.disposeNormal();
@@ -787,6 +840,44 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             RefreshCommande();
         }
     }//GEN-LAST:event_btnTrashMousePressed
+
+    private void PanelSaladeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMouseEntered
+        // TODO add your handling code here:
+        JPanel src = (JPanel) evt.getSource();
+        src.setBackground(new java.awt.Color(193, 153, 204));
+    }//GEN-LAST:event_PanelSaladeMouseEntered
+
+    private void PanelSaladeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMouseExited
+        // TODO add your handling code here:
+        JPanel src = (JPanel) evt.getSource();
+        src.setBackground(new java.awt.Color(217, 195, 217));
+    }//GEN-LAST:event_PanelSaladeMouseExited
+
+    private void PanelSaladeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMousePressed
+        // TODO add your handling code here:
+        String cat = "Salade";
+        Refresh_Menu(cat);
+        PanelSalade.setBackground(new java.awt.Color(193, 153, 255));
+    }//GEN-LAST:event_PanelSaladeMousePressed
+
+    private void PanelDessertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseEntered
+        // TODO add your handling code here:
+        JPanel src = (JPanel) evt.getSource();
+        src.setBackground(new java.awt.Color(193, 153, 204));
+    }//GEN-LAST:event_PanelDessertMouseEntered
+
+    private void PanelDessertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseExited
+        // TODO add your handling code here:
+        JPanel src = (JPanel) evt.getSource();
+        src.setBackground(new java.awt.Color(217, 195, 217));
+    }//GEN-LAST:event_PanelDessertMouseExited
+
+    private void PanelDessertMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMousePressed
+        // TODO add your handling code here:
+        String cat = "Dessert";
+        Refresh_Menu(cat);
+        PanelDessert.setBackground(new java.awt.Color(193, 153, 255));
+    }//GEN-LAST:event_PanelDessertMousePressed
 
     /**
      * @param args the command line arguments
@@ -837,19 +928,23 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     private javax.swing.JPanel PanelPanini;
     private javax.swing.JPanel PanelPizza;
     private javax.swing.JPanel PanelPlat;
+    private javax.swing.JPanel PanelSalade;
     private javax.swing.JPanel PanelSandwich;
     private javax.swing.JPanel PanelShawarma;
+    private javax.swing.JPanel PanelTacos;
     private javax.swing.JTable TableCommande;
     private javax.swing.JLabel TxtBoisson;
     private javax.swing.JLabel TxtBurger;
     private javax.swing.JLabel TxtCurrentTable;
-    private javax.swing.JLabel TxtDessert;
+    private javax.swing.JLabel TxtDessert1;
+    private javax.swing.JLabel TxtDessert2;
     private javax.swing.JLabel TxtMontant;
     private javax.swing.JLabel TxtPanini;
     private javax.swing.JLabel TxtPizza;
     private javax.swing.JLabel TxtPlat;
     private javax.swing.JLabel TxtSandwich;
     private javax.swing.JLabel TxtShawarma;
+    private javax.swing.JLabel TxtTacos;
     private javax.swing.JLabel btnTrash;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;

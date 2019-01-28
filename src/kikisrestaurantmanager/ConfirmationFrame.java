@@ -175,6 +175,7 @@ public class ConfirmationFrame extends javax.swing.JDialog {
 
     public int getAnswer() {
         this.setVisible(true);
+        
         return answer;
     }
 
