@@ -1131,14 +1131,18 @@ public class StatsPanel extends javax.swing.JPanel {
             CategoryPlot plot = chart.getCategoryPlot();
             plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
             //FORMAT PlotArea
-            plot.backgroundPaint = Color.white
-            plot.domainGridlinePaint = Color.white
-            plot.rangeGridlinePaint = Color.white
-            plot.outlineVisible = false //            plot.setDomainPannable(true);
-                    //
-                    //            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-                    //            renderer.setSeriesPaint(0, Color.RED);
-                    //            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
+            plot.setBackgroundPaint(Color.white);
+            plot.setDomainGridlinePaint(Color.white);
+            plot.setRangeGridlinePaint( Color.white);
+            plot.setOutlineVisible(false);
+            
+            //Format Bars
+            
+            //            plot.setDomainPannable(true);
+            //
+            //            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+            //            renderer.setSeriesPaint(0, Color.RED);
+            //            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
             plot.setBackgroundPaint(Color.white);
             plot.setRangeGridlinesVisible(true);
             plot.setRangeGridlinePaint(Color.BLACK);
