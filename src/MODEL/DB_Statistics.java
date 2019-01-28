@@ -53,7 +53,7 @@ public class DB_Statistics {
             return Rs;
         } catch (SQLException ex) {
             System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
-        }
+    }
         return null;
     }
 

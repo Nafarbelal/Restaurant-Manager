@@ -809,10 +809,12 @@ public class StatsPanel extends javax.swing.JPanel {
         try {
             TimeSeries serieRevenus = new TimeSeries("Revenus");
             ResultSet Rs = dbStat.RevenusParSemaine();
+            int sz = Rs.getFetchSize();
             while (Rs.next()) {
                 Date time = Rs.getDate("Date");
                 int value = Rs.getInt("MntTotal");
                 serieRevenus.add(new Day(time), value);
+                System.out.println("====>" + time + "    " + value);
             }
             TimeSeriesCollection dataset = new TimeSeriesCollection(serieRevenus);
 
