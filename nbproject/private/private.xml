@@ -6,7 +6,6 @@
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/MainMenu.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
-            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/MenuManager.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/MonModele.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/GestionRestau.java</file>
@@ -16,14 +15,38 @@
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/Images/icons8_Alarm_Clock_50px.png</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/MODEL/TableModel.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
-            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/MenuManagerFrame.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
+            <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/MenuManagerFrame.java</file>
             <file>file:/C:/Users/HP/Desktop/GINF2/Programmation%20Java/Projet%20Java/Restaurant-Manager/src/kikisrestaurantmanager/loginFrame.java</file>
         </group>
         <group name="S2">
+<<<<<<< HEAD
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/PeriodChooserDialog.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Statistics.java</file>
+=======
+            <file>file:/D:/Java/KikisRestaurantManager/src/DAO/DaoBD.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/InfosPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/addons/CustomColors.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Statistics.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Manager.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/loginFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_DetailCommande.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MenuManagerFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Article.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MenuManager.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/PeriodChooserDialog.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MotDePasseChangé.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Commande.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MainMenu.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ChangerMdp.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+>>>>>>> dev-ismael-4.0
         </group>
     </open-files>
 </project-private>
