@@ -68,7 +68,18 @@ public class DB_Statistics {
         }
         return null;
     }
-
+//select DATE_FORMAT(date,'%Y-%m-%d %H:%i:%s') , count(*) from commande group by hour(date);
+        public ResultSet HeuresActivesDebFin(String debDate, String finDate) {
+        try {
+            ResultSet Rs;
+            PreparedStatement Pst = Con.prepareStatement("select DATE_FORMAT(date,'%H') Hour , count(*) nb from commande where date >=\"" + debDate + "\" and date<=\"" + finDate + "\" group by hour(date);");
+            Rs = Pst.executeQuery();
+            return Rs;
+        } catch (SQLException ex) {
+            System.err.println("Erreur dans la requête commandesShowAll " + ex.getMessage());
+        }
+        return null;
+    }
     public Connection getConnexion() {
         return Con;
     }

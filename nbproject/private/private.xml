@@ -3,22 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="S2">
-            <file>file:/D:/Java/KikisRestaurantManager/src/DAO/DaoBD.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/CustomColors.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Statistics.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Manager.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_DetailCommande.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Article.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MenuManager.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/PeriodChooserDialog.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MotDePasseChangé.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Commande.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ChangerMdp.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Statistics.java</file>
         </group>
         <group>
             <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/DatabaseCreationFiles/projetJavaDatabase.sql</file>

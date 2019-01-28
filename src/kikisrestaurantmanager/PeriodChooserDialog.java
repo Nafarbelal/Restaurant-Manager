@@ -100,13 +100,7 @@ public class PeriodChooserDialog extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        dateFinCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
-        dateFinCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
-        dateFinCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
-        dateFinCombo.setLocale(new java.util.Locale("fr", "", ""));
-        dateFinCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
-
-        dateDebCombo.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
+        dateFinCombo.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
             new datechooser.view.appearance.ViewAppearance("custom",
                 new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
                     new java.awt.Color(0, 0, 0),
@@ -147,25 +141,72 @@ public class PeriodChooserDialog extends javax.swing.JDialog {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
-    dateDebCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
-    dateDebCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
-    dateDebCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
-    dateDebCombo.setLocale(new java.util.Locale("fr", "", ""));
-    dateDebCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
+    dateFinCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
+    dateFinCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
+    dateFinCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
+    dateFinCombo.setLocale(new java.util.Locale("fr", "", ""));
+    dateFinCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
-    jLabel3.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-    jLabel3.setText("De:");
+    dateDebCombo.setCurrentView(new datechooser.view.appearance.AppearancesList("Light",
+        new datechooser.view.appearance.ViewAppearance("custom",
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                true,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 255),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(128, 128, 128),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(0, 0, 255),
+                false,
+                true,
+                new datechooser.view.appearance.swing.LabelPainter()),
+            new datechooser.view.appearance.swing.SwingCellAppearance(new java.awt.Font("Tahoma", java.awt.Font.PLAIN, 11),
+                new java.awt.Color(0, 0, 0),
+                new java.awt.Color(255, 0, 0),
+                false,
+                false,
+                new datechooser.view.appearance.swing.ButtonPainter()),
+            (datechooser.view.BackRenderer)null,
+            false,
+            true)));
+dateDebCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
+dateDebCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
+dateDebCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
+dateDebCombo.setLocale(new java.util.Locale("fr", "", ""));
+dateDebCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
-    jLabel4.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
-    jLabel4.setText("A:");
+jLabel3.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+jLabel3.setText("De:");
 
-    btnConfirmer.setBackground(new java.awt.Color(255, 255, 255));
-    btnConfirmer.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
-    btnConfirmer.setText("Confirmer");
-    btnConfirmer.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            btnConfirmerActionPerformed(evt);
-        }
+jLabel4.setFont(new java.awt.Font("Montserrat", 0, 15)); // NOI18N
+jLabel4.setText("A:");
+
+btnConfirmer.setBackground(new java.awt.Color(255, 255, 255));
+btnConfirmer.setFont(new java.awt.Font("Montserrat", 0, 14)); // NOI18N
+btnConfirmer.setText("Confirmer");
+btnConfirmer.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnConfirmerActionPerformed(evt);
+    }
     });
 
     errorLabel.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N

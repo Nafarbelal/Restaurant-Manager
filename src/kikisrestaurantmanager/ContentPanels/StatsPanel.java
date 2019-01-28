@@ -31,13 +31,17 @@ import org.jfree.chart.ChartMouseListener;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.entity.ChartEntity;
 import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.jdbc.JDBCPieDataset;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -115,6 +119,17 @@ public class StatsPanel extends javax.swing.JPanel {
         VentesLabel8 = new javax.swing.JLabel();
         RevenusFiltreParMois = new javax.swing.JPanel();
         VentesLabel7 = new javax.swing.JLabel();
+        FiltreHeuresActcives = new javax.swing.JPanel();
+        HeureActiveFiltreTout = new javax.swing.JPanel();
+        VentesLabel9 = new javax.swing.JLabel();
+        HeureActiveFiltreAujourdhui = new javax.swing.JPanel();
+        VentesLabel10 = new javax.swing.JLabel();
+        HeureActiveFiltreSemaine = new javax.swing.JPanel();
+        VentesLabel11 = new javax.swing.JLabel();
+        HeureActiveFiltreMois = new javax.swing.JPanel();
+        VentesLabel12 = new javax.swing.JLabel();
+        HeureActiveFiltrePeriode = new javax.swing.JPanel();
+        VentesLabel13 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -401,6 +416,126 @@ public class StatsPanel extends javax.swing.JPanel {
 
         Filtres.add(FiltreRevenus, "RevenusCard");
 
+        FiltreHeuresActcives.setBackground(new java.awt.Color(255, 255, 255));
+        FiltreHeuresActcives.setLayout(new java.awt.GridLayout(1, 0, 15, 0));
+
+        HeureActiveFiltreTout.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreTout.setPreferredSize(new java.awt.Dimension(140, 30));
+        HeureActiveFiltreTout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreToutMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreToutMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreToutMousePressed(evt);
+            }
+        });
+        HeureActiveFiltreTout.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel9.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel9.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel9.setText("Tout");
+        HeureActiveFiltreTout.add(VentesLabel9, java.awt.BorderLayout.CENTER);
+
+        FiltreHeuresActcives.add(HeureActiveFiltreTout);
+
+        HeureActiveFiltreAujourdhui.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreAujourdhui.setPreferredSize(new java.awt.Dimension(100, 30));
+        HeureActiveFiltreAujourdhui.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreAujourdhuiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreAujourdhuiMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreAujourdhuiMousePressed(evt);
+            }
+        });
+        HeureActiveFiltreAujourdhui.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel10.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel10.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel10.setText("Aujourd'hui");
+        HeureActiveFiltreAujourdhui.add(VentesLabel10, java.awt.BorderLayout.CENTER);
+
+        FiltreHeuresActcives.add(HeureActiveFiltreAujourdhui);
+
+        HeureActiveFiltreSemaine.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreSemaine.setPreferredSize(new java.awt.Dimension(140, 30));
+        HeureActiveFiltreSemaine.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreSemaineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreSemaineMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreSemaineMousePressed(evt);
+            }
+        });
+        HeureActiveFiltreSemaine.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel11.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel11.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel11.setText("Derniere Semaine");
+        HeureActiveFiltreSemaine.add(VentesLabel11, java.awt.BorderLayout.CENTER);
+
+        FiltreHeuresActcives.add(HeureActiveFiltreSemaine);
+
+        HeureActiveFiltreMois.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreMois.setPreferredSize(new java.awt.Dimension(140, 30));
+        HeureActiveFiltreMois.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreMoisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreMoisMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltreMoisMousePressed(evt);
+            }
+        });
+        HeureActiveFiltreMois.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel12.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel12.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel12.setText("Dernier Mois");
+        HeureActiveFiltreMois.add(VentesLabel12, java.awt.BorderLayout.CENTER);
+
+        FiltreHeuresActcives.add(HeureActiveFiltreMois);
+
+        HeureActiveFiltrePeriode.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltrePeriode.setPreferredSize(new java.awt.Dimension(140, 30));
+        HeureActiveFiltrePeriode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltrePeriodeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltrePeriodeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HeureActiveFiltrePeriodeMousePressed(evt);
+            }
+        });
+        HeureActiveFiltrePeriode.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel13.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel13.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel13.setText("Periode");
+        HeureActiveFiltrePeriode.add(VentesLabel13, java.awt.BorderLayout.CENTER);
+
+        FiltreHeuresActcives.add(HeureActiveFiltrePeriode);
+
+        Filtres.add(FiltreHeuresActcives, "HeuresActives");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -468,7 +603,11 @@ public class StatsPanel extends javax.swing.JPanel {
         RevenusFiltreParJour.setBackground(CustomColors.panelDefaultBackgroundColor);
         RevenusFiltreParMois.setBackground(CustomColors.panelDefaultBackgroundColor);
         RevenusFiltreParSemaine.setBackground(CustomColors.panelDefaultBackgroundColor);
-                
+        HeureActiveFiltreAujourdhui.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreMois.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltrePeriode.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreSemaine.setBackground(CustomColors.panelDefaultBackgroundColor);
+        HeureActiveFiltreTout.setBackground(CustomColors.panelDefaultBackgroundColor);
     }
 
     private void FilterSelected(JPanel p) {
@@ -511,6 +650,8 @@ public class StatsPanel extends javax.swing.JPanel {
 
     private void HeuresPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeuresPanelMouseClicked
         ChartChoiceSelected(HeuresPanel);
+        HeureActiveFiltreToutMousePressed(null);
+        c.show(Filtres, "HeuresActives");
     }//GEN-LAST:event_HeuresPanelMouseClicked
 
     private void HeuresPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeuresPanelMouseEntered
@@ -580,7 +721,6 @@ public class StatsPanel extends javax.swing.JPanel {
         System.out.println(dateDebut + "    " + dateFin);
         showVentesCharte(dateDebut, dateFin);
         FilterSelected(venteFiltreSemaine);
-
     }//GEN-LAST:event_venteFiltreSemaineMousePressed
 
     private void venteFiltreMoisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_venteFiltreMoisMouseEntered
@@ -674,6 +814,119 @@ public class StatsPanel extends javax.swing.JPanel {
         FilterSelected(RevenusFiltreParSemaine);
 
     }//GEN-LAST:event_RevenusFiltreParSemaineMousePressed
+
+    private void HeureActiveFiltreToutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreToutMouseEntered
+        FilterMouseEntered(HeureActiveFiltreTout);
+    }//GEN-LAST:event_HeureActiveFiltreToutMouseEntered
+
+    private void HeureActiveFiltreToutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreToutMouseExited
+        FilterMouseExited(HeureActiveFiltreTout);
+    }//GEN-LAST:event_HeureActiveFiltreToutMouseExited
+
+    private void HeureActiveFiltreToutMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreToutMousePressed
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new java.util.Date());
+        cal.add(Calendar.DATE, 1);
+        String dateFin = formatDate.format(cal.getTime());
+        cal.add(Calendar.YEAR, -100);
+        String dateDebut = formatDate.format(cal.getTime());
+        System.out.println(dateDebut + "    " + dateFin);
+        showHeuresActivesCharte(dateDebut, dateFin);
+        FilterSelected(HeureActiveFiltreTout);
+    }//GEN-LAST:event_HeureActiveFiltreToutMousePressed
+
+    private void HeureActiveFiltreAujourdhuiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreAujourdhuiMouseEntered
+        FilterMouseEntered(HeureActiveFiltreAujourdhui);
+
+    }//GEN-LAST:event_HeureActiveFiltreAujourdhuiMouseEntered
+
+    private void HeureActiveFiltreAujourdhuiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreAujourdhuiMouseExited
+        FilterMouseExited(HeureActiveFiltreAujourdhui);
+    }//GEN-LAST:event_HeureActiveFiltreAujourdhuiMouseExited
+
+    private void HeureActiveFiltreAujourdhuiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreAujourdhuiMousePressed
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new java.util.Date());
+        cal.add(Calendar.DATE, 1);
+        String dateFin = formatDate.format(cal.getTime());
+        cal.add(Calendar.DATE, -1);
+        String dateDebut = formatDate.format(cal.getTime());
+        System.out.println(dateDebut + "    " + dateFin);
+        showHeuresActivesCharte(dateDebut, dateFin);
+        FilterSelected(HeureActiveFiltreAujourdhui);
+    }//GEN-LAST:event_HeureActiveFiltreAujourdhuiMousePressed
+
+    private void HeureActiveFiltreSemaineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreSemaineMouseEntered
+        FilterMouseEntered(HeureActiveFiltreSemaine);
+    }//GEN-LAST:event_HeureActiveFiltreSemaineMouseEntered
+
+    private void HeureActiveFiltreSemaineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreSemaineMouseExited
+        FilterMouseExited(HeureActiveFiltreSemaine);
+    }//GEN-LAST:event_HeureActiveFiltreSemaineMouseExited
+
+    private void HeureActiveFiltreSemaineMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreSemaineMousePressed
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new java.util.Date());
+        cal.add(Calendar.DATE, 1);
+        String dateFin = formatDate.format(cal.getTime());
+        cal.add(Calendar.DATE, -7);
+        String dateDebut = formatDate.format(cal.getTime());
+        System.out.println(dateDebut + "    " + dateFin);
+        showHeuresActivesCharte(dateDebut, dateFin);
+        FilterSelected(HeureActiveFiltreSemaine);
+    }//GEN-LAST:event_HeureActiveFiltreSemaineMousePressed
+
+    private void HeureActiveFiltreMoisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreMoisMouseEntered
+        FilterMouseEntered(HeureActiveFiltreMois);
+    }//GEN-LAST:event_HeureActiveFiltreMoisMouseEntered
+
+    private void HeureActiveFiltreMoisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreMoisMouseExited
+        FilterMouseExited(HeureActiveFiltreMois);
+    }//GEN-LAST:event_HeureActiveFiltreMoisMouseExited
+
+    private void HeureActiveFiltreMoisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltreMoisMousePressed
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new java.util.Date());
+        cal.add(Calendar.DATE, 1);
+        String dateFin = formatDate.format(cal.getTime());
+        cal.add(Calendar.DATE, -30);
+        String dateDebut = formatDate.format(cal.getTime());
+        System.out.println(dateDebut + "    " + dateFin);
+        showHeuresActivesCharte(dateDebut, dateFin);
+        FilterSelected(HeureActiveFiltreMois);
+    }//GEN-LAST:event_HeureActiveFiltreMoisMousePressed
+
+    private void HeureActiveFiltrePeriodeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltrePeriodeMouseEntered
+        FilterMouseEntered(HeureActiveFiltrePeriode);
+    }//GEN-LAST:event_HeureActiveFiltrePeriodeMouseEntered
+
+    private void HeureActiveFiltrePeriodeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltrePeriodeMouseExited
+        FilterMouseExited(HeureActiveFiltrePeriode);
+    }//GEN-LAST:event_HeureActiveFiltrePeriodeMouseExited
+
+    private void HeureActiveFiltrePeriodeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltrePeriodeMousePressed
+        PeriodChooserDialog periodChooserDialog = new PeriodChooserDialog();
+        periodChooserDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        periodChooserDialog.setLocationRelativeTo(this);
+
+        String[] answer = periodChooserDialog.getAnswer();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yy");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date datedeb = null;
+        java.util.Date datefin = null;
+
+        try {
+            datedeb = format1.parse(answer[0]);
+            datefin = format1.parse(answer[1]);
+        } catch (ParseException ex) {
+        }
+        String DateDeb = format2.format(datedeb);
+        String DateFin = format2.format(datefin);
+
+        showHeuresActivesCharte(DateDeb, DateFin);
+        FilterSelected(HeureActiveFiltrePeriode);
+
+    }//GEN-LAST:event_HeureActiveFiltrePeriodeMousePressed
     private void showVentesCharte(String debutDate, String finDate) {
         String query = "select A.Categorie, SUM(quantite) from article A,detail_commande DC,Commande C where A.idArticle = DC.idArticle and DC.idCommande = C.idCommande and C.date >=\"" + debutDate + "\" and C.date<=\"" + finDate + "\" group by categorie;";
         try {
@@ -717,6 +970,7 @@ public class StatsPanel extends javax.swing.JPanel {
             JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Jour", "Date", "Revenu", dataset);
             XYPlot plot = chart.getXYPlot();
             plot.setDomainPannable(true);
+            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
             XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
             renderer.setSeriesPaint(0, Color.RED);
@@ -768,6 +1022,7 @@ public class StatsPanel extends javax.swing.JPanel {
             JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Mois", "Date", "Revenu", dataset);
             XYPlot plot = chart.getXYPlot();
             plot.setDomainPannable(true);
+            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
             XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
             renderer.setSeriesPaint(0, Color.RED);
@@ -821,6 +1076,7 @@ public class StatsPanel extends javax.swing.JPanel {
             JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Semaine", "Date", "Revenu", dataset);
             XYPlot plot = chart.getXYPlot();
             plot.setDomainPannable(true);
+            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
 
             XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
             renderer.setSeriesPaint(0, Color.RED);
@@ -858,11 +1114,81 @@ public class StatsPanel extends javax.swing.JPanel {
         }
     }
 
+    private void showHeuresActivesCharte(String debutDate, String finDate) {
+        try {
+            ResultSet Rs = dbStat.HeuresActivesDebFin(debutDate, finDate);
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            for (int i = 6; i <= 24; ++i) {
+                String date = String.format("%02d", i);
+                dataset.addValue(0, "NbCommande", date);
+            }
+
+            while (Rs.next()) {
+                String time = Rs.getString("Hour");
+                int value = Rs.getInt("nb");
+                dataset.addValue(value, "NbCommande", time);
+            }
+
+            JFreeChart chart = ChartFactory.createBarChart("Heures Actives Tout", "Date", "Nombre Commandes", dataset);
+            CategoryPlot plot = chart.getCategoryPlot();
+            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+            //FORMAT PlotArea
+            plot.setBackgroundPaint(Color.white);
+            plot.setDomainGridlinePaint(Color.white);
+            plot.setRangeGridlinePaint( Color.white);
+            plot.setOutlineVisible(false);
+            
+            //Format Bars
+            
+            //            plot.setDomainPannable(true);
+            //
+            //            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+            //            renderer.setSeriesPaint(0, Color.RED);
+            //            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
+            plot.setBackgroundPaint(Color.white);
+            plot.setRangeGridlinesVisible(true);
+            plot.setRangeGridlinePaint(Color.BLACK);
+//
+            //   plot.setDomainGridlinesVisible(true);
+            plot.setDomainGridlinePaint(Color.BLACK);
+//            plot.setRenderer(renderer);
+//            DateAxis dateAxis = (DateAxis) chart.getXYPlot().getDomainAxis();
+//            Calendar cal = Calendar.getInstance();
+//            cal.setTime(new java.util.Date());
+//            dateAxis.setMaximumDate(cal.getTime());
+//
+//            cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) - 7);
+//            dateAxis.setMinimumDate(cal.getTime());
+//
+//            chart.getTitle().setPaint(CustomColors.lightViolet);
+//            //  P.setSimpleLabels(true);
+            ChartPanel cp = new ChartPanel(chart);
+            cp.setRangeZoomable(false);
+            /* cp.setDomainZoomable(false);*/
+            cp.setMouseWheelEnabled(true);
+            cp.setPreferredSize(panelChart.getPreferredSize());
+            //Adding the chart to the panel to be viewed
+            panelChart.removeAll();
+            Component c = panelChart.add(cp);
+            panelChart.setLayout(new GridLayout(0, 1));
+            // panelChart.updateUI();
+
+        } catch (SQLException ex) {
+            System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ChartChoice;
+    private javax.swing.JPanel FiltreHeuresActcives;
     private javax.swing.JPanel FiltreRevenus;
     private javax.swing.JPanel FiltreVentes;
     private javax.swing.JPanel Filtres;
+    private javax.swing.JPanel HeureActiveFiltreAujourdhui;
+    private javax.swing.JPanel HeureActiveFiltreMois;
+    private javax.swing.JPanel HeureActiveFiltrePeriode;
+    private javax.swing.JPanel HeureActiveFiltreSemaine;
+    private javax.swing.JPanel HeureActiveFiltreTout;
     private javax.swing.JLabel HeuresLabel;
     private javax.swing.JPanel HeuresPanel;
     private javax.swing.JPanel RevenusFiltreParJour;
@@ -872,6 +1198,10 @@ public class StatsPanel extends javax.swing.JPanel {
     private javax.swing.JPanel RevenusPanel;
     private javax.swing.JLabel VentesLabel;
     private javax.swing.JLabel VentesLabel1;
+    private javax.swing.JLabel VentesLabel10;
+    private javax.swing.JLabel VentesLabel11;
+    private javax.swing.JLabel VentesLabel12;
+    private javax.swing.JLabel VentesLabel13;
     private javax.swing.JLabel VentesLabel2;
     private javax.swing.JLabel VentesLabel3;
     private javax.swing.JLabel VentesLabel4;
@@ -879,6 +1209,7 @@ public class StatsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel VentesLabel6;
     private javax.swing.JLabel VentesLabel7;
     private javax.swing.JLabel VentesLabel8;
+    private javax.swing.JLabel VentesLabel9;
     private javax.swing.JPanel VentesPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel panelChart;
