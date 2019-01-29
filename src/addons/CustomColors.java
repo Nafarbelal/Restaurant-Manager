@@ -18,8 +18,7 @@ public class CustomColors {
     public static final Color lightViolet = new Color(122, 72, 221);
     public static final Color white = Color.WHITE;
     public static final Color tomato = new Color(255, 99, 71);
-    
-    
+
     public static final Color title = lightViolet;
 
     public static final Color tableNotOccupied = new Color(204, 255, 204);
@@ -28,6 +27,13 @@ public class CustomColors {
     public static final Color panelDefaultBackgroundColor = lightViolet; //= new Color(54,33,89)     
     public static final Color orderFilterPanelHoveredOn = betweenViolet;
     public static final Color orderFilterPanelSelected = darkViolet;
+
+//    public static final Color articleHoveredOn = lightViolet;
+//    public static final Color articlePressed = betweenViolet;
+//    public static final Color articleDefaultColor = darkViolet;
+    public static final Color articleHoveredOn = betweenViolet;
+    public static final Color articlePressed = lightViolet;
+    public static final Color articleDefaultColor = darkViolet;
 
     public static final Color sidesSeparator = darkViolet;
 
