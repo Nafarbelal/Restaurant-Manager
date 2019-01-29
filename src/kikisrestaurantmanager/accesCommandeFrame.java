@@ -228,28 +228,29 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         jScrollPane1 = new javax.swing.JScrollPane();
         Menu = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        PanelSandwich = new javax.swing.JPanel();
-        TxtSandwich = new javax.swing.JLabel();
-        PanelBurger = new javax.swing.JPanel();
-        TxtBurger = new javax.swing.JLabel();
+        TxtCurrentTable = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        sideBarCats = new javax.swing.JPanel();
         PanelPizza = new javax.swing.JPanel();
         TxtPizza = new javax.swing.JLabel();
+        PanelSalade = new javax.swing.JPanel();
+        TxtSalade = new javax.swing.JLabel();
         PanelShawarma = new javax.swing.JPanel();
         TxtShawarma = new javax.swing.JLabel();
+        PanelDessert = new javax.swing.JPanel();
+        TxtDessert2 = new javax.swing.JLabel();
         PanelPlat = new javax.swing.JPanel();
         TxtPlat = new javax.swing.JLabel();
         PanelBoisson = new javax.swing.JPanel();
         TxtBoisson = new javax.swing.JLabel();
         PanelPanini = new javax.swing.JPanel();
         TxtPanini = new javax.swing.JLabel();
+        PanelSandwich = new javax.swing.JPanel();
+        TxtSandwich = new javax.swing.JLabel();
+        PanelBurger = new javax.swing.JPanel();
+        TxtBurger = new javax.swing.JLabel();
         PanelTacos = new javax.swing.JPanel();
         TxtTacos = new javax.swing.JLabel();
-        PanelSalade = new javax.swing.JPanel();
-        TxtSalade = new javax.swing.JLabel();
-        PanelDessert = new javax.swing.JPanel();
-        TxtDessert2 = new javax.swing.JLabel();
-        TxtCurrentTable = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         BtnAnnuler = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         BtnConfirmer = new javax.swing.JButton();
@@ -311,71 +312,17 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
         jPanel1.setBackground(new java.awt.Color(54, 33, 89));
 
-        PanelSandwich.setBackground(new java.awt.Color(54, 33, 89));
-        PanelSandwich.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelSandwichMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelSandwichMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                PanelSandwichMousePressed(evt);
-            }
-        });
+        TxtCurrentTable.setBackground(new java.awt.Color(255, 255, 255));
+        TxtCurrentTable.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        TxtCurrentTable.setForeground(new java.awt.Color(255, 255, 255));
+        TxtCurrentTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtCurrentTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Service_Bell_32px.png"))); // NOI18N
+        TxtCurrentTable.setText("Current Table");
 
-        TxtSandwich.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        TxtSandwich.setForeground(new java.awt.Color(255, 255, 255));
-        TxtSandwich.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtSandwich.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Bread_25px_1.png"))); // NOI18N
-        TxtSandwich.setText("Sandwich");
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
-        javax.swing.GroupLayout PanelSandwichLayout = new javax.swing.GroupLayout(PanelSandwich);
-        PanelSandwich.setLayout(PanelSandwichLayout);
-        PanelSandwichLayout.setHorizontalGroup(
-            PanelSandwichLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSandwichLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(TxtSandwich)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelSandwichLayout.setVerticalGroup(
-            PanelSandwichLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtSandwich, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        PanelBurger.setBackground(new java.awt.Color(54, 33, 89));
-        PanelBurger.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelBurgerMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelBurgerMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                PanelBurgerMousePressed(evt);
-            }
-        });
-
-        TxtBurger.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        TxtBurger.setForeground(new java.awt.Color(255, 255, 255));
-        TxtBurger.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtBurger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Hamburger_25px_1.png"))); // NOI18N
-        TxtBurger.setText("Burger");
-
-        javax.swing.GroupLayout PanelBurgerLayout = new javax.swing.GroupLayout(PanelBurger);
-        PanelBurger.setLayout(PanelBurgerLayout);
-        PanelBurgerLayout.setHorizontalGroup(
-            PanelBurgerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelBurgerLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(TxtBurger)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelBurgerLayout.setVerticalGroup(
-            PanelBurgerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtBurger, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        sideBarCats.setBackground(CustomColors.darkViolet);
+        sideBarCats.setLayout(new java.awt.GridLayout(10, 0, 0, 10));
 
         PanelPizza.setBackground(new java.awt.Color(54, 33, 89));
         PanelPizza.setForeground(new java.awt.Color(255, 255, 255));
@@ -390,26 +337,39 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelPizzaMousePressed(evt);
             }
         });
+        PanelPizza.setLayout(new java.awt.BorderLayout());
 
         TxtPizza.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPizza.setForeground(new java.awt.Color(255, 255, 255));
         TxtPizza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Pizza_25px.png"))); // NOI18N
-        TxtPizza.setText("Pizza");
+        TxtPizza.setText("Pizza   ");
+        PanelPizza.add(TxtPizza, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelPizzaLayout = new javax.swing.GroupLayout(PanelPizza);
-        PanelPizza.setLayout(PanelPizzaLayout);
-        PanelPizzaLayout.setHorizontalGroup(
-            PanelPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPizzaLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(TxtPizza)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelPizzaLayout.setVerticalGroup(
-            PanelPizzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtPizza, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        sideBarCats.add(PanelPizza);
+
+        PanelSalade.setBackground(new java.awt.Color(54, 33, 89));
+        PanelSalade.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelSaladeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelSaladeMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelSaladeMousePressed(evt);
+            }
+        });
+        PanelSalade.setLayout(new java.awt.BorderLayout());
+
+        TxtSalade.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        TxtSalade.setForeground(new java.awt.Color(255, 255, 255));
+        TxtSalade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtSalade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Salad_25px.png"))); // NOI18N
+        TxtSalade.setText("Salade  ");
+        PanelSalade.add(TxtSalade, java.awt.BorderLayout.CENTER);
+
+        sideBarCats.add(PanelSalade);
 
         PanelShawarma.setBackground(new java.awt.Color(54, 33, 89));
         PanelShawarma.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -423,28 +383,39 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelShawarmaMousePressed(evt);
             }
         });
+        PanelShawarma.setLayout(new java.awt.BorderLayout());
 
         TxtShawarma.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtShawarma.setForeground(new java.awt.Color(255, 255, 255));
         TxtShawarma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtShawarma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Wrap_25px.png"))); // NOI18N
         TxtShawarma.setText("Shawarma");
+        PanelShawarma.add(TxtShawarma, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelShawarmaLayout = new javax.swing.GroupLayout(PanelShawarma);
-        PanelShawarma.setLayout(PanelShawarmaLayout);
-        PanelShawarmaLayout.setHorizontalGroup(
-            PanelShawarmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelShawarmaLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(TxtShawarma)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelShawarmaLayout.setVerticalGroup(
-            PanelShawarmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelShawarmaLayout.createSequentialGroup()
-                .addComponent(TxtShawarma)
-                .addGap(0, 2, Short.MAX_VALUE))
-        );
+        sideBarCats.add(PanelShawarma);
+
+        PanelDessert.setBackground(new java.awt.Color(54, 33, 89));
+        PanelDessert.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelDessertMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelDessertMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelDessertMousePressed(evt);
+            }
+        });
+        PanelDessert.setLayout(new java.awt.BorderLayout());
+
+        TxtDessert2.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        TxtDessert2.setForeground(new java.awt.Color(255, 255, 255));
+        TxtDessert2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtDessert2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
+        TxtDessert2.setText("Dessert ");
+        PanelDessert.add(TxtDessert2, java.awt.BorderLayout.CENTER);
+
+        sideBarCats.add(PanelDessert);
 
         PanelPlat.setBackground(new java.awt.Color(54, 33, 89));
         PanelPlat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -458,26 +429,16 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelPlatMousePressed(evt);
             }
         });
+        PanelPlat.setLayout(new java.awt.BorderLayout());
 
         TxtPlat.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPlat.setForeground(new java.awt.Color(255, 255, 255));
         TxtPlat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtPlat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Meal_25px.png"))); // NOI18N
-        TxtPlat.setText("Plat");
+        TxtPlat.setText("Plat    ");
+        PanelPlat.add(TxtPlat, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelPlatLayout = new javax.swing.GroupLayout(PanelPlat);
-        PanelPlat.setLayout(PanelPlatLayout);
-        PanelPlatLayout.setHorizontalGroup(
-            PanelPlatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPlatLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(TxtPlat)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelPlatLayout.setVerticalGroup(
-            PanelPlatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtPlat, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        sideBarCats.add(PanelPlat);
 
         PanelBoisson.setBackground(new java.awt.Color(54, 33, 89));
         PanelBoisson.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -491,27 +452,16 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelBoissonMousePressed(evt);
             }
         });
+        PanelBoisson.setLayout(new java.awt.BorderLayout());
 
         TxtBoisson.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtBoisson.setForeground(new java.awt.Color(255, 255, 255));
+        TxtBoisson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtBoisson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Cocktail_25px_1.png"))); // NOI18N
-        TxtBoisson.setText("Boisson");
+        TxtBoisson.setText("Boisson  ");
+        PanelBoisson.add(TxtBoisson, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelBoissonLayout = new javax.swing.GroupLayout(PanelBoisson);
-        PanelBoisson.setLayout(PanelBoissonLayout);
-        PanelBoissonLayout.setHorizontalGroup(
-            PanelBoissonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBoissonLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TxtBoisson, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
-        );
-        PanelBoissonLayout.setVerticalGroup(
-            PanelBoissonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelBoissonLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TxtBoisson, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        sideBarCats.add(PanelBoisson);
 
         PanelPanini.setBackground(new java.awt.Color(54, 33, 89));
         PanelPanini.setForeground(new java.awt.Color(255, 255, 255));
@@ -526,26 +476,62 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelPaniniMousePressed(evt);
             }
         });
+        PanelPanini.setLayout(new java.awt.BorderLayout());
 
         TxtPanini.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPanini.setForeground(new java.awt.Color(255, 255, 255));
         TxtPanini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtPanini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Hot_Dog_25px.png"))); // NOI18N
-        TxtPanini.setText("Panini");
+        TxtPanini.setText("Panini  ");
+        PanelPanini.add(TxtPanini, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelPaniniLayout = new javax.swing.GroupLayout(PanelPanini);
-        PanelPanini.setLayout(PanelPaniniLayout);
-        PanelPaniniLayout.setHorizontalGroup(
-            PanelPaniniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelPaniniLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(TxtPanini)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelPaniniLayout.setVerticalGroup(
-            PanelPaniniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtPanini, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
+        sideBarCats.add(PanelPanini);
+
+        PanelSandwich.setBackground(new java.awt.Color(54, 33, 89));
+        PanelSandwich.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelSandwichMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelSandwichMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelSandwichMousePressed(evt);
+            }
+        });
+        PanelSandwich.setLayout(new java.awt.BorderLayout());
+
+        TxtSandwich.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        TxtSandwich.setForeground(new java.awt.Color(255, 255, 255));
+        TxtSandwich.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtSandwich.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Bread_25px_1.png"))); // NOI18N
+        TxtSandwich.setText("Sandwich");
+        PanelSandwich.add(TxtSandwich, java.awt.BorderLayout.CENTER);
+
+        sideBarCats.add(PanelSandwich);
+
+        PanelBurger.setBackground(new java.awt.Color(54, 33, 89));
+        PanelBurger.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                PanelBurgerMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                PanelBurgerMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                PanelBurgerMousePressed(evt);
+            }
+        });
+        PanelBurger.setLayout(new java.awt.BorderLayout());
+
+        TxtBurger.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        TxtBurger.setForeground(new java.awt.Color(255, 255, 255));
+        TxtBurger.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        TxtBurger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Hamburger_25px_1.png"))); // NOI18N
+        TxtBurger.setText("Burger  ");
+        PanelBurger.add(TxtBurger, java.awt.BorderLayout.CENTER);
+
+        sideBarCats.add(PanelBurger);
 
         PanelTacos.setBackground(new java.awt.Color(54, 33, 89));
         PanelTacos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -559,123 +545,27 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 PanelTacosMousePressed(evt);
             }
         });
+        PanelTacos.setLayout(new java.awt.BorderLayout());
 
         TxtTacos.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtTacos.setForeground(new java.awt.Color(255, 255, 255));
         TxtTacos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TxtTacos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Taco_25px.png"))); // NOI18N
-        TxtTacos.setText("Tacos");
+        TxtTacos.setText("Tacos   ");
+        PanelTacos.add(TxtTacos, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout PanelTacosLayout = new javax.swing.GroupLayout(PanelTacos);
-        PanelTacos.setLayout(PanelTacosLayout);
-        PanelTacosLayout.setHorizontalGroup(
-            PanelTacosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelTacosLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(TxtTacos)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelTacosLayout.setVerticalGroup(
-            PanelTacosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtTacos, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        PanelSalade.setBackground(new java.awt.Color(54, 33, 89));
-        PanelSalade.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelSaladeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelSaladeMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                PanelSaladeMousePressed(evt);
-            }
-        });
-
-        TxtSalade.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        TxtSalade.setForeground(new java.awt.Color(255, 255, 255));
-        TxtSalade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtSalade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Salad_25px.png"))); // NOI18N
-        TxtSalade.setText("Salade");
-
-        javax.swing.GroupLayout PanelSaladeLayout = new javax.swing.GroupLayout(PanelSalade);
-        PanelSalade.setLayout(PanelSaladeLayout);
-        PanelSaladeLayout.setHorizontalGroup(
-            PanelSaladeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelSaladeLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(TxtSalade)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelSaladeLayout.setVerticalGroup(
-            PanelSaladeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtSalade, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        PanelDessert.setBackground(new java.awt.Color(54, 33, 89));
-        PanelDessert.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                PanelDessertMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                PanelDessertMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                PanelDessertMousePressed(evt);
-            }
-        });
-
-        TxtDessert2.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        TxtDessert2.setForeground(new java.awt.Color(255, 255, 255));
-        TxtDessert2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtDessert2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
-        TxtDessert2.setText("Dessert");
-
-        javax.swing.GroupLayout PanelDessertLayout = new javax.swing.GroupLayout(PanelDessert);
-        PanelDessert.setLayout(PanelDessertLayout);
-        PanelDessertLayout.setHorizontalGroup(
-            PanelDessertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelDessertLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(TxtDessert2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        PanelDessertLayout.setVerticalGroup(
-            PanelDessertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(TxtDessert2, javax.swing.GroupLayout.Alignment.TRAILING)
-        );
-
-        TxtCurrentTable.setBackground(new java.awt.Color(255, 255, 255));
-        TxtCurrentTable.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        TxtCurrentTable.setForeground(new java.awt.Color(255, 255, 255));
-        TxtCurrentTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtCurrentTable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Service_Bell_32px.png"))); // NOI18N
-        TxtCurrentTable.setText("Current Table");
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        sideBarCats.add(PanelTacos);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelBoisson, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelPanini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelSandwich, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelBurger, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelPizza, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelShawarma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelPlat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelTacos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelSalade, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelDessert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(TxtCurrentTable, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator1)
                 .addContainerGap())
+            .addComponent(sideBarCats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(TxtCurrentTable, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -684,27 +574,9 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addComponent(TxtCurrentTable, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(PanelBoisson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelPanini, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelSandwich, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelBurger, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelPizza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelShawarma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelPlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelTacos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelSalade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelDessert, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(sideBarCats, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         BtnAnnuler.setBackground(new java.awt.Color(204, 204, 204));
@@ -720,7 +592,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             }
         });
 
-        jLabel13.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jLabel13.setForeground(CustomColors.lightViolet);
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Commande");
 
@@ -732,7 +605,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             }
         });
 
-        jLabel14.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        jLabel14.setForeground(CustomColors.lightViolet);
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Menu");
 
@@ -796,18 +670,16 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LabelAdd))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -817,13 +689,12 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                         .addGap(36, 36, 36))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
                             .addComponent(MontantPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(LabelDelete)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnTrash)
-                                .addGap(0, 0, 0))
+                                .addComponent(btnTrash))
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(40, 40, 40))))
         );
@@ -834,25 +705,23 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))
-                        .addGap(18, 18, 18)
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(Compteur, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(LabelAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(LabelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnTrash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(LabelDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnTrash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addComponent(MontantPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1199,6 +1068,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel sideBarCats;
     // End of variables declaration//GEN-END:variables
 
     @Override
