@@ -19,10 +19,20 @@
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/MenuManager.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ChangerMdp.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/addons/CustomColors.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/MODEL/DB_Statistics.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/InfosPanel.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/MainMenu.java</file>
             <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/DatabaseCreationFiles/projetJavaDatabase.sql</file>
             <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
-            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
-            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/MODEL/DB_Statistics.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/Home.java</file>
+            <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/kikisrestaurantmanager/PeriodChooserDialog.java</file>
         </group>
     </open-files>
 </project-private>

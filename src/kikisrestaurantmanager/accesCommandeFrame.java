@@ -35,9 +35,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
     DB_Commande dbCommande = new DB_Commande();
     DB_DetailCommande dbDetailCommande = new DB_DetailCommande();
-    DB_Article        dbArticle        = new DB_Article();
+    DB_Article dbArticle = new DB_Article();
     int idCommande;
-    
 
     /**
      * Creates new form accesCommande
@@ -54,8 +53,8 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         //this.setUndecorated(true);
         mainMenu = mn;
         initComponents();
-        
-       /* Menu.getColumnModel().getColumn(0).setPreferredWidth(30);
+
+        /* Menu.getColumnModel().getColumn(0).setPreferredWidth(30);
         Menu.getColumnModel().getColumn(1).setPreferredWidth(150);
         Menu.getColumnModel().getColumn(2).setPreferredWidth(30);
         Menu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);*/
@@ -77,7 +76,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         //this.setUndecorated(true);
         mainMenu = mn;
         initComponents();
-        
+
         /*Menu.getColumnModel().getColumn(0).setPreferredWidth(30);
         Menu.getColumnModel().getColumn(1).setPreferredWidth(200);
         Menu.getColumnModel().getColumn(2).setPreferredWidth(30);
@@ -134,23 +133,35 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         ResultSet articles = dbArticle.MenuCategorieAll();
         Menu.setModel(new TableModel(articles));
     }
+
     private void DefaultColorAll() {
-        PanelBoisson.setBackground(CustomColors.darkViolet);
-        PanelBurger.setBackground(CustomColors.darkViolet);
-        PanelDessert.setBackground(CustomColors.darkViolet);
-        PanelPanini.setBackground(CustomColors.darkViolet);
-        PanelPizza.setBackground(CustomColors.darkViolet);
-        PanelPlat.setBackground(CustomColors.darkViolet);
-        PanelSalade.setBackground(CustomColors.darkViolet);
-        PanelSandwich.setBackground(CustomColors.darkViolet);
-        PanelShawarma.setBackground(CustomColors.darkViolet);
-        PanelTacos.setBackground(CustomColors.darkViolet);
-       
+        PanelBoisson.setBackground(CustomColors.articleDefaultColor);
+        PanelBurger.setBackground(CustomColors.articleDefaultColor);
+        PanelDessert.setBackground(CustomColors.articleDefaultColor);
+        PanelPanini.setBackground(CustomColors.articleDefaultColor);
+        PanelPizza.setBackground(CustomColors.articleDefaultColor);
+        PanelPlat.setBackground(CustomColors.articleDefaultColor);
+        PanelSalade.setBackground(CustomColors.articleDefaultColor);
+        PanelSandwich.setBackground(CustomColors.articleDefaultColor);
+        PanelShawarma.setBackground(CustomColors.articleDefaultColor);
+        PanelTacos.setBackground(CustomColors.articleDefaultColor);
+
     }
+
     private void MouseExited(JPanel p) {
-        if (p.getBackground() != CustomColors.betweenViolet) {
-            p.setBackground(CustomColors.darkViolet);
+        if (p.getBackground() != CustomColors.articlePressed) {
+            p.setBackground(CustomColors.articleDefaultColor);
         }
+    }
+
+    private void MouseEntered(JPanel p) {
+        if (p.getBackground() != CustomColors.articlePressed) {
+            p.setBackground(CustomColors.articleHoveredOn);
+        }
+    }
+
+    private void MousePressed(JPanel p) {
+        p.setBackground(CustomColors.articlePressed);
     }
 
     /**
@@ -854,14 +865,14 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         ConfirmationFrame confirmDialog = new ConfirmationFrame();
         confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         confirmDialog.setLocationRelativeTo(this);
-        
+
         if (dbDetailCommande.CheckCreation(this.idCommande) == 0) {
             this.disposeNormal();
-            answer=1;
+            answer = 1;
         } else {
             answer = confirmDialog.getAnswer();
         }
-        
+
         if (answer == 1) {
             dbCommande.AnnulerCommande(idCommande);
             this.disposeNormal();
@@ -892,53 +903,52 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         // TODO add your handling code here:
         String cat = "Dessert";
         Refresh_Menu(cat);
-        PanelDessert.setBackground(CustomColors.betweenViolet);
+        MousePressed(PanelDessert);
     }//GEN-LAST:event_PanelDessertMousePressed
 
     private void PanelDessertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseExited
         DefaultColorAll();// TODO add your handling code here:
         JPanel src = (JPanel) evt.getSource();
-        src.setBackground(CustomColors.betweenViolet);
         MouseExited(src);
     }//GEN-LAST:event_PanelDessertMouseExited
 
     private void PanelDessertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelDessertMouseEntered
         // TODO add your handling code here:
         JPanel src = (JPanel) evt.getSource();
-        src.setBackground(CustomColors.orderFilterPanelHoveredOn);
+        MouseEntered(src);
     }//GEN-LAST:event_PanelDessertMouseEntered
 
     private void PanelSaladeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMousePressed
         // TODO add your handling code here:
         String cat = "Salade";
         Refresh_Menu(cat);
-        PanelSalade.setBackground(CustomColors.betweenViolet);
+        JPanel src = (JPanel) evt.getSource();
+        MousePressed(src);
     }//GEN-LAST:event_PanelSaladeMousePressed
 
     private void PanelSaladeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMouseExited
         DefaultColorAll();// TODO add your handling code here:
-         JPanel src = (JPanel) evt.getSource();
-        src.setBackground(CustomColors.betweenViolet);
+        JPanel src = (JPanel) evt.getSource();
         MouseExited(src);
     }//GEN-LAST:event_PanelSaladeMouseExited
 
     private void PanelSaladeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSaladeMouseEntered
         // TODO add your handling code here:
         JPanel src = (JPanel) evt.getSource();
-        src.setBackground(CustomColors.orderFilterPanelHoveredOn);
+        MouseEntered(src);
     }//GEN-LAST:event_PanelSaladeMouseEntered
 
     private void PanelTacosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMousePressed
         String cat = "Tacos";
         Refresh_Menu(cat);
-        PanelTacos.setBackground(CustomColors.betweenViolet);
+        JPanel src = (JPanel) evt.getSource();
+        MousePressed(src);
     }//GEN-LAST:event_PanelTacosMousePressed
 
     private void PanelTacosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMouseExited
         DefaultColorAll();
         JPanel src = (JPanel) evt.getSource();
-        src.setBackground(CustomColors.betweenViolet);
-        MouseExited(src);// TODO add your handling code here:
+        MouseExited(src);
     }//GEN-LAST:event_PanelTacosMouseExited
 
     private void PanelTacosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelTacosMouseEntered
@@ -1026,15 +1036,15 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
     }//GEN-LAST:event_PanelSandwichMousePressed
 
     private void PanelSandwichMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSandwichMouseExited
-         DefaultColorAll();
-         JPanel src = (JPanel) evt.getSource();
+        DefaultColorAll();
+        JPanel src = (JPanel) evt.getSource();
         src.setBackground(CustomColors.betweenViolet);
         MouseExited(src);
         // TODO add your handling code here:
     }//GEN-LAST:event_PanelSandwichMouseExited
 
     private void PanelSandwichMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelSandwichMouseEntered
-      
+
         // PanelSandwich.setBackground(CustomColors.orderFilterPanelHoveredOn);
         JPanel src = (JPanel) evt.getSource();
         src.setBackground(CustomColors.orderFilterPanelHoveredOn);// TODO add your handling code here:
