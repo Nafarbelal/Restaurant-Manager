@@ -240,7 +240,7 @@ public class StatsPanel extends javax.swing.JPanel {
         });
         venteFiltreTout.setLayout(new java.awt.BorderLayout());
 
-        VentesLabel5.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel5.setFont(new java.awt.Font("Montserrat", 0, 17)); // NOI18N
         VentesLabel5.setForeground(CustomColors.ordersFilterTextUnselected);
         VentesLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         VentesLabel5.setText("Tout");
@@ -263,7 +263,7 @@ public class StatsPanel extends javax.swing.JPanel {
         });
         venteFiltreAujourdhui.setLayout(new java.awt.BorderLayout());
 
-        VentesLabel1.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel1.setFont(new java.awt.Font("Montserrat", 0, 17)); // NOI18N
         VentesLabel1.setForeground(CustomColors.ordersFilterTextUnselected);
         VentesLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         VentesLabel1.setText("Aujourd'hui");
@@ -286,7 +286,7 @@ public class StatsPanel extends javax.swing.JPanel {
         });
         venteFiltreSemaine.setLayout(new java.awt.BorderLayout());
 
-        VentesLabel2.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel2.setFont(new java.awt.Font("Montserrat", 0, 17)); // NOI18N
         VentesLabel2.setForeground(CustomColors.ordersFilterTextUnselected);
         VentesLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         VentesLabel2.setText("Derniere Semaine");
@@ -309,7 +309,7 @@ public class StatsPanel extends javax.swing.JPanel {
         });
         venteFiltreMois.setLayout(new java.awt.BorderLayout());
 
-        VentesLabel3.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel3.setFont(new java.awt.Font("Montserrat", 0, 17)); // NOI18N
         VentesLabel3.setForeground(CustomColors.ordersFilterTextUnselected);
         VentesLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         VentesLabel3.setText("Dernier Mois");
@@ -332,7 +332,7 @@ public class StatsPanel extends javax.swing.JPanel {
         });
         venteFiltrePeriode.setLayout(new java.awt.BorderLayout());
 
-        VentesLabel4.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel4.setFont(new java.awt.Font("Montserrat", 0, 17)); // NOI18N
         VentesLabel4.setForeground(CustomColors.ordersFilterTextUnselected);
         VentesLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         VentesLabel4.setText("Periode");
