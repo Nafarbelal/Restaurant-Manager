@@ -112,13 +112,6 @@ public class StatsPanel extends javax.swing.JPanel {
         VentesLabel3 = new javax.swing.JLabel();
         venteFiltrePeriode = new javax.swing.JPanel();
         VentesLabel4 = new javax.swing.JLabel();
-        FiltreRevenus = new javax.swing.JPanel();
-        RevenusFiltreParJour = new javax.swing.JPanel();
-        VentesLabel6 = new javax.swing.JLabel();
-        RevenusFiltreParSemaine = new javax.swing.JPanel();
-        VentesLabel8 = new javax.swing.JLabel();
-        RevenusFiltreParMois = new javax.swing.JPanel();
-        VentesLabel7 = new javax.swing.JLabel();
         FiltreHeuresActcives = new javax.swing.JPanel();
         HeureActiveFiltreTout = new javax.swing.JPanel();
         VentesLabel9 = new javax.swing.JLabel();
@@ -130,6 +123,14 @@ public class StatsPanel extends javax.swing.JPanel {
         VentesLabel12 = new javax.swing.JLabel();
         HeureActiveFiltrePeriode = new javax.swing.JPanel();
         VentesLabel13 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        FiltreRevenus = new javax.swing.JPanel();
+        RevenusFiltreParJour = new javax.swing.JPanel();
+        VentesLabel6 = new javax.swing.JLabel();
+        RevenusFiltreParSemaine = new javax.swing.JPanel();
+        VentesLabel8 = new javax.swing.JLabel();
+        RevenusFiltreParMois = new javax.swing.JPanel();
+        VentesLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -342,80 +343,6 @@ public class StatsPanel extends javax.swing.JPanel {
 
         Filtres.add(FiltreVentes, "VentesCard");
 
-        FiltreRevenus.setBackground(new java.awt.Color(255, 255, 255));
-        FiltreRevenus.setLayout(new java.awt.GridLayout(1, 0, 30, 0));
-
-        RevenusFiltreParJour.setBackground(CustomColors.panelDefaultBackgroundColor);
-        RevenusFiltreParJour.setPreferredSize(new java.awt.Dimension(140, 30));
-        RevenusFiltreParJour.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParJourMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParJourMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParJourMousePressed(evt);
-            }
-        });
-        RevenusFiltreParJour.setLayout(new java.awt.BorderLayout());
-
-        VentesLabel6.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        VentesLabel6.setForeground(CustomColors.ordersFilterTextUnselected);
-        VentesLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        VentesLabel6.setText("Par Jour");
-        RevenusFiltreParJour.add(VentesLabel6, java.awt.BorderLayout.CENTER);
-
-        FiltreRevenus.add(RevenusFiltreParJour);
-
-        RevenusFiltreParSemaine.setBackground(CustomColors.panelDefaultBackgroundColor);
-        RevenusFiltreParSemaine.setPreferredSize(new java.awt.Dimension(140, 30));
-        RevenusFiltreParSemaine.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParSemaineMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParSemaineMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParSemaineMousePressed(evt);
-            }
-        });
-        RevenusFiltreParSemaine.setLayout(new java.awt.BorderLayout());
-
-        VentesLabel8.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        VentesLabel8.setForeground(CustomColors.ordersFilterTextUnselected);
-        VentesLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        VentesLabel8.setText("Par Semaine");
-        RevenusFiltreParSemaine.add(VentesLabel8, java.awt.BorderLayout.CENTER);
-
-        FiltreRevenus.add(RevenusFiltreParSemaine);
-
-        RevenusFiltreParMois.setBackground(CustomColors.panelDefaultBackgroundColor);
-        RevenusFiltreParMois.setPreferredSize(new java.awt.Dimension(140, 30));
-        RevenusFiltreParMois.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParMoisMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParMoisMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                RevenusFiltreParMoisMousePressed(evt);
-            }
-        });
-        RevenusFiltreParMois.setLayout(new java.awt.BorderLayout());
-
-        VentesLabel7.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
-        VentesLabel7.setForeground(CustomColors.ordersFilterTextUnselected);
-        VentesLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        VentesLabel7.setText("Par Mois");
-        RevenusFiltreParMois.add(VentesLabel7, java.awt.BorderLayout.CENTER);
-
-        FiltreRevenus.add(RevenusFiltreParMois);
-
-        Filtres.add(FiltreRevenus, "RevenusCard");
-
         FiltreHeuresActcives.setBackground(new java.awt.Color(255, 255, 255));
         FiltreHeuresActcives.setLayout(new java.awt.GridLayout(1, 0, 15, 0));
 
@@ -536,6 +463,96 @@ public class StatsPanel extends javax.swing.JPanel {
 
         Filtres.add(FiltreHeuresActcives, "HeuresActives");
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        FiltreRevenus.setBackground(new java.awt.Color(255, 255, 255));
+        FiltreRevenus.setLayout(new java.awt.GridLayout(1, 0, 120, 0));
+
+        RevenusFiltreParJour.setBackground(CustomColors.panelDefaultBackgroundColor);
+        RevenusFiltreParJour.setPreferredSize(new java.awt.Dimension(140, 30));
+        RevenusFiltreParJour.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParJourMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParJourMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParJourMousePressed(evt);
+            }
+        });
+        RevenusFiltreParJour.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel6.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel6.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel6.setText("Par Jour");
+        RevenusFiltreParJour.add(VentesLabel6, java.awt.BorderLayout.CENTER);
+
+        FiltreRevenus.add(RevenusFiltreParJour);
+
+        RevenusFiltreParSemaine.setBackground(CustomColors.panelDefaultBackgroundColor);
+        RevenusFiltreParSemaine.setPreferredSize(new java.awt.Dimension(140, 30));
+        RevenusFiltreParSemaine.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParSemaineMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParSemaineMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParSemaineMousePressed(evt);
+            }
+        });
+        RevenusFiltreParSemaine.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel8.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel8.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel8.setText("Par Semaine");
+        RevenusFiltreParSemaine.add(VentesLabel8, java.awt.BorderLayout.CENTER);
+
+        FiltreRevenus.add(RevenusFiltreParSemaine);
+
+        RevenusFiltreParMois.setBackground(CustomColors.panelDefaultBackgroundColor);
+        RevenusFiltreParMois.setPreferredSize(new java.awt.Dimension(140, 30));
+        RevenusFiltreParMois.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParMoisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParMoisMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                RevenusFiltreParMoisMousePressed(evt);
+            }
+        });
+        RevenusFiltreParMois.setLayout(new java.awt.BorderLayout());
+
+        VentesLabel7.setFont(new java.awt.Font("Montserrat", 0, 18)); // NOI18N
+        VentesLabel7.setForeground(CustomColors.ordersFilterTextUnselected);
+        VentesLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        VentesLabel7.setText("Par Mois");
+        RevenusFiltreParMois.add(VentesLabel7, java.awt.BorderLayout.CENTER);
+
+        FiltreRevenus.add(RevenusFiltreParMois);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(FiltreRevenus, javax.swing.GroupLayout.DEFAULT_SIZE, 951, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(FiltreRevenus, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+        );
+
+        Filtres.add(jPanel2, "RevenusCard");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -634,7 +651,7 @@ public class StatsPanel extends javax.swing.JPanel {
 
     private void RevenusPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RevenusPanelMouseClicked
         ChartChoiceSelected(RevenusPanel);
-        showRevenusCharteParJour();
+        RevenusFiltreParJourMousePressed(null);
         c.show(Filtres, "RevenusCard");
         System.out.println("FiltreRevenus");
     }//GEN-LAST:event_RevenusPanelMouseClicked
@@ -1213,6 +1230,7 @@ public class StatsPanel extends javax.swing.JPanel {
     private javax.swing.JLabel VentesLabel9;
     private javax.swing.JPanel VentesPanel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel panelChart;
     private javax.swing.JPanel venteFiltreAujourdhui;
     private javax.swing.JPanel venteFiltreMois;
