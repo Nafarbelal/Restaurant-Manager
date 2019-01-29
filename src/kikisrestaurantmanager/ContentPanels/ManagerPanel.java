@@ -3,6 +3,7 @@ package kikisrestaurantmanager.ContentPanels;
 import addons.*;
 import java.awt.Dialog;
 import kikisrestaurantmanager.ChangerMdp;
+import kikisrestaurantmanager.MainMenu;
 import kikisrestaurantmanager.MenuManagerFrame;
 
 /*
@@ -10,7 +11,6 @@ import kikisrestaurantmanager.MenuManagerFrame;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Ilyas El Bani
@@ -20,9 +20,15 @@ public class ManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form StatsPanel
      */
+    MainMenu mainMenu = null;
     public ManagerPanel() {
         initComponents();
-      //  labelTime = new ClockLabel("time");
+        //  labelTime = new ClockLabel("time");
+    }
+    public ManagerPanel(MainMenu mn) {
+        initComponents();
+        mainMenu= mn;
+        //  labelTime = new ClockLabel("time");
     }
 
     /**
@@ -112,6 +118,11 @@ public class ManagerPanel extends javax.swing.JPanel {
         );
 
         jPanel7.setBackground(CustomColors.lightViolet);
+        jPanel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel7MousePressed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Montserrat", 0, 24)); // NOI18N
         jLabel5.setForeground(CustomColors.textColorOnColoredPanel);
@@ -266,12 +277,16 @@ public class ManagerPanel extends javax.swing.JPanel {
 
     private void ModifierMenuPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifierMenuPanelMousePressed
         // TODO add your handling code here:
-        MenuManagerFrame c=new MenuManagerFrame();
+        MenuManagerFrame c = new MenuManagerFrame();
         c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         c.setLocationRelativeTo(this);
         c.setVisible(true);
         this.setEnabled(false);
     }//GEN-LAST:event_ModifierMenuPanelMousePressed
+
+    private void jPanel7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel7MousePressed
+        mainMenu.ClickedMenu(mainMenu.getBtnHome(),mainMenu.getHomePanel1());
+    }//GEN-LAST:event_jPanel7MousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

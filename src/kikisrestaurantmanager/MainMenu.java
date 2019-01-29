@@ -85,7 +85,7 @@ public class MainMenu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         ContentPanel = new javax.swing.JPanel();
         homePanel1 = new kikisrestaurantmanager.ContentPanels.HomePanel(this);
-        managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel();
+        managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel(this);
         statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel(this);
         ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
         infosPanel1 = new kikisrestaurantmanager.ContentPanels.InfosPanel();
@@ -430,5 +430,11 @@ public class MainMenu extends javax.swing.JFrame {
     public HomePanel getHomePanel1() {
         return homePanel1;
     }
+
+    public JPanel getBtnHome() {
+        return btnHome;
+    }
+    
+    
 
 }

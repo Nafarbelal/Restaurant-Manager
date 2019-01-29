@@ -184,6 +184,9 @@
               <Connection code="CustomColors.lightViolet" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel7MousePressed"/>
+          </Events>
 
           <Layout>
             <DimensionLayout dim="0">
