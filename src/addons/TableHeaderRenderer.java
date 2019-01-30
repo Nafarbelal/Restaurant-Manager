@@ -16,13 +16,13 @@ import javax.swing.table.TableCellRenderer;
  *
  * @author Ilyas El Bani
  */
-public class HeaderRenderer implements TableCellRenderer {
+public class TableHeaderRenderer implements TableCellRenderer {
 
     TableCellRenderer renderer;
     DefaultTableCellRenderer defaultRenderer;
 
 
-    public HeaderRenderer(JTable table) {
+    public TableHeaderRenderer(JTable table) {
         renderer = (TableCellRenderer) table.getTableHeader().getDefaultRenderer();
         defaultRenderer = (DefaultTableCellRenderer) renderer;
         defaultRenderer.setHorizontalAlignment(JLabel.CENTER);

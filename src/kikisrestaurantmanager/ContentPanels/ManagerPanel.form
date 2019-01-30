@@ -296,7 +296,7 @@
                 <Property name="text" type="java.lang.String" value="12:33:15 AM"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ClockLabel(&quot;time&quot;)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new addons.clockJLabel(&quot;time&quot;)"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="txtDate">
@@ -314,7 +314,7 @@
                 <Property name="text" type="java.lang.String" value="mardi 08 janvier 2019"/>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ClockLabel(&quot;date&quot;)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new addons.clockJLabel(&quot;date&quot;)"/>
               </AuxValues>
             </Component>
           </SubComponents>

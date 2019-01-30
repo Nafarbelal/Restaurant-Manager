@@ -6,10 +6,9 @@
 package kikisrestaurantmanager.ContentPanels;
 
 import MODEL.DB_Commande;
-import MODEL.GestionRestau;
 import MODEL.MonModele;
 import addons.CustomColors;
-import addons.HeaderRenderer;
+import addons.TableHeaderRenderer;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Font;
@@ -25,30 +24,29 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
-import kikisrestaurantmanager.ConfirmationFrame;
-import kikisrestaurantmanager.MainMenu;
-import kikisrestaurantmanager.accesCommandeFrame;
+import kikisrestaurantmanager.Dialogs.ConfirmSuppressionDialog;
+import kikisrestaurantmanager.HomeFrame;
+import kikisrestaurantmanager.GestionCommandesFrame;
 
 /**
  *
  * @author Ilyas El Bani
  */
-public class HomePanel extends javax.swing.JPanel implements ListSelectionListener {
+public class AccueilPanel extends javax.swing.JPanel implements ListSelectionListener {
 
     /**
      * Creates new form HomePanel
      */
-    GestionRestau Gr = new GestionRestau();
-    DB_Commande C = new DB_Commande();
-    MainMenu mainMenu;
+    DB_Commande dbCommande = new DB_Commande();
+    HomeFrame mainMenu;
 
-    public HomePanel() {
+    public AccueilPanel() {
         initComponents();
     }
 
-    public HomePanel(MainMenu mn) {
+    public AccueilPanel(HomeFrame mn) {
         initComponents();
-        tableCommandeEnCours.getTableHeader().setDefaultRenderer(new HeaderRenderer(tableCommandeEnCours));
+        tableCommandeEnCours.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(tableCommandeEnCours));
         tableCommandeEnCours.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         tableCommandeEnCours.getTableHeader().setOpaque(false);
         tableCommandeEnCours.getTableHeader().setBackground(Color.WHITE);
@@ -76,7 +74,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         btnT16.setBackground(CustomColors.tableNotOccupied);
         btnT17.setBackground(CustomColors.tableNotOccupied);
         btnEmporter.setBackground(CustomColors.tableNotOccupied);
-        ArrayList<Integer> occupiedTables = C.getNumTablesOccupé();
+        ArrayList<Integer> occupiedTables = dbCommande.getNumTablesOccupé();
         for (Integer table : occupiedTables) {
             switch (table) {
                 case 1:
@@ -136,7 +134,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
     }
 
     public void RefreshTableCommandes() {
-        ResultSet arts = Gr.TousLesCommandesNonPayées();
+        ResultSet arts = dbCommande.TousLesCommandesNonPayées();
         tableCommandeEnCours.setModel(new MonModele(arts));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -718,8 +716,8 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         int row = tableCommandeEnCours.getSelectedRow();
         if (row != -1) {
             int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
-            int numTable = C.getNumTableduneCommande(idCom);
-            accesCommandeFrame FrameCommande = new accesCommandeFrame(mainMenu, numTable, idCom);
+            int numTable = dbCommande.getNumTableduneCommande(idCom);
+            GestionCommandesFrame FrameCommande = new GestionCommandesFrame(mainMenu, numTable, idCom);
             FrameCommande.setVisible(true);
             this.setEnabled(false);
         }
@@ -730,13 +728,13 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         if (row != -1) {
             int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
             int answer = 0;
-            ConfirmationFrame confirmDialog = new ConfirmationFrame();
+            ConfirmSuppressionDialog confirmDialog = new ConfirmSuppressionDialog();
             confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
             confirmDialog.setLocationRelativeTo(this);
 
             answer = confirmDialog.getAnswer();
             if (answer == 1) {
-                C.AnnulerCommande(idCom);
+                dbCommande.AnnulerCommande(idCom);
                 RefreshTableCommandes();
             }
         }
@@ -746,7 +744,7 @@ public class HomePanel extends javax.swing.JPanel implements ListSelectionListen
         int row = tableCommandeEnCours.getSelectedRow();
         if (row != -1) {
             int idcom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
-            C.FinaliserCommande(idcom);
+            dbCommande.FinaliserCommande(idcom);
             RefreshTableCommandes();
         }
 

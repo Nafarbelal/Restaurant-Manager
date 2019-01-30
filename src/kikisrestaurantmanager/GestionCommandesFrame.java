@@ -5,6 +5,7 @@
  */
 package kikisrestaurantmanager;
 
+import kikisrestaurantmanager.Dialogs.ConfirmSuppressionDialog;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -19,7 +20,7 @@ import MODEL.DB_Article;
 import MODEL.DB_DetailCommande;
 import MODEL.TableModel;
 import addons.CustomColors;
-import addons.HeaderRenderer;
+import addons.TableHeaderRenderer;
 import java.awt.Dialog;
 import java.awt.Font;
 import javax.swing.JDialog;
@@ -35,7 +36,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  *
  * @author Nada
  */
-public class accesCommandeFrame extends javax.swing.JFrame implements ListSelectionListener {
+public class GestionCommandesFrame extends javax.swing.JFrame implements ListSelectionListener {
 
     DB_Commande dbCommande = new DB_Commande();
     DB_DetailCommande dbDetailCommande = new DB_DetailCommande();
@@ -46,25 +47,25 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
      * Creates new form accesCommande
      */
     public void centerHeaders() {
-        Menu.getTableHeader().setDefaultRenderer(new HeaderRenderer(Menu));
+        Menu.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(Menu));
         // Menu.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         Menu.getTableHeader().setOpaque(false);
         Menu.getTableHeader().setBackground(Color.WHITE);
-        TableCommande.getTableHeader().setDefaultRenderer(new HeaderRenderer(TableCommande));
+        TableCommande.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(TableCommande));
         // TableCommande.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         TableCommande.getTableHeader().setOpaque(false);
         TableCommande.getTableHeader().setBackground(Color.WHITE);
     }
 
-    public accesCommandeFrame() {
+    public GestionCommandesFrame() {
         initComponents();
         dbCommande.CreerCommande(0);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane2.getViewport().setBackground(Color.WHITE);
     }
-    MainMenu mainMenu;
+    HomeFrame mainMenu;
 
-    public accesCommandeFrame(MainMenu mn, int idTable, int idCommande) {
+    public GestionCommandesFrame(HomeFrame mn, int idTable, int idCommande) {
         //this.setUndecorated(true);
         mainMenu = mn;
         initComponents();
@@ -88,7 +89,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
         centerHeaders();
     }
 
-    public accesCommandeFrame(MainMenu mn, int idTable) {
+    public GestionCommandesFrame(HomeFrame mn, int idTable) {
         //this.setUndecorated(true);
         mainMenu = mn;
         initComponents();
@@ -780,7 +781,7 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
 
     private void BtnAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnnulerActionPerformed
         int answer = 0;
-        ConfirmationFrame confirmDialog = new ConfirmationFrame();
+        ConfirmSuppressionDialog confirmDialog = new ConfirmSuppressionDialog();
         confirmDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         confirmDialog.setLocationRelativeTo(this);
 
@@ -1009,21 +1010,23 @@ public class accesCommandeFrame extends javax.swing.JFrame implements ListSelect
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(accesCommandeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCommandesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(accesCommandeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCommandesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(accesCommandeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCommandesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(accesCommandeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestionCommandesFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new accesCommandeFrame().setVisible(true);
+                new GestionCommandesFrame().setVisible(true);
             }
         });
     }

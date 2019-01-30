@@ -2,9 +2,9 @@ package kikisrestaurantmanager.ContentPanels;
 
 import addons.*;
 import java.awt.Dialog;
-import kikisrestaurantmanager.ChangerMdp;
-import kikisrestaurantmanager.MainMenu;
-import kikisrestaurantmanager.MenuManagerFrame;
+import kikisrestaurantmanager.Dialogs.ChangePasswordDialog;
+import kikisrestaurantmanager.HomeFrame;
+import kikisrestaurantmanager.GestionMenuFrame;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,12 +20,12 @@ public class ManagerPanel extends javax.swing.JPanel {
     /**
      * Creates new form StatsPanel
      */
-    MainMenu mainMenu = null;
+    HomeFrame mainMenu = null;
     public ManagerPanel() {
         initComponents();
         //  labelTime = new ClockLabel("time");
     }
-    public ManagerPanel(MainMenu mn) {
+    public ManagerPanel(HomeFrame mn) {
         initComponents();
         mainMenu= mn;
         //  labelTime = new ClockLabel("time");
@@ -51,8 +51,8 @@ public class ManagerPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtClock = new ClockLabel("time");
-        txtDate = new ClockLabel("date");
+        txtClock = new clockJLabel("time");
+        txtDate = new clockJLabel("date");
         jPanel8 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -268,7 +268,7 @@ public class ManagerPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
-        ChangerMdp c = new ChangerMdp();
+        ChangePasswordDialog c = new ChangePasswordDialog();
         c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         c.setLocationRelativeTo(this);
         c.setVisible(true);
@@ -277,7 +277,7 @@ public class ManagerPanel extends javax.swing.JPanel {
 
     private void ModifierMenuPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModifierMenuPanelMousePressed
         // TODO add your handling code here:
-        MenuManagerFrame c = new MenuManagerFrame();
+        GestionMenuFrame c = new GestionMenuFrame();
         c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         c.setLocationRelativeTo(this);
         c.setVisible(true);

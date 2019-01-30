@@ -3,25 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kikisrestaurantmanager;
+package kikisrestaurantmanager.Dialogs;
 
 import MODEL.DB_Manager;
-import MODEL.GestionRestau;
 import java.awt.Dialog;
 import addons.CustomColors;
+import kikisrestaurantmanager.Alerts.PasswordChangedAlert;
 
 /**
  *
  * @author Nada
  */
-public class ChangerMdp extends javax.swing.JDialog {
+public class ChangePasswordDialog extends javax.swing.JDialog {
 
-    GestionRestau Gr = new GestionRestau();
     DB_Manager dbManager = new DB_Manager();
     /**
      * Creates new form ChangerMdp
      */
-    public ChangerMdp() {
+    public ChangePasswordDialog() {
         //setUndecorated(true);
         initComponents();
         LabelWrongOldPassword.setVisible(false);
@@ -170,7 +169,7 @@ public class ChangerMdp extends javax.swing.JDialog {
         if (dbManager.CheckPassword(old) == 1) {
             if (nw1.equals(nw2)) {
                 dbManager.UpdatePwd(nw2);
-                MotDePasseChangé mdp= new MotDePasseChangé();
+                PasswordChangedAlert mdp= new PasswordChangedAlert();
                 mdp.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
                 mdp.setLocationRelativeTo(this);
                 mdp.setVisible(true);
@@ -216,20 +215,21 @@ public class ChangerMdp extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangerMdp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePasswordDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangerMdp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePasswordDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangerMdp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePasswordDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangerMdp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChangePasswordDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChangerMdp().setVisible(true);
+                new ChangePasswordDialog().setVisible(true);
             }
         });
     }

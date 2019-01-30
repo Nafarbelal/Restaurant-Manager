@@ -21,12 +21,12 @@ import java.text.*;
  *
  * @author Ilyas El Bani
  */
-public class ClockLabel extends JLabel implements ActionListener {
+public class clockJLabel extends JLabel implements ActionListener {
 
     String type;
     SimpleDateFormat sdf;
 
-    public ClockLabel(String type) {
+    public clockJLabel(String type) {
         this.type = type;
         //setForeground(Color.green);
 

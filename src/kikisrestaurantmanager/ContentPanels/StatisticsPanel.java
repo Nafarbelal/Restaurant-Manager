@@ -21,9 +21,9 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
-import kikisrestaurantmanager.ConfirmationFrame;
-import kikisrestaurantmanager.MainMenu;
-import kikisrestaurantmanager.PeriodChooserDialog;
+import kikisrestaurantmanager.Dialogs.ConfirmSuppressionDialog;
+import kikisrestaurantmanager.HomeFrame;
+import kikisrestaurantmanager.Dialogs.ChoosePeriodDialog;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
 import org.jfree.chart.ChartMouseEvent;
@@ -56,23 +56,23 @@ import org.jfree.data.time.Day;
  *
  * @author Ilyas El Bani
  */
-public class StatsPanel extends javax.swing.JPanel {
+public class StatisticsPanel extends javax.swing.JPanel {
 
     private DB_Statistics dbStat = new DB_Statistics();
-    MainMenu mainMenu;
+    HomeFrame mainMenu;
     SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
     CardLayout c;
 
     /**
      * Creates new form StatsPanel
      */
-    public StatsPanel() {
+    public StatisticsPanel() {
         initComponents();
         //    VentesPanelMouseClicked(null);
 
     }
 
-    public StatsPanel(MainMenu mn) {
+    public StatisticsPanel(HomeFrame mn) {
         initComponents();
         c = (CardLayout) Filtres.getLayout();
 
@@ -771,7 +771,7 @@ public class StatsPanel extends javax.swing.JPanel {
 
     private void venteFiltrePeriodeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_venteFiltrePeriodeMousePressed
         FilterSelected(venteFiltrePeriode);
-        PeriodChooserDialog periodChooserDialog = new PeriodChooserDialog();
+        ChoosePeriodDialog periodChooserDialog = new ChoosePeriodDialog();
         periodChooserDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         periodChooserDialog.setLocationRelativeTo(this);
 
@@ -922,7 +922,7 @@ public class StatsPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_HeureActiveFiltrePeriodeMouseExited
 
     private void HeureActiveFiltrePeriodeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HeureActiveFiltrePeriodeMousePressed
-        PeriodChooserDialog periodChooserDialog = new PeriodChooserDialog();
+        ChoosePeriodDialog periodChooserDialog = new ChoosePeriodDialog();
         periodChooserDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         periodChooserDialog.setLocationRelativeTo(this);
 

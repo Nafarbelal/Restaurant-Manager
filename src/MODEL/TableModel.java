@@ -19,45 +19,48 @@ import javax.swing.table.AbstractTableModel;
  * @author Nada
  */
 public class TableModel extends AbstractTableModel {
-    private int NbreLignes=0 ;
-    private int Nbcolonnes ;
-    private String[]Titres ;
-    private ArrayList<Vector<String> > MesLignes = new ArrayList<Vector<String>>(); ;
+
+    private int NbreLignes = 0;
+    private int Nbcolonnes;
+    private String[] Titres;
+    private ArrayList<Vector<String>> MesLignes = new ArrayList<Vector<String>>();
+
+    ;
     
-    public TableModel(ResultSet Res)
-    {
-        
+    public TableModel(ResultSet Res) {
+
         try {
-            
+
             ResultSetMetaData rsmd = Res.getMetaData();
             Nbcolonnes = rsmd.getColumnCount();
             Titres = new String[Nbcolonnes];
-            for(int i=0 ; i< Nbcolonnes ;i++)
-                Titres[i]= rsmd.getColumnLabel(i+1);
-            Vector<String> Ligne ;
-            while(Res.next())
-            {
-               Ligne = new Vector<String>();
-                for(int i=0 ; i<Nbcolonnes ;i++)
-                    Ligne.add(Res.getObject(i+1).toString());
-                MesLignes.add(Ligne);
-                NbreLignes++ ;
+            for (int i = 0; i < Nbcolonnes; i++) {
+                Titres[i] = rsmd.getColumnLabel(i + 1);
             }
-            
-        } 
-        catch (SQLException ex) {
+            Vector<String> Ligne;
+            while (Res.next()) {
+                Ligne = new Vector<String>();
+                for (int i = 0; i < Nbcolonnes; i++) {
+                    Ligne.add(Res.getObject(i + 1).toString());
+                }
+                MesLignes.add(Ligne);
+                NbreLignes++;
+            }
+
+        } catch (SQLException ex) {
             Logger.getLogger(TableModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
+
     @Override
     public int getRowCount() {
-       return NbreLignes ;
+        return NbreLignes;
     }
 
     @Override
     public int getColumnCount() {
-       return Nbcolonnes ;
+        return Nbcolonnes;
     }
 
     @Override
@@ -69,5 +72,5 @@ public class TableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return Titres[column];
     }
-    
+
 }

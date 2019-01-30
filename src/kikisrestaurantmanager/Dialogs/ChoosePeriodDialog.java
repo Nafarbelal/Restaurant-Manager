@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kikisrestaurantmanager;
+package kikisrestaurantmanager.Dialogs;
 
 import java.awt.Color;
 import java.text.ParseException;
@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Ilyas El Bani
  */
-public class PeriodChooserDialog extends javax.swing.JDialog {
+public class ChoosePeriodDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form ConfirmationFrame
@@ -27,7 +27,7 @@ public class PeriodChooserDialog extends javax.swing.JDialog {
     private SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yy");
     private SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd");
 
-    public PeriodChooserDialog() {
+    public ChoosePeriodDialog() {
         initComponents();
         this.getContentPane().setBackground(Color.white);
         errorLabel.setVisible(false);
@@ -329,21 +329,23 @@ btnConfirmer.addActionListener(new java.awt.event.ActionListener() {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeriodChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChoosePeriodDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeriodChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChoosePeriodDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeriodChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChoosePeriodDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeriodChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ChoosePeriodDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PeriodChooserDialog().setVisible(true);
+                new ChoosePeriodDialog().setVisible(true);
             }
         });
     }

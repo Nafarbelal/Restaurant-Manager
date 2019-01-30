@@ -402,9 +402,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
           <SubComponents>
-            <Component class="kikisrestaurantmanager.ContentPanels.HomePanel" name="homePanel1">
+            <Component class="kikisrestaurantmanager.ContentPanels.AccueilPanel" name="homePanel1">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new kikisrestaurantmanager.ContentPanels.HomePanel(this)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new kikisrestaurantmanager.ContentPanels.AccueilPanel(this)"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
@@ -422,9 +422,9 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="kikisrestaurantmanager.ContentPanels.StatsPanel" name="statsPanel1">
+            <Component class="kikisrestaurantmanager.ContentPanels.StatisticsPanel" name="statsPanel1">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new kikisrestaurantmanager.ContentPanels.StatsPanel(this)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new kikisrestaurantmanager.ContentPanels.StatisticsPanel(this)"/>
               </AuxValues>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">

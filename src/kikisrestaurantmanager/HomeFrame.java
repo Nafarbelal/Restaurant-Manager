@@ -5,29 +5,28 @@
  */
 package kikisrestaurantmanager;
 
+import kikisrestaurantmanager.Dialogs.AuthentificationDialog;
 import MODEL.DB_Commande;
-import MODEL.GestionRestau;
 import java.awt.Dialog;
 import java.sql.ResultSet;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import kikisrestaurantmanager.ContentPanels.HomePanel;
+import kikisrestaurantmanager.ContentPanels.AccueilPanel;
 import kikisrestaurantmanager.ContentPanels.ManagerPanel;
 
 /**
  *
  * @author Ilyas El Bani
  */
-public class MainMenu extends javax.swing.JFrame {
+public class HomeFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainMenu
      */
-    GestionRestau Gr = new GestionRestau();
     DB_Commande C = new DB_Commande();
 
-    public MainMenu() {
+    public HomeFrame() {
         //this.setUndecorated(true);
         //this.setResizable(true);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -39,10 +38,10 @@ public class MainMenu extends javax.swing.JFrame {
     public void tableBtnIsClicked(int idTable, int isOccupied) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
         if (isOccupied == 0) {
-            new accesCommandeFrame(this, idTable).setVisible(true);
+            new GestionCommandesFrame(this, idTable).setVisible(true);
         } else {
             int idCom = C.getIdCommandeNonPayéFromNumTable(idTable);
-            new accesCommandeFrame(this, idTable, idCom).setVisible(true);
+            new GestionCommandesFrame(this, idTable, idCom).setVisible(true);
         }
 
         this.setEnabled(false);
@@ -50,7 +49,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     public void tableBtnEmporterIsClicked(int idTable) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
-        new accesCommandeFrame(this, idTable).setVisible(true);
+        new GestionCommandesFrame(this, idTable).setVisible(true);
         this.setEnabled(false);
     }
 
@@ -84,9 +83,9 @@ public class MainMenu extends javax.swing.JFrame {
         CloseButton = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         ContentPanel = new javax.swing.JPanel();
-        homePanel1 = new kikisrestaurantmanager.ContentPanels.HomePanel(this);
+        homePanel1 = new kikisrestaurantmanager.ContentPanels.AccueilPanel(this);
         managerPanel1 = new kikisrestaurantmanager.ContentPanels.ManagerPanel(this);
-        statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatsPanel(this);
+        statsPanel1 = new kikisrestaurantmanager.ContentPanels.StatisticsPanel(this);
         ordersPanel1 = new kikisrestaurantmanager.ContentPanels.OrdersPanel();
         infosPanel1 = new kikisrestaurantmanager.ContentPanels.InfosPanel();
 
@@ -340,7 +339,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnManagerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagerMousePressed
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
         /* ClickedMenu(source, managerPanel1);*/
-        JDialog loginDialog = new loginFrame(this);
+        JDialog loginDialog = new AuthentificationDialog(this);
         loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         loginDialog.setVisible(true);
     }//GEN-LAST:event_btnManagerMousePressed
@@ -372,20 +371,21 @@ public class MainMenu extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainMenu().setVisible(true);
+                new HomeFrame().setVisible(true);
             }
         });
     }
@@ -401,7 +401,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel btnManager;
     private javax.swing.JPanel btnOrders;
     private javax.swing.JPanel btnStats;
-    private kikisrestaurantmanager.ContentPanels.HomePanel homePanel1;
+    private kikisrestaurantmanager.ContentPanels.AccueilPanel homePanel1;
     private javax.swing.JLabel iconHome1;
     private javax.swing.JLabel iconOrders;
     private javax.swing.JLabel iconOrders1;
@@ -416,7 +416,7 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JLabel labelOrders3;
     private kikisrestaurantmanager.ContentPanels.ManagerPanel managerPanel1;
     private kikisrestaurantmanager.ContentPanels.OrdersPanel ordersPanel1;
-    private kikisrestaurantmanager.ContentPanels.StatsPanel statsPanel1;
+    private kikisrestaurantmanager.ContentPanels.StatisticsPanel statsPanel1;
     // End of variables declaration//GEN-END:variables
 
     public ManagerPanel getManagerPanel1() {
@@ -427,7 +427,7 @@ public class MainMenu extends javax.swing.JFrame {
         return btnManager;
     }
 
-    public HomePanel getHomePanel1() {
+    public AccueilPanel getHomePanel1() {
         return homePanel1;
     }
 

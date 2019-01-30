@@ -9,7 +9,6 @@ package MODEL;
  *
  * @author Ilyas El Bani
  */
-
 import java.util.*;
 import javax.swing.table.AbstractTableModel;
 import java.sql.*;
@@ -29,7 +28,7 @@ public class MonModele extends AbstractTableModel {
 
     public MonModele(ResultSet Rs) {
         try {
-            
+
             ResultSetMetaData rsmd = Rs.getMetaData();
             NbCol = rsmd.getColumnCount();
             Titres = new String[NbCol];
@@ -49,18 +48,24 @@ public class MonModele extends AbstractTableModel {
             Logger.getLogger(MonModele.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
-    public int getRowCount() { return NbLig; }
-    
+    public int getRowCount() {
+        return NbLig;
+    }
+
     @Override
-    public int getColumnCount() { return NbCol; }
-    
-    @Override 
-    public Object getValueAt( int rowIndex, int columnIndex ){
+    public int getColumnCount() {
+        return NbCol;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
         return MesLignes.get(rowIndex).get(columnIndex);
     }
-    
+
     @Override
-    public String getColumnName(int column){ return Titres[column] ; }
+    public String getColumnName(int column) {
+        return Titres[column];
+    }
 }

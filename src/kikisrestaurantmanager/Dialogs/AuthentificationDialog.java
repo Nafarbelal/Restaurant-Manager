@@ -3,33 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kikisrestaurantmanager;
+package kikisrestaurantmanager.Dialogs;
 
 import DB_Objects.Employee;
 import MODEL.DB_Manager;
-import MODEL.GestionRestau;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
+import kikisrestaurantmanager.HomeFrame;
 
 /**
  *
  * @author Ilyas El Bani
  */
-public class loginFrame extends javax.swing.JDialog {
+public class AuthentificationDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form login
      */
-    MainMenu mainMenu;
-    GestionRestau Gr = new GestionRestau();
+    HomeFrame mainMenu;
     DB_Manager dbManager = new DB_Manager();
 
-    public loginFrame() {
+    public AuthentificationDialog() {
         initComponents();
     }
 
-    public loginFrame(MainMenu mn) {
+    public AuthentificationDialog(HomeFrame mn) {
         mainMenu = mn;
 
         initComponents();
@@ -196,21 +195,23 @@ public class loginFrame extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthentificationDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthentificationDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthentificationDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuthentificationDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginFrame().setVisible(true);
+                new AuthentificationDialog().setVisible(true);
             }
         });
     }

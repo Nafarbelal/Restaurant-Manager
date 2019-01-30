@@ -7,15 +7,14 @@ package kikisrestaurantmanager.ContentPanels;
 
 import MODEL.DB_Commande;
 import MODEL.DB_DetailCommande;
-import MODEL.GestionRestau;
 import MODEL.MonModele;
 import MODEL.TableModel;
-import addons.HeaderRenderer;
+import addons.TableHeaderRenderer;
 import java.awt.Font;
 import java.sql.ResultSet;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
-import kikisrestaurantmanager.MainMenu;
+import kikisrestaurantmanager.HomeFrame;
 import addons.CustomColors;
 import java.awt.Color;
 import javax.swing.JPanel;
@@ -29,7 +28,6 @@ import javax.swing.event.ListSelectionListener;
  */
 public class OrdersPanel extends javax.swing.JPanel implements ListSelectionListener {
 
-    GestionRestau Gr = new GestionRestau();
     DB_DetailCommande dbDetailCommande = new DB_DetailCommande();
     DB_Commande dbCommande = new DB_Commande();
 
@@ -38,11 +36,11 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
      */
     public OrdersPanel() {
         initComponents();
-        OrdersTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(OrdersTable));
+        OrdersTable.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(OrdersTable));
         OrdersTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         OrdersTable.getTableHeader().setOpaque(false);
         OrdersTable.getTableHeader().setBackground(Color.WHITE);
-        DetailsTable.getTableHeader().setDefaultRenderer(new HeaderRenderer(DetailsTable));
+        DetailsTable.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(DetailsTable));
         DetailsTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         DetailsTable.getTableHeader().setOpaque(false);
         DetailsTable.getTableHeader().setBackground(Color.WHITE);
@@ -472,25 +470,25 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
 
     private void TodayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TodayPanelMouseClicked
         // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesToday());
+        refreshOrdersTable(dbCommande.commandesToday());
         FilterSelected(TodayPanel);
     }//GEN-LAST:event_TodayPanelMouseClicked
 
     private void YesterdayPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YesterdayPanelMouseClicked
         // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesYesterday());
+        refreshOrdersTable(dbCommande.commandesYesterday());
         FilterSelected(YesterdayPanel);
     }//GEN-LAST:event_YesterdayPanelMouseClicked
 
     private void ThisMonthPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisMonthPanelMouseClicked
         // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesThisMonth());
+        refreshOrdersTable(dbCommande.commandesThisMonth());
         FilterSelected(ThisMonthPanel);
     }//GEN-LAST:event_ThisMonthPanelMouseClicked
 
     private void ThisYearPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisYearPanelMouseClicked
         // TODO add your handling code here:
-        refreshOrdersTable(Gr.commandesThisYear());
+        refreshOrdersTable(dbCommande.commandesThisYear());
         FilterSelected(ThisYearPanel);
 
     }//GEN-LAST:event_ThisYearPanelMouseClicked
@@ -519,7 +517,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
     }//GEN-LAST:event_ThisWeekPanelMouseEntered
 
     private void ThisWeekPanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseClicked
-        refreshOrdersTable(Gr.commandesThisWeek());
+        refreshOrdersTable(dbCommande.commandesThisWeek());
         FilterSelected(ThisWeekPanel);
     }//GEN-LAST:event_ThisWeekPanelMouseClicked
 

@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kikisrestaurantmanager;
+package kikisrestaurantmanager.Alerts;
 import addons.CustomColors;
 /**
  *
  * @author Nada
  */
-public class MotDePasseChangé extends javax.swing.JDialog {
+public class PasswordChangedAlert extends javax.swing.JDialog {
     /**
      * Creates new form MotDePasseChangé
      */
-    public MotDePasseChangé() {
+    public PasswordChangedAlert() {
         //setUndecorated(true);
         initComponents();
     }
@@ -86,20 +86,21 @@ public class MotDePasseChangé extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MotDePasseChangé.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasswordChangedAlert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MotDePasseChangé.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasswordChangedAlert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MotDePasseChangé.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasswordChangedAlert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MotDePasseChangé.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PasswordChangedAlert.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MotDePasseChangé().setVisible(true);
+                new PasswordChangedAlert().setVisible(true);
             }
         });
     }
