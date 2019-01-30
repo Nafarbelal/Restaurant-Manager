@@ -27,9 +27,15 @@ import org.jfree.data.jdbc.JDBCPieDataset;
 public class ChartMouseListenerForPieSections implements ChartMouseListener {
 
     private DB_Statistics dbStat = new DB_Statistics();
-
+    String debutDate = "";
+    String finDate ="" ;
     public ChartMouseListenerForPieSections() {
 
+    }
+
+    public ChartMouseListenerForPieSections(String debutDate, String finDate) {
+        this.debutDate= debutDate;
+        this.finDate = finDate;
     }
 
     @Override
@@ -47,8 +53,7 @@ public class ChartMouseListenerForPieSections implements ChartMouseListener {
         }
         if (cat != "") {
             try {
-                String query
-                        = "select A.designation, quantite from article A,detail_commande DC where A.idArticle = DC.idArticle and categorie=\"" + cat + "\";";
+                String query = "select A.designation, SUM(quantite) from article A,detail_commande DC,Commande C where A.idArticle = DC.idArticle and DC.idCommande = C.idCommande  and A.categorie=\"" + cat + "\" and C.date >=\"" + debutDate + "\" and C.date<=\"" + finDate + "\"  group by A.idArticle;";
                 JDBCPieDataset dataset = new JDBCPieDataset(dbStat.getConnexion(), query);
                 JFreeChart chart = ChartFactory.createPieChart3D("Ventes par Article " + cat, dataset, true, true, true);
                 chart.getTitle().setPaint(CustomColors.lightViolet);

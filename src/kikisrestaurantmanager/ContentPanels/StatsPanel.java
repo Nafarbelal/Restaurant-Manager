@@ -961,7 +961,7 @@ public class StatsPanel extends javax.swing.JPanel {
             //Fin DESIGN 
             
             ChartPanel cp = new ChartPanel(chart);
-            cp.addChartMouseListener(new ChartMouseListenerForPieSections());
+            cp.addChartMouseListener(new ChartMouseListenerForPieSections(debutDate, finDate));
             panelChart.updateUI();
             cp.setPreferredSize(panelChart.getPreferredSize());
             //Adding the chart to the panel to be viewed
