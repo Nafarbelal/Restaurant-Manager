@@ -148,6 +148,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
 
             }
         ));
+        OrdersTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         OrdersTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 OrdersTableMousePressed(evt);
@@ -327,6 +328,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
 
             }
         ));
+        DetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(DetailsTable);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
