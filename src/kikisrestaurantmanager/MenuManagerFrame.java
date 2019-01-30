@@ -19,8 +19,11 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.*;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
+import kikisrestaurantmanager.Alerts.PrixFloatError;
 
 /**
  *
@@ -39,7 +42,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         refreshMenuTable(dbArticle.MenuAll());
         remplirCMB();
         EditButton.setEnabled(false);
-        
+
     }
 
     public void refreshMenuTable(ResultSet arts) {
@@ -99,6 +102,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        MenuTable.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         MenuTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -117,6 +121,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(MenuTable);
 
+        AddButton.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         AddButton.setText("Ajouter");
         AddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +129,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
             }
         });
 
+        EditButton.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         EditButton.setText("Modifier");
         EditButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -142,8 +148,10 @@ public class MenuManagerFrame extends javax.swing.JDialog {
             }
         });
 
+        CategoriesComboBox.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         CategoriesComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        CancelButton.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         CancelButton.setText("Annuler");
         CancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -151,12 +159,16 @@ public class MenuManagerFrame extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel1.setText("Designation");
 
+        jLabel2.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel2.setText("Prix");
 
+        jLabel3.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel3.setText("Categorie");
 
+        jLabel4.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel4.setText("Archivé");
 
         jPanel1.setBackground(new java.awt.Color(122, 72, 221));
@@ -185,6 +197,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel5.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Détails Article");
 
@@ -331,7 +344,17 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         int i;
         String type = CategoriesComboBox.getSelectedItem().toString();
         String des = DesignationTxt.getText();
-        float prix = Float.parseFloat(PrixTxt.getText());
+        if (des.trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "La designation ne doit pas être une chaine vide", "Error", ERROR_MESSAGE);
+            return;
+        }
+        float prix;
+        try {
+            prix = Float.parseFloat(PrixTxt.getText());
+        } catch (java.lang.NumberFormatException excep) {
+            JOptionPane.showMessageDialog(null, "La case Prix doit contenir un nombre réel", "Error", ERROR_MESSAGE);
+            return;
+        }
         boolean archive = ArchiveCheckBox.isSelected();
         if (archive == true) {
             i = 1;
@@ -341,6 +364,7 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         dbArticle.AddArticle(des, prix, type, i);
         refreshMenuTable(dbArticle.MenuAll());
         emptyAllTextFields();
+        
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void EditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditButtonActionPerformed
@@ -357,7 +381,18 @@ public class MenuManagerFrame extends javax.swing.JDialog {
         id = Integer.parseInt(MenuTable.getValueAt(lig, 0).toString());
         String type = CategoriesComboBox.getSelectedItem().toString();
         String des = DesignationTxt.getText();
-        float prix = Float.parseFloat(PrixTxt.getText());
+        if (des.trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "La designation ne doit pas être une chaine vide", "Error", ERROR_MESSAGE);
+            return;
+        }
+        float prix;
+        try {
+            prix = Float.parseFloat(PrixTxt.getText());
+        } catch (java.lang.NumberFormatException excep) {
+            JOptionPane.showMessageDialog(null, "La case Prix doit contenir un nombre réel", "Error", ERROR_MESSAGE);
+            return;
+        }
+
         boolean archive = ArchiveCheckBox.isSelected();
         if (archive == true) {
             i = 1;
