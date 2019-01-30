@@ -9,23 +9,27 @@
             <file>file:/C:/Users/DELL/Documents/GitHub/Restaurant-Manager/src/MODEL/DB_Statistics.java</file>
         </group>
         <group name="S2">
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/GestionCommandesFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/HomeFrame.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/addons/CustomColors.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/addons/ChartMouseListenerForPieSections.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/ClockLabel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Alerts/PrixFloatError.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ConfirmationFrame.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MenuManagerFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Dialogs/ConfirmSuppressionDialog.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/TableModel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/MonModele.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Dialogs/AuthentificationDialog.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/addons/TableHeaderRenderer.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatisticsPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Dialogs/ChangePasswordDialog.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/AccueilPanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Article.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MotDePasseChangé.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/addons/clockJLabel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/addons/ChartDrawingSupplier.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Home.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MainMenu.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ChangerMdp.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/addons/HeaderRenderer.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Commande.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/GestionMenuFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Alerts/PrixNotFloatAlert.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Alerts/PasswordChangedAlert.java</file>
         </group>
     </open-files>
 </project-private>
