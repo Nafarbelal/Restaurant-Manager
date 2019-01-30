@@ -10,9 +10,15 @@
         </group>
         <group name="S2">
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MainMenu.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/addons/ChartMouseListenerForPieSections.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/StatsPanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MotDePasseChangé.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Alerts/PrixFloatError.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ChangerMdp.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/accesCommandeFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/HomePanel.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/MenuManagerFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/DB_Article.java</file>
         </group>
     </open-files>
 </project-private>
