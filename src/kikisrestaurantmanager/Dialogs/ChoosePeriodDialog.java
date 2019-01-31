@@ -142,8 +142,8 @@ public class ChoosePeriodDialog extends javax.swing.JDialog {
                 false,
                 true)));
     dateFinCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
-    dateFinCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
-    dateFinCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
+    dateFinCombo.setCalendarPreferredSize(new java.awt.Dimension(380, 280));
+    dateFinCombo.setFieldFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN, 15));
     dateFinCombo.setLocale(new java.util.Locale("fr", "", ""));
     dateFinCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
@@ -189,8 +189,8 @@ public class ChoosePeriodDialog extends javax.swing.JDialog {
             false,
             true)));
 dateDebCombo.setCalendarBackground(new java.awt.Color(255, 255, 255));
-dateDebCombo.setCalendarPreferredSize(new java.awt.Dimension(270, 200));
-dateDebCombo.setFieldFont(new java.awt.Font("Montserrat", java.awt.Font.PLAIN, 15));
+dateDebCombo.setCalendarPreferredSize(new java.awt.Dimension(380, 280));
+dateDebCombo.setFieldFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN, 15));
 dateDebCombo.setLocale(new java.util.Locale("fr", "", ""));
 dateDebCombo.setBehavior(datechooser.model.multiple.MultyModelBehavior.SELECT_SINGLE);
 
