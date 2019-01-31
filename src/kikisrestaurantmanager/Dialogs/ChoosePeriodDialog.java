@@ -65,7 +65,7 @@ public class ChoosePeriodDialog extends javax.swing.JDialog {
         btnConfirmer = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(393, 50));
