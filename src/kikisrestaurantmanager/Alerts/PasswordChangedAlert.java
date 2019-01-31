@@ -5,10 +5,7 @@
  */
 package kikisrestaurantmanager.Alerts;
 import addons.CustomColors;
-/**
- *
- * @author Nada
- */
+
 public class PasswordChangedAlert extends javax.swing.JDialog {
     /**
      * Creates new form MotDePasseChangé

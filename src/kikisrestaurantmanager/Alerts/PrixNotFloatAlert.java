@@ -6,10 +6,7 @@
 package kikisrestaurantmanager.Alerts;
 import kikisrestaurantmanager.*;
 import addons.CustomColors;
-/**
- *
- * @author Nada
- */
+
 public class PrixNotFloatAlert extends javax.swing.JDialog {
     /**
      * Creates new form MotDePasseChangé

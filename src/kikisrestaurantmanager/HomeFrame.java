@@ -111,6 +111,7 @@ public class HomeFrame extends javax.swing.JFrame {
         labelHome.setForeground(new java.awt.Color(255, 255, 255));
         labelHome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelHome.setText("Accueil");
+        labelHome.setPreferredSize(new java.awt.Dimension(66, 30));
         btnHome.add(labelHome, java.awt.BorderLayout.PAGE_END);
 
         btnOrders.setBackground(new java.awt.Color(54, 33, 89));
@@ -129,6 +130,7 @@ public class HomeFrame extends javax.swing.JFrame {
         labelOrders.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelOrders.setText("Commandes");
+        labelOrders.setPreferredSize(new java.awt.Dimension(117, 33));
         btnOrders.add(labelOrders, java.awt.BorderLayout.PAGE_END);
 
         btnStats.setBackground(new java.awt.Color(54, 33, 89));
@@ -147,6 +149,7 @@ public class HomeFrame extends javax.swing.JFrame {
         labelOrders1.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelOrders1.setText("Statistiques");
+        labelOrders1.setPreferredSize(new java.awt.Dimension(117, 33));
         btnStats.add(labelOrders1, java.awt.BorderLayout.PAGE_END);
 
         btnManager.setBackground(new java.awt.Color(54, 33, 89));
@@ -165,6 +168,7 @@ public class HomeFrame extends javax.swing.JFrame {
         labelOrders3.setForeground(new java.awt.Color(255, 255, 255));
         labelOrders3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelOrders3.setText("Mode Manager");
+        labelOrders3.setPreferredSize(new java.awt.Dimension(117, 33));
         btnManager.add(labelOrders3, java.awt.BorderLayout.PAGE_END);
 
         btnInfos.setBackground(new java.awt.Color(54, 33, 89));
@@ -173,23 +177,11 @@ public class HomeFrame extends javax.swing.JFrame {
                 btnInfosMousePressed(evt);
             }
         });
+        btnInfos.setLayout(new java.awt.BorderLayout());
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Info_60px.png"))); // NOI18N
-
-        javax.swing.GroupLayout btnInfosLayout = new javax.swing.GroupLayout(btnInfos);
-        btnInfos.setLayout(btnInfosLayout);
-        btnInfosLayout.setHorizontalGroup(
-            btnInfosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        btnInfosLayout.setVerticalGroup(
-            btnInfosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnInfosLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel3)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
+        btnInfos.add(jLabel3, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout SidePanelLayout = new javax.swing.GroupLayout(SidePanel);
         SidePanel.setLayout(SidePanelLayout);
@@ -198,7 +190,7 @@ public class HomeFrame extends javax.swing.JFrame {
             .addComponent(btnOrders, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnStats, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnManager, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+            .addComponent(btnManager, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
             .addComponent(btnInfos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         SidePanelLayout.setVerticalGroup(
@@ -212,8 +204,9 @@ public class HomeFrame extends javax.swing.JFrame {
                 .addComponent(btnStats, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnManager, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(btnInfos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btnInfos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         TitlePanel.setBackground(new java.awt.Color(122, 72, 221));
@@ -274,7 +267,7 @@ public class HomeFrame extends javax.swing.JFrame {
             BackgroundPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BackgroundPaneLayout.createSequentialGroup()
                 .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(ContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addComponent(TitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );

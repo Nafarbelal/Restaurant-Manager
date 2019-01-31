@@ -11,12 +11,12 @@
         <group name="S2">
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/GestionCommandesFrame.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/HomeFrame.java</file>
+            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/InfosPanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/ManagerPanel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/addons/CustomColors.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/addons/ChartMouseListenerForPieSections.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Dialogs/ConfirmSuppressionDialog.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/OrdersPanel.java</file>
-            <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/ContentPanels/Charts/RevenusChart.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/TableModel.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/MODEL/MonModele.java</file>
             <file>file:/D:/Java/KikisRestaurantManager/src/kikisrestaurantmanager/Dialogs/AuthentificationDialog.java</file>

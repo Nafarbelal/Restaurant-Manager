@@ -10,10 +10,7 @@ import java.awt.Dialog;
 import addons.CustomColors;
 import kikisrestaurantmanager.Alerts.PasswordChangedAlert;
 
-/**
- *
- * @author Nada
- */
+
 public class ChangePasswordDialog extends javax.swing.JDialog {
 
     DB_Manager dbManager = new DB_Manager();

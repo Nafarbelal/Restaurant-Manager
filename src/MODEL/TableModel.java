@@ -14,10 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author Nada
- */
+
 public class TableModel extends AbstractTableModel {
 
     private int NbreLignes = 0;

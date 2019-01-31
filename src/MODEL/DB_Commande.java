@@ -23,10 +23,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Nada
- */
+
 public class DB_Commande {
 
     private Connection Con;

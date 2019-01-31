@@ -71,7 +71,7 @@ public class ManagerPanel extends javax.swing.JPanel {
         LayoutRestaurant.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Male_User_180px.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Settings_180px.png"))); // NOI18N
 
         txtNomPrenom.setFont(new java.awt.Font("Montserrat", 0, 34)); // NOI18N
         txtNomPrenom.setForeground(CustomColors.lightViolet);
@@ -158,13 +158,13 @@ public class ManagerPanel extends javax.swing.JPanel {
         jPanel2.setBackground(CustomColors.lightViolet
         );
 
-        txtClock.setFont(new java.awt.Font("SansSerif", 0, 45)); // NOI18N
+        txtClock.setFont(new java.awt.Font("SansSerif", 0, 42)); // NOI18N
         txtClock.setForeground(CustomColors.textColorOnColoredPanel);
         txtClock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtClock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Alarm_Clock_50px_1.png"))); // NOI18N
         txtClock.setText("12:33:15 AM");
 
-        txtDate.setFont(new java.awt.Font("SansSerif", 0, 40)); // NOI18N
+        txtDate.setFont(new java.awt.Font("SansSerif", 0, 38)); // NOI18N
         txtDate.setForeground(CustomColors.textColorOnColoredPanel);
         txtDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtDate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Event_50px_1.png"))); // NOI18N

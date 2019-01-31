@@ -7,8 +7,10 @@ package kikisrestaurantmanager;
 
 import MODEL.DB_Article;
 import MODEL.MonModele;
+import addons.TableHeaderRenderer;
 import java.awt.Color;
 import java.awt.Dialog;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.NumberFormat;
@@ -38,10 +40,16 @@ public class GestionMenuFrame extends javax.swing.JDialog {
      */
     public GestionMenuFrame() {
         initComponents();
+        this.setResizable(false);
         this.getContentPane().setBackground(Color.white);
         refreshMenuTable(dbArticle.MenuAll());
         remplirCMB();
         EditButton.setEnabled(false);
+        MenuTable.setRowHeight(25);
+        MenuTable.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(MenuTable));
+        MenuTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
+        MenuTable.getTableHeader().setOpaque(false);
+        MenuTable.getTableHeader().setBackground(Color.WHITE);
 
     }
 
@@ -51,8 +59,10 @@ public class GestionMenuFrame extends javax.swing.JDialog {
         MenuTable.setModel(new MonModele(arts));
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        //OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
-        //OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
+        MenuTable.getColumnModel().getColumn(0).setMaxWidth(60);
+                MenuTable.getColumnModel().getColumn(2).setMaxWidth(150);
+
+        //MenuTable.getColumnModel().getColumn(1).setMinWidth(150);
         for (int i = 0; i < 5; ++i) {
             MenuTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
