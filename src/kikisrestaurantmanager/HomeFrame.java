@@ -331,10 +331,10 @@ public class HomeFrame extends javax.swing.JFrame {
 
     private void btnManagerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManagerMousePressed
         javax.swing.JPanel source = (javax.swing.JPanel) evt.getSource();
-         ClickedMenu(source, managerPanel1);
-//        JDialog loginDialog = new AuthentificationDialog(this);
-//        loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-//        loginDialog.setVisible(true);
+        //ClickedMenu(source, managerPanel1);
+        JDialog loginDialog = new AuthentificationDialog(this);
+        loginDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        loginDialog.setVisible(true);
     }//GEN-LAST:event_btnManagerMousePressed
 
     private void CloseButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CloseButtonMousePressed
@@ -427,7 +427,5 @@ public class HomeFrame extends javax.swing.JFrame {
     public JPanel getBtnHome() {
         return btnHome;
     }
-    
-    
 
 }

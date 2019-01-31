@@ -18,12 +18,11 @@ import java.sql.Statement;
  * @author Ilyas El Bani
  */
 public class DB_Manager {
-      private Connection Con;
+
+    private Connection Con;
     private Statement St;
     private DaoBD dao;
-    
 
-       
     public DB_Manager() {
         dao = new DaoBD();
         dao.setPilote("com.mysql.jdbc.Driver");
@@ -33,23 +32,26 @@ public class DB_Manager {
         dao.SeConnecter();
         Con = dao.getConnexion();
     }
-    
-    public Employee getLoginInfos(String login) {
+
+//   //    public Employee getLoginInfos(String login) {
+    public Employee getLoginInfos() {
         ResultSet Res;
         //System.out.println("No Errors");
 
         try {
             St = Con.createStatement();
-            Res = St.executeQuery("select * from employees where login = '" + login + "'");
+            Res = St.executeQuery("select * from employees");
             if (Res.next()) {
-                int id = Res.getInt("IDEMPLOYEE");
-                String lg = Res.getString("LOGIN");
+//                int id = Res.getInt("IDEMPLOYEE");
+//                String lg = Res.getString("LOGIN");
                 String pw = Res.getString("MOTDEPASSE");
-                String nom = Res.getString("NOM");
-                System.out.println(nom);
-                String prenom = Res.getString("PRENOM");
+//                String nom = Res.getString("NOM");
+//                System.out.println(nom);
+//                String prenom = Res.getString("PRENOM");
 
-                Employee emp = new Employee(id, lg, pw, nom, prenom);
+//                Employee emp = new Employee(id, lg, pw, nom, prenom);
+                Employee emp = new Employee(pw);
+
                 return emp;
             }
             return null;
@@ -58,35 +60,29 @@ public class DB_Manager {
         }
         return null;
     }
-    
-     public int CheckPassword(String pwd)
-   {
-      
-       try
-       {
-           PreparedStatement Pst = Con.prepareStatement("Select count(*) from Employees where motdepasse='"+pwd+"'");
-           ResultSet rs= Pst.executeQuery();
-           if(rs.next())
-               return rs.getInt(1);
-       }
-       catch(SQLException e)
-       {
-             System.out.println("Erreur dans la requete CheckPassword " + e.getMessage());
 
-       }
-       return 0;
-   }
-   
-   public void UpdatePwd(String pwd)
-   {
-       try {
-           PreparedStatement Pst=Con.prepareStatement("update Employees set motdepasse='"+pwd+"' where idemployee=1");
-           Pst.executeUpdate();
-       }
-       catch(SQLException e)
-       {
+    public int CheckPassword(String pwd) {
+
+        try {
+            PreparedStatement Pst = Con.prepareStatement("Select count(*) from Employees where motdepasse='" + pwd + "'");
+            ResultSet rs = Pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erreur dans la requete CheckPassword " + e.getMessage());
+
+        }
+        return 0;
+    }
+
+    public void UpdatePwd(String pwd) {
+        try {
+            PreparedStatement Pst = Con.prepareStatement("update Employees set motdepasse='" + pwd +"'");
+            Pst.executeUpdate();
+        } catch (SQLException e) {
             System.out.println("Erreur dans la requete UpdatePwd " + e.getMessage());
 
-       }
-   }
+        }
+    }
 }

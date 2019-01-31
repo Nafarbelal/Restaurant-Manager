@@ -149,11 +149,12 @@ public class AuthentificationDialog extends javax.swing.JDialog {
         System.out.println("Se Connecter Clicked");
         String username = loginField.getText();
         String password = passwordField.getText();
-        Employee emp = dbManager.getLoginInfos(username);
+        Employee emp = dbManager.getLoginInfos();
         if (emp == null) {
             labelWrongPassword.setVisible(true);
         } else {
-            if (username.equals(emp.getLogin()) && password.equals(emp.getPassword())) {
+            //           // if (username.equals(emp.getLogin()) && password.equals(emp.getPassword())) {
+            if ( password.equals(emp.getPassword())) {
                 System.out.println("Connexion Reussie");
                 mainMenu.ClickedMenu(mainMenu.getBtnManager(), mainMenu.getManagerPanel1());
                 dispose();
@@ -173,7 +174,7 @@ public class AuthentificationDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void jLabel8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel8KeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER ) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             System.out.println("enter clicked");
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8KeyPressed
