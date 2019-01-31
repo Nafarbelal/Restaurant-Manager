@@ -32,7 +32,6 @@ import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 
-
 public class GestionCommandesFrame extends javax.swing.JFrame implements ListSelectionListener {
 
     DB_Commande dbCommande = new DB_Commande();
@@ -52,6 +51,9 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         // TableCommande.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         TableCommande.getTableHeader().setOpaque(false);
         TableCommande.getTableHeader().setBackground(Color.WHITE);
+        Menu.setRowHeight(25);
+        TableCommande.setRowHeight(25);
+
     }
 
     public GestionCommandesFrame() {
@@ -67,10 +69,10 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         mainMenu = mn;
         initComponents();
 
-        /* Menu.getColumnModel().getColumn(0).setPreferredWidth(30);
-        Menu.getColumnModel().getColumn(1).setPreferredWidth(150);
+        Menu.getColumnModel().getColumn(0).setMaxWidth(30);
+        Menu.getColumnModel().getColumn(1).setPreferredWidth(200);
         Menu.getColumnModel().getColumn(2).setPreferredWidth(30);
-        Menu.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);*/
+        
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane2.getViewport().setBackground(Color.WHITE);
         this.getContentPane().setBackground(Color.white);
@@ -280,6 +282,11 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TableCommande.setGridColor(new java.awt.Color(153, 153, 255));
         TableCommande.setSelectionBackground(new java.awt.Color(153, 153, 255));
         TableCommande.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        TableCommande.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                TableCommandeMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(TableCommande);
         if (TableCommande.getColumnModel().getColumnCount() > 0) {
             TableCommande.getColumnModel().getColumn(0).setResizable(false);
@@ -301,6 +308,11 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         Menu.setSelectionBackground(new java.awt.Color(153, 153, 255));
         Menu.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         Menu.getTableHeader().setReorderingAllowed(false);
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                MenuMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(Menu);
         if (Menu.getColumnModel().getColumnCount() > 0) {
             Menu.getColumnModel().getColumn(0).setResizable(false);
@@ -989,6 +1001,14 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         JPanel src = (JPanel) evt.getSource();
         MouseEntered(src);
     }//GEN-LAST:event_PanelPaniniMouseEntered
+
+    private void MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMousePressed
+        TableCommande.clearSelection();
+    }//GEN-LAST:event_MenuMousePressed
+
+    private void TableCommandeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableCommandeMousePressed
+        Menu.clearSelection();
+    }//GEN-LAST:event_TableCommandeMousePressed
 
     /**
      * @param args the command line arguments

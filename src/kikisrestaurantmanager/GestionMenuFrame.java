@@ -32,7 +32,7 @@ import kikisrestaurantmanager.Alerts.PrixNotFloatAlert;
  * @author HP
  */
 public class GestionMenuFrame extends javax.swing.JDialog {
-
+    
     DB_Article dbArticle = new DB_Article();
 
     /**
@@ -50,9 +50,9 @@ public class GestionMenuFrame extends javax.swing.JDialog {
         MenuTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         MenuTable.getTableHeader().setOpaque(false);
         MenuTable.getTableHeader().setBackground(Color.WHITE);
-
+        
     }
-
+    
     public void refreshMenuTable(ResultSet arts) {
         MenuTable.clearSelection();
         // ResultSet arts = Gr.commandesParDate("01", "01", "2019","02","01","2019");
@@ -60,20 +60,20 @@ public class GestionMenuFrame extends javax.swing.JDialog {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
         MenuTable.getColumnModel().getColumn(0).setMaxWidth(60);
-                MenuTable.getColumnModel().getColumn(2).setMaxWidth(150);
+        MenuTable.getColumnModel().getColumn(2).setMaxWidth(150);
 
         //MenuTable.getColumnModel().getColumn(1).setMinWidth(150);
         for (int i = 0; i < 5; ++i) {
             MenuTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
     }
-
+    
     private void emptyAllTextFields() {
         DesignationTxt.setText("");
         PrixTxt.setText("");
         ArchiveCheckBox.setSelected(false);
     }
-
+    
     public void remplirCMB() {
         Vector<String> C = dbArticle.Categories();
         DefaultComboBoxModel CBM = new DefaultComboBoxModel(C);
@@ -316,7 +316,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EditButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditButtonMousePressed
-
+        
 
     }//GEN-LAST:event_EditButtonMousePressed
 
@@ -403,7 +403,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "La case Prix doit contenir un nombre réel", "Error", ERROR_MESSAGE);
             return;
         }
-
+        
         boolean archive = ArchiveCheckBox.isSelected();
         if (archive == true) {
             i = 1;

@@ -76,6 +76,8 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         for (int i = 0; i < 4; ++i) {
             OrdersTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
+
     }
 
     public void refreshDetailsCommande(int idCommande) {
@@ -85,8 +87,11 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         //  OrdersTable.getColumnModel().getColumn(0).setMaxWidth(60);
         //OrdersTable.getColumnModel().getColumn(1).setMinWidth(150);
         for (int i = 0; i < 4; ++i) {
+            if(i!=1)
             DetailsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+        DetailsTable.getColumnModel().getColumn(0).setMaxWidth(60);
+        DetailsTable.getColumnModel().getColumn(1).setMinWidth(200);
     }
 
     /**
