@@ -53,6 +53,7 @@ public class AccueilPanel extends javax.swing.JPanel implements ListSelectionLis
         tableCommandeEnCours.setRowHeight(25);
         RefreshTableCommandes();
         mainMenu = mn;
+        tableCommandeEnCours.setSelectionBackground(new java.awt.Color(153, 153, 255));
 
     }
 

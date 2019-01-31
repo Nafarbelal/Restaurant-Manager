@@ -72,7 +72,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         Menu.getColumnModel().getColumn(0).setMaxWidth(30);
         Menu.getColumnModel().getColumn(1).setPreferredWidth(200);
         Menu.getColumnModel().getColumn(2).setPreferredWidth(30);
-        
+
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane2.getViewport().setBackground(Color.WHITE);
         this.getContentPane().setBackground(Color.white);
@@ -86,6 +86,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         Refresh_Menu();
         setLocationRelativeTo(mainMenu);
         centerHeaders();
+
     }
 
     public GestionCommandesFrame(HomeFrame mn, int idTable) {

@@ -41,11 +41,13 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         OrdersTable.getTableHeader().setOpaque(false);
         OrdersTable.getTableHeader().setBackground(Color.WHITE);
         OrdersTable.setRowHeight(25);
+        OrdersTable.setSelectionBackground(new java.awt.Color(153, 153, 255));
         DetailsTable.getTableHeader().setDefaultRenderer(new TableHeaderRenderer(DetailsTable));
         DetailsTable.getTableHeader().setFont(new Font("Montserrat", Font.PLAIN, 15));
         DetailsTable.getTableHeader().setOpaque(false);
         DetailsTable.getTableHeader().setBackground(Color.WHITE);
         DetailsTable.setRowHeight(25);
+        DetailsTable.setSelectionBackground(new java.awt.Color(153, 153, 255));
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jScrollPane2.getViewport().setBackground(Color.WHITE);
 
@@ -325,6 +327,11 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
             }
         ));
         DetailsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        DetailsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                DetailsTableMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(DetailsTable);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -496,6 +503,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
             String ID = OrdersTable.getValueAt(OrdersTable.getSelectedRow(), 0).toString();
             refreshDetailsCommande(Integer.parseInt(ID));
         }
+        DetailsTable.clearSelection();
     }//GEN-LAST:event_OrdersTableMousePressed
 
     private void ThisWeekPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThisWeekPanelMouseExited
@@ -511,6 +519,10 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
         refreshOrdersTable(dbCommande.commandesThisWeek());
         FilterSelected(ThisWeekPanel);
     }//GEN-LAST:event_ThisWeekPanelMouseClicked
+
+    private void DetailsTableMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetailsTableMousePressed
+        OrdersTable.clearSelection();
+    }//GEN-LAST:event_DetailsTableMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
