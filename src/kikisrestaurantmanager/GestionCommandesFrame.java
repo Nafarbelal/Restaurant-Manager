@@ -271,6 +271,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
 
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
 
+        TableCommande.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         TableCommande.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -296,6 +297,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        Menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Menu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},

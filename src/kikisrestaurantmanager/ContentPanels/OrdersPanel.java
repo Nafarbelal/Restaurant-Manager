@@ -141,6 +141,7 @@ public class OrdersPanel extends javax.swing.JPanel implements ListSelectionList
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        OrdersTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         OrdersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

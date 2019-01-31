@@ -466,7 +466,7 @@ public class AccueilPanel extends javax.swing.JPanel implements ListSelectionLis
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        tableCommandeEnCours.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        tableCommandeEnCours.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tableCommandeEnCours.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "10-22-2015",  new Float(102.0)},

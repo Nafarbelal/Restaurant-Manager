@@ -112,7 +112,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        MenuTable.setFont(new java.awt.Font("Montserrat", 0, 13)); // NOI18N
+        MenuTable.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         MenuTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
