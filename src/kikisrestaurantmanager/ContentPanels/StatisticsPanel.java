@@ -21,6 +21,8 @@ import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
+import kikisrestaurantmanager.ContentPanels.Charts.PieChart;
+import kikisrestaurantmanager.ContentPanels.Charts.RevenusChart;
 import kikisrestaurantmanager.Dialogs.ConfirmSuppressionDialog;
 import kikisrestaurantmanager.HomeFrame;
 import kikisrestaurantmanager.Dialogs.ChoosePeriodDialog;
@@ -945,191 +947,52 @@ public class StatisticsPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_HeureActiveFiltrePeriodeMousePressed
     private void showVentesCharte(String debutDate, String finDate) {
-        String query = "select A.Categorie, SUM(quantite) from article A,detail_commande DC,Commande C where A.idArticle = DC.idArticle and DC.idCommande = C.idCommande and C.date >=\"" + debutDate + "\" and C.date<=\"" + finDate + "\" group by categorie;";
-        try {
-            JDBCPieDataset dataset = new JDBCPieDataset(dbStat.getConnexion(), query);
-            JFreeChart chart = ChartFactory.createPieChart3D("Ventes Par Catégorie", dataset, true, true, true);
-            //DESIGN
-            chart.getTitle().setPaint(CustomColors.lightViolet);
-            PiePlot3D P = (PiePlot3D) chart.getPlot();
-            //  P.setSimpleLabels(true);
-            PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
-                    "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%"));
-            P.setLabelGenerator(gen);
-            P.setBackgroundPaint(Color.white);
-            P.setDrawingSupplier(new ChartDrawingSupplier());
-            //Fin DESIGN 
-            
-            ChartPanel cp = new ChartPanel(chart);
-            cp.addChartMouseListener(new ChartMouseListenerForPieSections(debutDate, finDate));
-            panelChart.updateUI();
-            cp.setPreferredSize(panelChart.getPreferredSize());
-            //Adding the chart to the panel to be viewed
-            panelChart.removeAll();
-            panelChart.add(cp);
-            panelChart.setLayout(new GridLayout(0, 1));
-            // panelChart.updateUI();
+        PieChart pieChart = new PieChart(debutDate,finDate);
+        ChartPanel cp = pieChart.getChartPanel();
+        cp.addChartMouseListener(new ChartMouseListenerForPieSections(debutDate, finDate));
+        panelChart.updateUI();
+        cp.setPreferredSize(panelChart.getPreferredSize());
+        //Adding the chart to the panel to be viewed
+        panelChart.removeAll();
+        panelChart.add(cp);
+        panelChart.setLayout(new GridLayout(0, 1));
+        // panelChart.updateUI();
 
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
-        }
     }
 
     private void showRevenusCharteParJour() {
-        try {
-            TimeSeries serieRevenus = new TimeSeries("Revenus");
-            ResultSet Rs = dbStat.RevenusParJour();
-            while (Rs.next()) {
-                Date time = Rs.getDate("Date");
-                int value = Rs.getInt("MntTotal");
-                serieRevenus.add(new Day(time), value);
-            }
-            TimeSeriesCollection dataset = new TimeSeriesCollection(serieRevenus);
+        RevenusChart revenusChart = new RevenusChart("ParJour");
+        panelChart.updateUI();
+        revenusChart.getChartPanel().setPreferredSize(panelChart.getPreferredSize());
+        //Adding the chart to the panel to be viewed
+        panelChart.removeAll();
+        panelChart.add(revenusChart.getChartPanel());
+        panelChart.setLayout(new GridLayout(0, 1));
+        // panelChart.updateUI();
 
-            JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Jour", "Date", "Revenu", dataset);
-            XYPlot plot = chart.getXYPlot();
-            plot.setDomainPannable(true);
-            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
-            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-            renderer.setSeriesPaint(0, Color.RED);
-            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-            plot.setBackgroundPaint(Color.white);
-            plot.setRangeGridlinesVisible(true);
-            plot.setRangeGridlinePaint(Color.BLACK);
-
-            plot.setDomainGridlinesVisible(true);
-            plot.setDomainGridlinePaint(Color.BLACK);
-            plot.setRenderer(renderer);
-            DateAxis dateAxis = (DateAxis) chart.getXYPlot().getDomainAxis();
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new java.util.Date());
-            dateAxis.setMaximumDate(cal.getTime());
-
-            cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) - 7);
-            dateAxis.setMinimumDate(cal.getTime());
-
-            chart.getTitle().setPaint(CustomColors.lightViolet);
-            //  P.setSimpleLabels(true);
-            ChartPanel cp = new ChartPanel(chart);
-            cp.setRangeZoomable(false);
-            /* cp.setDomainZoomable(false);*/
-            cp.setMouseWheelEnabled(true);
-            cp.setPreferredSize(panelChart.getPreferredSize());
-            //Adding the chart to the panel to be viewed
-            panelChart.removeAll();
-            Component c = panelChart.add(cp);
-            panelChart.setLayout(new GridLayout(0, 1));
-            // panelChart.updateUI();
-
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
-        }
     }
 
     private void showRevenusCharteParMois() {
-        try {
-            TimeSeries serieRevenus = new TimeSeries("Revenus");
-            ResultSet Rs = dbStat.RevenusParMois();
-            while (Rs.next()) {
-                Date time = Rs.getDate("Date");
-                int value = Rs.getInt("MntTotal");
-                serieRevenus.add(new Day(time), value);
-            }
-            TimeSeriesCollection dataset = new TimeSeriesCollection(serieRevenus);
+        RevenusChart revenusChart = new RevenusChart("ParMois");
+        panelChart.updateUI();
+        revenusChart.getChartPanel().setPreferredSize(panelChart.getPreferredSize());
+        //Adding the chart to the panel to be viewed
+        panelChart.removeAll();
+        panelChart.add(revenusChart.getChartPanel());
+        panelChart.setLayout(new GridLayout(0, 1));
+        // panelChart.updateUI();
 
-            JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Mois", "Date", "Revenu", dataset);
-            XYPlot plot = chart.getXYPlot();
-            plot.setDomainPannable(true);
-            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
-            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-            renderer.setSeriesPaint(0, Color.RED);
-            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-            plot.setBackgroundPaint(Color.white);
-            plot.setRangeGridlinesVisible(true);
-            plot.setRangeGridlinePaint(Color.BLACK);
-
-            plot.setDomainGridlinesVisible(true);
-            plot.setDomainGridlinePaint(Color.BLACK);
-            plot.setRenderer(renderer);
-            DateAxis dateAxis = (DateAxis) chart.getXYPlot().getDomainAxis();
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new java.util.Date());
-            // dateAxis.setMaximumDate(cal.getTime());
-            dateAxis.setDateFormatOverride(new SimpleDateFormat("MMM yyyy"));
-            // cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) - 7);
-            //dateAxis.setMinimumDate(cal.getTime());
-
-            chart.getTitle().setPaint(CustomColors.lightViolet);
-            //  P.setSimpleLabels(true);
-            ChartPanel cp = new ChartPanel(chart);
-            cp.setRangeZoomable(false);
-            /* cp.setDomainZoomable(false);*/
-            cp.setMouseWheelEnabled(true);
-            cp.setPreferredSize(panelChart.getPreferredSize());
-            //Adding the chart to the panel to be viewed
-            panelChart.removeAll();
-            Component c = panelChart.add(cp);
-            panelChart.setLayout(new GridLayout(0, 1));
-            // panelChart.updateUI();
-
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
-        }
     }
 
     private void showRevenusCharteParSemaine() {
-        try {
-            TimeSeries serieRevenus = new TimeSeries("Revenus");
-            ResultSet Rs = dbStat.RevenusParSemaine();
-            int sz = Rs.getFetchSize();
-            while (Rs.next()) {
-                Date time = Rs.getDate("Date");
-                int value = Rs.getInt("MntTotal");
-                serieRevenus.add(new Day(time), value);
-                System.out.println("====>" + time + "    " + value);
-            }
-            TimeSeriesCollection dataset = new TimeSeriesCollection(serieRevenus);
-            JFreeChart chart = ChartFactory.createTimeSeriesChart("Revenus Total Par Semaine", "Date", "Revenu", dataset);
-            XYPlot plot = chart.getXYPlot();
-            plot.setDomainPannable(true);
-            plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
-            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-            renderer.setSeriesPaint(0, Color.RED);
-            renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-            plot.setBackgroundPaint(Color.white);
-            plot.setRangeGridlinesVisible(true);
-            plot.setRangeGridlinePaint(Color.BLACK);
-
-            plot.setDomainGridlinesVisible(true);
-            plot.setDomainGridlinePaint(Color.BLACK);
-            plot.setRenderer(renderer);
-            DateAxis dateAxis = (DateAxis) chart.getXYPlot().getDomainAxis();
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new java.util.Date());
-            // dateAxis.setMaximumDate(cal.getTime());
-            dateAxis.setDateFormatOverride(new SimpleDateFormat("w - yyyy"));
-            // cal.set(Calendar.DAY_OF_MONTH, cal.get(Calendar.DAY_OF_MONTH) - 7);
-            //dateAxis.setMinimumDate(cal.getTime());
-
-            chart.getTitle().setPaint(CustomColors.lightViolet);
-            //  P.setSimpleLabels(true);
-            ChartPanel cp = new ChartPanel(chart);
-            cp.setRangeZoomable(false);
-            /* cp.setDomainZoomable(false);*/
-            cp.setMouseWheelEnabled(true);
-            cp.setPreferredSize(panelChart.getPreferredSize());
-            //Adding the chart to the panel to be viewed
-            panelChart.removeAll();
-            Component c = panelChart.add(cp);
-            panelChart.setLayout(new GridLayout(0, 1));
-            // panelChart.updateUI();
-
-        } catch (SQLException ex) {
-            System.out.println("Erreur dans la requete JDBCCategoryDataset PieChart " + ex.getMessage());
-        }
+        RevenusChart revenusChart = new RevenusChart("ParSemaine");
+        panelChart.updateUI();
+        revenusChart.getChartPanel().setPreferredSize(panelChart.getPreferredSize());
+        //Adding the chart to the panel to be viewed
+        panelChart.removeAll();
+        panelChart.add(revenusChart.getChartPanel());
+        panelChart.setLayout(new GridLayout(0, 1));
+        // panelChart.updateUI();
     }
 
     private void showHeuresActivesCharte(String debutDate, String finDate) {
@@ -1153,11 +1016,10 @@ public class StatisticsPanel extends javax.swing.JPanel {
             //FORMAT PlotArea
             plot.setBackgroundPaint(Color.white);
             plot.setDomainGridlinePaint(Color.white);
-            plot.setRangeGridlinePaint( Color.white);
+            plot.setRangeGridlinePaint(Color.white);
             plot.setOutlineVisible(false);
-            
+
             //Format Bars
-            
             //            plot.setDomainPannable(true);
             //
             //            XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();

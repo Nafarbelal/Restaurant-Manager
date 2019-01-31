@@ -114,6 +114,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        MenuTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         MenuTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MenuTableMouseClicked(evt);
