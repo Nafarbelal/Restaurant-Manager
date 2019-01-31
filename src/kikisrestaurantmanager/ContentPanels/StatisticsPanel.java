@@ -957,7 +957,7 @@ public class StatisticsPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_HeureActiveFiltrePeriodeMousePressed
     private void showVentesCharte(String debutDate, String finDate) {
-        PieChart pieChart = new PieChart(debutDate,finDate);
+        PieChart pieChart = new PieChart(debutDate, finDate);
         ChartPanel cp = pieChart.getChartPanel();
         cp.addChartMouseListener(new ChartMouseListenerForPieSections(debutDate, finDate));
         panelChart.updateUI();
@@ -1020,7 +1020,9 @@ public class StatisticsPanel extends javax.swing.JPanel {
                 dataset.addValue(value, "NbCommande", time);
             }
 
-            JFreeChart chart = ChartFactory.createBarChart("Heures Actives Tout", "Date", "Nombre Commandes", dataset);
+            JFreeChart chart = ChartFactory.createBarChart("Heures Actives", "Date", "Nombre Commandes", dataset);
+            chart.getTitle().setPaint(CustomColors.lightViolet);
+
             CategoryPlot plot = chart.getCategoryPlot();
             plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
             //FORMAT PlotArea
