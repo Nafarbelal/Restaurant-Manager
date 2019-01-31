@@ -343,7 +343,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtPizza.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPizza.setForeground(new java.awt.Color(255, 255, 255));
         TxtPizza.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Pizza_25px.png"))); // NOI18N
+        TxtPizza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Pizza_25px.png"))); // NOI18N
         TxtPizza.setText("Pizza   ");
         PanelPizza.add(TxtPizza, java.awt.BorderLayout.CENTER);
 
@@ -366,7 +366,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtSalade.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtSalade.setForeground(new java.awt.Color(255, 255, 255));
         TxtSalade.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtSalade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Salad_25px.png"))); // NOI18N
+        TxtSalade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Cabbage_25px.png"))); // NOI18N
         TxtSalade.setText("Salade  ");
         PanelSalade.add(TxtSalade, java.awt.BorderLayout.CENTER);
 
@@ -389,7 +389,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtShawarma.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtShawarma.setForeground(new java.awt.Color(255, 255, 255));
         TxtShawarma.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtShawarma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Wrap_25px.png"))); // NOI18N
+        TxtShawarma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Wrap_25px.png"))); // NOI18N
         TxtShawarma.setText("Shawarma");
         PanelShawarma.add(TxtShawarma, java.awt.BorderLayout.CENTER);
 
@@ -412,7 +412,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtDessert2.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtDessert2.setForeground(new java.awt.Color(255, 255, 255));
         TxtDessert2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtDessert2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Confectionery_25px_3.png"))); // NOI18N
+        TxtDessert2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Cupcake_25px.png"))); // NOI18N
         TxtDessert2.setText("Dessert ");
         PanelDessert.add(TxtDessert2, java.awt.BorderLayout.CENTER);
 
@@ -435,7 +435,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtPlat.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPlat.setForeground(new java.awt.Color(255, 255, 255));
         TxtPlat.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtPlat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Meal_25px.png"))); // NOI18N
+        TxtPlat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Meal_25px.png"))); // NOI18N
         TxtPlat.setText("Plat    ");
         PanelPlat.add(TxtPlat, java.awt.BorderLayout.CENTER);
 
@@ -458,7 +458,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtBoisson.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtBoisson.setForeground(new java.awt.Color(255, 255, 255));
         TxtBoisson.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtBoisson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Cocktail_25px_1.png"))); // NOI18N
+        TxtBoisson.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Cocktail_25px.png"))); // NOI18N
         TxtBoisson.setText("Boisson  ");
         PanelBoisson.add(TxtBoisson, java.awt.BorderLayout.CENTER);
 
@@ -482,7 +482,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtPanini.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtPanini.setForeground(new java.awt.Color(255, 255, 255));
         TxtPanini.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtPanini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Hot_Dog_25px.png"))); // NOI18N
+        TxtPanini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Bread_25px.png"))); // NOI18N
         TxtPanini.setText("Panini  ");
         PanelPanini.add(TxtPanini, java.awt.BorderLayout.CENTER);
 
@@ -505,7 +505,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtSandwich.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtSandwich.setForeground(new java.awt.Color(255, 255, 255));
         TxtSandwich.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtSandwich.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Bread_25px_1.png"))); // NOI18N
+        TxtSandwich.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Sandwich_25px_1.png"))); // NOI18N
         TxtSandwich.setText("Sandwich");
         PanelSandwich.add(TxtSandwich, java.awt.BorderLayout.CENTER);
 
@@ -528,7 +528,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtBurger.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtBurger.setForeground(new java.awt.Color(255, 255, 255));
         TxtBurger.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtBurger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_Hamburger_25px_1.png"))); // NOI18N
+        TxtBurger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Hamburger_25px.png"))); // NOI18N
         TxtBurger.setText("Burger  ");
         PanelBurger.add(TxtBurger, java.awt.BorderLayout.CENTER);
 
@@ -551,7 +551,7 @@ public class GestionCommandesFrame extends javax.swing.JFrame implements ListSel
         TxtTacos.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         TxtTacos.setForeground(new java.awt.Color(255, 255, 255));
         TxtTacos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TxtTacos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Taco_25px.png"))); // NOI18N
+        TxtTacos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconsAccesCommande/icons8_Taco_25px_1.png"))); // NOI18N
         TxtTacos.setText("Tacos   ");
         PanelTacos.add(TxtTacos, java.awt.BorderLayout.CENTER);
 

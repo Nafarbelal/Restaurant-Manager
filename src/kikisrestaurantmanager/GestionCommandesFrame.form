@@ -7,7 +7,7 @@
       <Color blue="0" green="99" red="99" type="rgb"/>
     </Property>
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-      <Color id="Default Cursor"/>
+      <Color id="Curseur par d&#xe9;faut"/>
     </Property>
     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
       <Font name="Microsoft YaHei" size="12" style="0"/>
@@ -337,7 +337,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Pizza_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Pizza_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Pizza   "/>
                   </Properties>
@@ -373,7 +373,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconsAccesCommande/icons8_Salad_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Cabbage_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Salade  "/>
                   </Properties>
@@ -409,7 +409,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Wrap_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Wrap_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Shawarma"/>
                   </Properties>
@@ -445,7 +445,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Confectionery_25px_3.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Cupcake_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Dessert "/>
                   </Properties>
@@ -481,7 +481,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Meal_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Meal_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Plat    "/>
                   </Properties>
@@ -517,7 +517,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Cocktail_25px_1.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Cocktail_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Boisson  "/>
                   </Properties>
@@ -556,7 +556,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Hot_Dog_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Bread_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Panini  "/>
                   </Properties>
@@ -592,7 +592,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Bread_25px_1.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Sandwich_25px_1.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Sandwich"/>
                   </Properties>
@@ -628,7 +628,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Images/icons8_Hamburger_25px_1.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Hamburger_25px.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Burger  "/>
                   </Properties>
@@ -664,7 +664,7 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/iconsAccesCommande/icons8_Taco_25px.png"/>
+                      <Image iconType="3" name="/iconsAccesCommande/icons8_Taco_25px_1.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Tacos   "/>
                   </Properties>
