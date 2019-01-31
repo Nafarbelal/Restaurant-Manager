@@ -51,8 +51,8 @@ public class ManagerPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        txtClock = new clockJLabel("time");
-        txtDate = new clockJLabel("date");
+        txtClock = new addons.clockJLabel("time");
+        txtDate = new addons.clockJLabel("date");
         jPanel8 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -66,7 +66,8 @@ public class ManagerPanel extends javax.swing.JPanel {
 
         txtNomPrenom.setFont(new java.awt.Font("Montserrat", 0, 48)); // NOI18N
         txtNomPrenom.setForeground(CustomColors.lightViolet);
-        txtNomPrenom.setText("Bourqadi Amine");
+        txtNomPrenom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtNomPrenom.setText("Paramètres Manager");
 
         jPanel3.setBackground(CustomColors.lightViolet);
 
@@ -149,14 +150,14 @@ public class ManagerPanel extends javax.swing.JPanel {
                     .addGroup(LayoutRestaurantLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
                         .addGroup(LayoutRestaurantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNomPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                            .addComponent(txtNomPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(LayoutRestaurantLayout.createSequentialGroup()
                         .addGap(220, 220, 220)
                         .addComponent(jLabel1)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         LayoutRestaurantLayout.setVerticalGroup(
             LayoutRestaurantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
