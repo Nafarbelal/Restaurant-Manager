@@ -51,7 +51,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
         MenuTable.getTableHeader().setOpaque(false);
         MenuTable.getTableHeader().setBackground(Color.WHITE);
         MenuTable.setSelectionBackground(new java.awt.Color(153, 153, 255));
-
+        
     }
 
     public void refreshMenuTable(ResultSet arts) {

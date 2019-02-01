@@ -23,7 +23,9 @@ import addons.CustomColors;
 import addons.TableHeaderRenderer;
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -86,6 +88,7 @@ public class GestionCommandesFrame extends javax.swing.JDialog implements ListSe
         Refresh_Menu();
         setLocationRelativeTo(mainMenu);
         centerHeaders();
+        this.setBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds());
 
     }
 
@@ -112,6 +115,7 @@ public class GestionCommandesFrame extends javax.swing.JDialog implements ListSe
         Refresh_Menu();
         setLocationRelativeTo(mainMenu);
         centerHeaders();
+        this.setBounds(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds());
 
     }
 
