@@ -27,30 +27,41 @@ public class HomeFrame extends javax.swing.JFrame {
     DB_Commande C = new DB_Commande();
 
     public HomeFrame() {
-        //this.setUndecorated(true);
+        this.setUndecorated(true);
         //this.setResizable(true);
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
         HideAllContent();
         homePanel1.setVisible(true);
+        this.setExtendedState(this.getExtendedState() | JFrame.MAXIMIZED_BOTH);
+
     }
 
     public void tableBtnIsClicked(int idTable, int isOccupied) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
         if (isOccupied == 0) {
-            new GestionCommandesFrame(this, idTable).setVisible(true);
+            //new GestionCommandesFrame(this, idTable).setVisible(true);
+            GestionCommandesFrame c = new GestionCommandesFrame(this, idTable);
+            c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            c.setLocationRelativeTo(this);
+            c.setVisible(true);
+            
         } else {
             int idCom = C.getIdCommandeNonPayéFromNumTable(idTable);
-            new GestionCommandesFrame(this, idTable, idCom).setVisible(true);
+            GestionCommandesFrame c = new GestionCommandesFrame(this, idTable,idCom);
+            c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            c.setLocationRelativeTo(this);
+            c.setVisible(true);
         }
 
-        this.setEnabled(false);
     }
 
     public void tableBtnEmporterIsClicked(int idTable) {
         //  new accesCommandeFrame(this,idTable).setVisible(true);
-        new GestionCommandesFrame(this, idTable).setVisible(true);
-        this.setEnabled(false);
+        GestionCommandesFrame c = new GestionCommandesFrame(this, idTable);
+            c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            c.setLocationRelativeTo(this);
+            c.setVisible(true);
     }
 
     /**

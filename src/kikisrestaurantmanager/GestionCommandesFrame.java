@@ -32,7 +32,7 @@ import static javax.swing.JTable.AUTO_RESIZE_OFF;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class GestionCommandesFrame extends javax.swing.JFrame implements ListSelectionListener {
+public class GestionCommandesFrame extends javax.swing.JDialog implements ListSelectionListener {
 
     DB_Commande dbCommande = new DB_Commande();
     DB_DetailCommande dbDetailCommande = new DB_DetailCommande();

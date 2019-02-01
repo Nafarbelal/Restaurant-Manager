@@ -799,9 +799,11 @@ public class AccueilPanel extends javax.swing.JPanel implements ListSelectionLis
         if (row != -1) {
             int idCom = Integer.parseInt(tableCommandeEnCours.getValueAt(row, 0).toString());
             int numTable = dbCommande.getNumTableduneCommande(idCom);
-            GestionCommandesFrame FrameCommande = new GestionCommandesFrame(mainMenu, numTable, idCom);
-            FrameCommande.setVisible(true);
-            this.setEnabled(false);
+            
+            GestionCommandesFrame c = new GestionCommandesFrame(mainMenu, numTable,idCom);
+            c.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+            c.setLocationRelativeTo(this);
+            c.setVisible(true);
         }
     }//GEN-LAST:event_btnEditCommandeMousePressed
 
