@@ -51,7 +51,7 @@ public class GestionMenuFrame extends javax.swing.JDialog {
         MenuTable.getTableHeader().setOpaque(false);
         MenuTable.getTableHeader().setBackground(Color.WHITE);
         MenuTable.setSelectionBackground(new java.awt.Color(153, 153, 255));
-        
+
     }
 
     public void refreshMenuTable(ResultSet arts) {
@@ -367,6 +367,10 @@ public class GestionMenuFrame extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "La case Prix doit contenir un nombre réel", "Error", ERROR_MESSAGE);
             return;
         }
+        if (prix <= 0) {
+            JOptionPane.showMessageDialog(null, "La case Prix doit etre sup à 0", "Error", ERROR_MESSAGE);
+            return;
+        }
         boolean archive = ArchiveCheckBox.isSelected();
         if (archive == true) {
             i = 1;
@@ -404,7 +408,10 @@ public class GestionMenuFrame extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "La case Prix doit contenir un nombre réel", "Error", ERROR_MESSAGE);
             return;
         }
-
+        if (prix <= 0) {
+            JOptionPane.showMessageDialog(null, "La case Prix doit etre sup à 0", "Error", ERROR_MESSAGE);
+            return;
+        }
         boolean archive = ArchiveCheckBox.isSelected();
         if (archive == true) {
             i = 1;
